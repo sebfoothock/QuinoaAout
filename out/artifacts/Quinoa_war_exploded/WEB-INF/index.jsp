@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
   <div class="container">
     <a href="http://www.quinoa.be">
-      <img src="img/Quinoa.png" class="quinoaLogo" />
+      <img src="img/Quinoa.png" class="logoNav" alt="logo Quinoa"/>
     </a>
     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
             type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -54,7 +54,7 @@
   </div>
 </nav>
 <!-- Masthead-->
-<header class="masthead text-white text-center">
+<header class="masthead text-center">
   <div class="container d-flex align-items-center flex-column">
     <!-- Masthead Avatar Image-->
     <!-- <img
@@ -79,16 +79,16 @@
   </div>
 </header>
 <!-- About Section-->
-<section class="page-section bg-primary text-white mb-0" id="about">
+<section class="page-section bg-primary mb-0" id="about">
   <div class="container">
     <!-- About Section Heading-->
-    <h2 class="page-section-heading text-center text-uppercase text-white">
+    <h2 class="page-section-heading text-center text-uppercase">
       Présentation ASBL
     </h2>
     <br />
     <!-- About Section Content-->
     <div class="row justify-content-center">
-      <div class="col-md-9 text-center">
+      <div class="col-md-10 text-center">
         <p class="lead">
           Quinoa est une ONG d'éducation à la citoyenneté mondiale et
           solidaire (ECMS). L'ECMS est un processus qui vise à provoquer des
@@ -100,21 +100,23 @@
           Projet alternative locales. Animations pédagogiques (Jeu de la
           ficelle, Potentia, Jeu des chaises, Dezobeyi...). Mobilisations.
         </p>
+        <h6><a href="http://www.quinoa.be" class="text-white">Lien vers l'ASLB</a></h6>
+        <img src="img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>
       </div>
     </div>
   </div>
 </section>
 <!-- About Section-->
-<section class="page-section text-white mb-0" id="about">
+<section class="page-section  mb-0" >
   <div class="container">
     <!-- About Section Heading-->
-    <h2 class="page-section-heading text-center text-uppercase text-white">
+    <h2 class="page-section-heading text-center text-uppercase">
       Jeu Dezobeyi
     </h2>
     <br />
     <!-- About Section Content-->
     <div class="row justify-content-center">
-      <div class="col-md-9 text-center">
+      <div class="col-md-10 text-center">
         <p class="lead">
           Et toi, as-tu déjà desobéi ? Face à l'intimidation, à l'injustice comment réagir ?
           Faut-il parfois désobéir ? Quinoa asbl propose un outil pédagogique autour de l'action directe non-violente
@@ -130,7 +132,8 @@
           L'outil laisse aussi la place aux échanges et à l'action avec des mises en situation et débats mouvants.
           Explorez les luttes (et les victoires) de ces femmes et hommes qui ont désobéi.
         </p>
-        </class>
+        <h6><a href="http://www.quinoa.be/je-minforme-3/outils-pedagogiques/desobeir-un-acte-citoyen/">Lien vers la version papier du jeu</a></h6>
+        <img src="img/dezobey.jpg" class="imgJeu" alt="image jeu"/>
       </div>
     </div>
   </div>

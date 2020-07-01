@@ -6296,14 +6296,14 @@ a.close.disabled {
   min-height: calc(100% - 1rem);
 }
 
-.modal-dialog-centered::before {
-  display: block;
-  height: calc(100vh - 1rem);
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
-  content: "";
-}
+/*.modal-dialog-centered::before {*/
+/*  display: block;*/
+/*  height: calc(100vh - 1rem);*/
+/*  height: -webkit-min-content;*/
+/*  height: -moz-min-content;*/
+/*  height: min-content;*/
+/*  content: "";*/
+/*}*/
 
 .modal-dialog-centered.modal-dialog-scrollable {
   flex-direction: column;
@@ -6417,12 +6417,12 @@ a.close.disabled {
     min-height: calc(100% - 3.5rem);
   }
 
-  .modal-dialog-centered::before {
-    height: calc(100vh - 3.5rem);
-    height: -webkit-min-content;
-    height: -moz-min-content;
-    height: min-content;
-  }
+  /*.modal-dialog-centered::before {*/
+  /*  height: calc(100vh - 3.5rem);*/
+  /*  height: -webkit-min-content;*/
+  /*  height: -moz-min-content;*/
+  /*  height: min-content;*/
+  /*}*/
 
   .modal-sm {
     max-width: 300px;
@@ -10765,9 +10765,9 @@ button.bg-dark:focus {
   font-style: italic !important;
 }
 
-/* .text-white {
+.text-white {
   color: #fff !important;
-} */
+}
 
 .text-primary {
   color: #1abc9c !important;
@@ -11297,13 +11297,24 @@ form .row:first-child .floating-label-form-group {
   background-color: #1a252f;
 }
 
-.quinoaLogo {
-  width: 200px;
-}
+/*ajout attribut*/
 
 .row {
   margin: 0px;
 }
+
+.logoNav{
+  width: 200px;
+}
+
+.imgJeu{
+  width: 700px;
+}
+
+.imgQuinoa{
+  width: 400px;
+}
+
 
 @media all and (max-width: 600px) {
   .quinoaLogo {
