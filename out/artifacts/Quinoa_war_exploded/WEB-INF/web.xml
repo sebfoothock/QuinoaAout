@@ -12,8 +12,13 @@
     <servlet>
         <servlet-name>Inscription</servlet-name>
         <servlet-class>servlets.Inscription</servlet-class>
-
     </servlet>
+
+    <servlet>
+        <servlet-name>HistoireLutte</servlet-name>
+        <servlet-class>servlets.HistoireLutte</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>ControllerQuinoa</servlet-name>
         <url-pattern></url-pattern><!-- si vide controller par défaut et remplir si le nom du servlet est différent du controller -->
@@ -25,4 +30,10 @@
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/Inscription</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>HistoireLutte</servlet-name>
+        <url-pattern>/HistoireLutte</url-pattern>
+    </servlet-mapping>
+
 </web-app>
