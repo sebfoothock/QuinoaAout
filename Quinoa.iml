@@ -65,6 +65,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="bson-3.12.5" level="project" />
+    <orderEntry type="library" exported="" name="bson-3.12.5" level="project" />
   </component>
 </module>
