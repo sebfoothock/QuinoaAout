@@ -32,7 +32,8 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a href="http://www.quinoa.be">
-            <img src="img/Quinoa.png" class="logoNav" />
+            <img src="img/Quinoa.png" class="logoNav
+" />
         </a>
         <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
