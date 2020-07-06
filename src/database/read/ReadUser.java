@@ -47,7 +47,7 @@ public class ReadUser {
         if(doc.isEmpty()){
             return null;
         }
-        try {//récupère l'élément est rempli
+        try {//récupère l'élément qui est rempli
             user.setIdentifiant(doc.getString("identifiant"));
             user.setPassword(doc.getString("password"));
             user.setAge(doc.getString("age"));

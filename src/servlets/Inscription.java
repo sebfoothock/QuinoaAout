@@ -2,6 +2,7 @@ package servlets;
 
 import beans.User;
 import database.read.ReadUser;
+import database.write.WriteUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,13 @@ public class Inscription extends HttpServlet {
             System.out.println("mdp : " + current.getPassword());
             System.out.println("age : " + current.getAge());
         }
+
+        WriteUser w = new WriteUser();
+        User seb = new User();//faire un post sur ce servet ci pour récupérer les éléments d'inscription
+        seb.setIdentifiant(request.getParameter("identifiant"));
+        seb.setPassword(request.getParameter("password"));
+        seb.setAge(request.getParameter("radioAge"));
+        w.updateUser(seb,getConnector("192.168.129.128"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,6 +19,7 @@ public class MongoConnector extends MongoClient {
     public static void closeConnector(){
         if(connexion != null){
             connexion.close();
+//            mongoClient.close();
         }
     }
 }

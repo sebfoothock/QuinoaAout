@@ -66,14 +66,14 @@
     <div class="container center">
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Inscription</h1>
-            <form class="col-md-10" method="POST">
+            <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
                 <div class="form-group ">
                     <label>Adresse Mail</label>
-                    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="">
+                    <input type="email" class="form-control" id="identifiant" name="identifiant" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>Mot de Passe</label>
-                    <input type="password" class="form-control" id="mdp" placeholder="">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="">
                         <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
@@ -200,7 +200,7 @@
                 </div>
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin" onClick=>
+                    <Button class="btnLogin" onclick="document.getElementById('inscriptionForm').submit();">
                         <label>S'inscrire</label>
                     </Button>
                 </div>
