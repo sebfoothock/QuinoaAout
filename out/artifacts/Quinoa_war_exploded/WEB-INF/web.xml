@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>ControllerQuinoa</servlet-name>
-        <servlet-class>servlets.ControllerQuinoa</servlet-class>
+        <servlet-name>Accueil</servlet-name>
+        <servlet-class>servlets.Accueil</servlet-class>
 
     </servlet>
 
@@ -20,9 +20,8 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ControllerQuinoa</servlet-name>
+        <servlet-name>Accueil</servlet-name>
         <url-pattern></url-pattern><!-- si vide controller par défaut et remplir si le nom du servlet est différent du controller -->
-        <url-pattern>/ControllerQuinoa</url-pattern>
         <url-pattern>/Accueil</url-pattern>
     </servlet-mapping>
 
