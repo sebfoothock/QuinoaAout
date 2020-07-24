@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
     <!-- Font Awesome icons (free version)-->
@@ -63,7 +63,7 @@
     <div class="container">
         <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-            Portfolio
+            Histoire de Lutte
         </h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
@@ -82,7 +82,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/cabin.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/1_ACED.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 2-->
@@ -94,7 +94,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/cake.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/2_ACT%20UP.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 3-->
@@ -106,7 +106,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/circus.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/3_AHED%20TAMIMI.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 4-->
@@ -118,7 +118,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/game.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/4_ASMAA%20MAHFOUZ.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 5-->
@@ -130,7 +130,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/safe.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/5_BLM.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 6-->
@@ -142,7 +142,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="/img/portfolio/submarine.png" alt="" />
+                    <img class="img-fluid" src="img/personnage/ACTU/6_CAROLA%20RACKETE.jpg" alt="" />
                 </div>
             </div>
         </div>
@@ -220,7 +220,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/1_ACED.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -266,7 +266,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/2_ACT%20UP.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -312,7 +312,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/3_AHED%20TAMIMI.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -358,7 +358,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/4_ASMAA%20MAHFOUZ.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -404,7 +404,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/5_BLM.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -450,7 +450,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/6_CAROLA%20RACKETE.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -475,9 +475,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!-- Contact form JS-->
-<script src="assets/mail/jqBootstrapValidation.js"></script>
-<script src="assets/mail/contact_me.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>

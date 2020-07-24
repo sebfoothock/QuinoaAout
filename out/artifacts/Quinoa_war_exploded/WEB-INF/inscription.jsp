@@ -84,7 +84,6 @@
                                 name="radioAge"
                                 id="16"
                                 value="16"
-                                onChange=
                         />
                         <Label>16-18</Label>
                     </div>
@@ -94,7 +93,6 @@
                                 name="radioAge"
                                 id="19"
                                 value="19"
-                                onChange=
                         />
                         <Label>19-21</Label>
                     </div>
@@ -104,7 +102,6 @@
                                 name="radioAge"
                                 id="22"
                                 value="22"
-                                onChange=
                         />
                         <Label>22-25</Label>
                     </div>
@@ -114,7 +111,6 @@
                                 name="radioAge"
                                 id="26"
                                 value="26"
-                                onChange=
                         />
                         <Label>26-29</Label>
                     </div>
@@ -124,7 +120,6 @@
                                 name="radioAge"
                                 id="30"
                                 value="30"
-                                onChange=
                         />
                         <Label>+ 30</Label>
                     </div>
@@ -138,7 +133,6 @@
                                     id="homme"
                                     value="homme"
                                     data-testid="homme"
-                                    onChange=
                             />
                         <Label>homme</Label>
                     </div>
@@ -149,7 +143,6 @@
                                     id="femme"
                                     value="femme"
                                     data-testid="femme"
-                                    onChange=
                             />
                         <Label>femme</Label>
                     </div>
@@ -160,7 +153,6 @@
                                     id="autre"
                                     value="autre"
                                     data-testid="autre"
-                                    onChange=
                             />
                         <Label>autre</Label>
                     </div>
@@ -173,7 +165,6 @@
                                 name="desobei"
                                 id="oui"
                                 value="oui"
-                                onChange=
                         />
                         <Label>oui</Label>
                     </div>
@@ -183,7 +174,6 @@
                                 name="desobei"
                                 id="unPeu"
                                 value="un peu"
-                                onChange=
                         />
                         <Label>un peu</Label>
                     </div>
@@ -193,14 +183,13 @@
                                 name="desobei"
                                 id="non"
                                 value="non"
-                                onChange=
                         />
                         <Label>non</Label>
                     </div>
                 </div>
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin" onclick="document.getElementById('inscriptionForm').submit();">
+                    <Button class="btnLogin btn btn-primary" onclick="document.getElementById('inscriptionForm').submit();">
                         <label>S'inscrire</label>
                     </Button>
                 </div>

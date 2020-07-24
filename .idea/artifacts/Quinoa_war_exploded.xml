@@ -13,6 +13,7 @@
           <element id="library" level="project" name="mongodb-driver-async-3.12.5" />
           <element id="library" level="project" name="mongodb-driver-core-3.12.5" />
           <element id="library" level="project" name="mongodb-driver-sync-3.12.5" />
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
     </root>

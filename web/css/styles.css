@@ -11315,6 +11315,10 @@ form .row:first-child .floating-label-form-group {
   width: 400px;
 }
 
+.wrapper{
+  text-align: center;
+}
+
 
 @media all and (max-width: 600px) {
   .quinoaLogo {

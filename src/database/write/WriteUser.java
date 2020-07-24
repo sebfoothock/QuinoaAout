@@ -5,6 +5,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ public class WriteUser {
             document.append("identifiant", user.getIdentifiant())
                     .append("password", user.getPassword())
                     .append("age", user.getAge())
+                    .append("sexe", user.getSexe())
+                    .append("desobei", user.getDesobei())
+
             ;
             collection.insertOne(document);//insertion dans la collection
 
@@ -46,8 +50,10 @@ public class WriteUser {
                     .append("identifiant", user.getIdentifiant())
                     .append("password", user.getPassword())
                     .append("age", user.getAge())
+                    .append("sexe", user.getSexe())
+                    .append("desobei", user.getDesobei())
             );
-            collection.updateOne(query, update);//modifie une user sur base de son identifiant
+            collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
         }
 
         public void deleteUser(MongoClient mongoClient, User user)  throws IOException,

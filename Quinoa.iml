@@ -19,11 +19,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="TomEE 9.0.35" level="application_server_libraries" />
-    <orderEntry type="library" name="bson-3.12.5" level="project" />
-    <orderEntry type="library" name="mongo-java-driver-3.12.5" level="project" />
-    <orderEntry type="library" name="mongodb-driver-async-3.12.5" level="project" />
-    <orderEntry type="library" name="mongodb-driver-core-3.12.5" level="project" />
-    <orderEntry type="library" name="mongodb-driver-sync-3.12.5" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
