@@ -46,12 +46,12 @@
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Accueil</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <form id="inscriptionForm" action="Inscription" method="GET"></form>
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionForm').submit();">Inscription</a>
+          <form id="inscriptionNav" action="Inscription" method="GET"></form>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <form id="histoireLutteForm" action="HistoireLutte" method="GET"></form>
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteForm').submit();">Histoire de lutte</a>
+          <form id="histoireLutteNav" action="Histoire" method="GET"></form>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
         </li>
       </ul>
     </div>

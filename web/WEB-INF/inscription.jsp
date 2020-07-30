@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8" />
@@ -32,8 +32,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a href="http://www.quinoa.be">
-            <img src="img/Quinoa.png" class="logoNav
-" />
+            <img src="img/Quinoa.png" class="logoNav" />
         </a>
         <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
@@ -45,17 +44,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="accueilForm" action="Accueil" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilForm').submit();">Accueil</a>
+                    <form id="accueilNav" action="Accueil" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilNav').submit();">Accueil</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="test" action="Inscription" method="POST"></form>
+                    <form id="InscriptionNav" action="Inscription" method="POST"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="#" onclick="document.getElementById('test').submit();">Inscription</a>
+                       href="#" onclick="document.getElementById('InscriptionNav').submit();">Inscription</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="histoireLutteForm" action="HistoireLutte" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteForm').submit();">Histoire de lutte</a>
+                    <form id="histoireLutteNav" action="Histoire" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
         </div>
