@@ -18,7 +18,7 @@ import static connection.MongoConnector.getConnector;
 public class Inscription extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String pagePublic = "/WEB-INF/index.jsp";
+        String pagePublic = "/WEB-INF/accueil.jsp";
         /* récupération de la liste des utilisateurs de la DB
         ReadUser user = new ReadUser();
         ArrayList <User> listUsers = user.getUsers(getConnector("192.168.129.128"));
