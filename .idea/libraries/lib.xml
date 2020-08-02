@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Quinoa_war_exploded/WEB-INF/lib/mongo-java-driver-3.12.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Quinoa_war_exploded/WEB-INF/lib/mongodb-driver-sync-3.12.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Quinoa_war_exploded/WEB-INF/lib/bson-3.12.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Quinoa_war_exploded/WEB-INF/lib/mongodb-driver-core-3.12.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Quinoa_war_exploded/WEB-INF/lib/mongodb-driver-async-3.12.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

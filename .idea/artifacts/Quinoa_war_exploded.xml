@@ -9,12 +9,11 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="bson-3.12.5" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/bson-3.12.5.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/mongo-java-driver-3.12.5.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/mongodb-driver-3.12.5.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/mongodb-driver-async-3.12.5.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/mongodb-driver-core-3.12.5.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/../jar/mongodb-driver-sync-3.12.5.jar" />
+          <element id="library" level="project" name="mongo-java-driver-3.12.5" />
+          <element id="library" level="project" name="mongodb-driver-async-3.12.5" />
+          <element id="library" level="project" name="mongodb-driver-core-3.12.5" />
+          <element id="library" level="project" name="mongodb-driver-sync-3.12.5" />
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
     </root>

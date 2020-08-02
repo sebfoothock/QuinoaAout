@@ -1,12 +1,7 @@
 <component name="libraryTable">
   <library name="bson-3.12.5">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../jar/bson-3.12.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../jar/mongo-java-driver-3.12.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../jar/mongodb-driver-3.12.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../jar/mongodb-driver-async-3.12.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../jar/mongodb-driver-core-3.12.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../jar/mongodb-driver-sync-3.12.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../bson-3.12.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

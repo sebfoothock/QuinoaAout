@@ -15,7 +15,7 @@ public class ReadUser {
     private final String dbName = "Quinoa";
     private final String Utilisateurs = "Utilisateurs";
 
-    public ArrayList <User> getUsers(MongoClient client){
+    public ArrayList <User> getUsers(MongoClient client){//récupérer tout des utilisateurs
         ArrayList <User> listUser = new ArrayList<>();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> utilisateurs = mongo.getCollection(Utilisateurs);
@@ -27,6 +27,8 @@ public class ReadUser {
                 user.setIdentifiant(doc.getString("identifiant"));
                 user.setPassword(doc.getString("password"));
                 user.setAge(doc.getString("age"));
+                user.setAge(doc.getString("sexe"));
+                user.setAge(doc.getString("desobei"));
                 listUser.add(user);
             }
         }
@@ -39,7 +41,7 @@ public class ReadUser {
         return listUser;
     }
 
-    public User getUser(MongoClient client, String identifiant){
+    public User getUser(MongoClient client, String identifiant){//récupérer un utilisateur
         User user = new User();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> utilisateurs = mongo.getCollection(Utilisateurs);
@@ -47,10 +49,12 @@ public class ReadUser {
         if(doc.isEmpty()){
             return null;
         }
-        try {//récupère l'élément est rempli
+        try {//récupère l'élément qui est rempli
             user.setIdentifiant(doc.getString("identifiant"));
             user.setPassword(doc.getString("password"));
             user.setAge(doc.getString("age"));
+            user.setAge(doc.getString("sexe"));
+            user.setAge(doc.getString("desobei"));
         }
         catch (Exception e) {
             System.out.println(e);
