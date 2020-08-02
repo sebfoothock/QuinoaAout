@@ -10,8 +10,6 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import static com.mongodb.client.model.Filters.eq;
-
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
