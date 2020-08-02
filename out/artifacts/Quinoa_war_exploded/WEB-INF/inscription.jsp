@@ -63,21 +63,29 @@
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
+        <h3 class="formTitle text-center">Inscription</h3>
         <div class="row justify-content-md-center">
-            <h3 class="formTitle text-center">Inscription</h3>
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
                 <div class="form-control">
                     <h6>Adresse Mail</h6>
-                    <input type="email" class="form-control" id="identifiant" name="identifiant" placeholder="">
+                    <input type="email" id="identifiant" name="identifiant" placeholder="">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
                 <div class="form-control">
                     <h6>Mot de Passe</h6>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="">
-                        <p class="help-block text-danger"></p>
+                    <input type="password" id="password" name="password" placeholder="">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
                 <div class="form-control">
                     <h6>Vérifiaction mot de passe</h6>
                     <input type="password" placeholder="" id="password2"/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
                 <div class="form-group">
                 <h6>Age</h6>
