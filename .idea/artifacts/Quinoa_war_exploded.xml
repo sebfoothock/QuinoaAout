@@ -13,7 +13,11 @@
           <element id="library" level="project" name="mongodb-driver-async-3.12.5" />
           <element id="library" level="project" name="mongodb-driver-core-3.12.5" />
           <element id="library" level="project" name="mongodb-driver-sync-3.12.5" />
-          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="javax.annotation" />
+          <element id="library" level="project" name="javax.persistence" />
+          <element id="library" level="project" name="javax.resource" />
+          <element id="library" level="project" name="javax.servlet.jsp.jstl" />
+          <element id="library" level="project" name="jar" />
         </element>
       </element>
     </root>
