@@ -14,6 +14,8 @@
           <element id="library" level="project" name="mongodb-driver-core-3.12.5" />
           <element id="library" level="project" name="mongodb-driver-sync-3.12.5" />
           <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="gson-2.8.2" />
+          <element id="library" level="project" name="log4j-1.2.17" />
         </element>
       </element>
     </root>

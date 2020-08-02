@@ -17,12 +17,17 @@ import static connection.MongoConnector.getConnector;
 
 @WebServlet(name = "Rechercher")
 public class Rechercher extends HttpServlet {
+    final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Rechercher.class);
+    org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
+    org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String identifiant = request.getParameter("id");
+        String identifiant = request.getParameter("id");//créer un objet personne avec tout les request.Paremeter
         try{
             PrintWriter out = response.getWriter();
-            response.setContentType("text/html");
+            response.setContentType("text/html; charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
             response.setHeader("Cache-control", "no-cache, no-store");
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "-1");
@@ -30,9 +35,11 @@ public class Rechercher extends HttpServlet {
             response.setHeader("Access-Control-Allow-Methods", "POST");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
-            System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector("192.168.129.128"),identifiant);
-            System.out.println("Nom: "+pers.getNom());
+            LOG.info("identifiant: "+identifiant);
+            //System.out.println("identifiant: "+identifiant);
+            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector("192.168.129.128"),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
+            LOG.info("Nom: "+pers.getNom());
+            //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();
             result.add(String.valueOf(pers.getAnnee()));
             result.add(pers.getLieu());
@@ -64,7 +71,8 @@ public class Rechercher extends HttpServlet {
 
             out.close();
         } catch(IOException ex){
-            System.out.println("Erreur: "+ex);
+            LOG.error(ex);
+            //System.out.println("Erreur: "+ex);
         }
     }
 

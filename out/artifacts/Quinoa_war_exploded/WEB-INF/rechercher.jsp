@@ -121,17 +121,17 @@
                 </div>
                 <div class="form-group">
                     <label>Première réponse (réponse correcte)</label>
-                    <input type="text" class="form-control" id="réponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
+                    <input type="text" class="form-control" id="reponse1" name="reponse1" placeholder="Réponse 1 (correcte)">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Deuxième réponse</label>
-                    <input type="text" class="form-control" id="réponse2" name="réponse2" placeholder="Réponse 2">
+                    <input type="text" class="form-control" id="reponse2" name="reponse2" placeholder="Réponse 2">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Troisième réponse</label>
-                    <input type="text" class="form-control" id="réponse3" name="réponse3" placeholder="Réponse 3">
+                    <input type="text" class="form-control" id="reponse3" name="reponse3" placeholder="Réponse 3">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
@@ -159,31 +159,34 @@
 <script>
     function postdata(){
         var element1 = document.getElementById("nom").value;
-        var parameter = "id=" + element1;//forge les paramètres pour l'URL
+        var parameter = "id=" + element1 ;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
         //alert(parameter);
         $.ajax({
             type: "POST",
             url: "Rechercher",
             data: parameter,
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
             dataType: "json",
             success: function( data, textStatus, jqXHR) {
                 if(data.success){
 // si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
-                    alert(data.results[0]);
-                    document.getElementById("annee").value = data.results[0];
-                    document.getElementById("lieu").value = data.results[1];
-                    document.getElementById("lutte").value = data.results[2];
-                    document.getElementById("strategie").value = data.results[3];
-                    document.getElementById("action").value = data.results[4];
-                    document.getElementById("victoire").value = data.results[5];
-                    document.getElementById("anecdote").value = data.results[6];
-                    document.getElementById("citation").value = data.results[7];
-                    document.getElementById("question").value = data.results[8];
-                    document.getElementById("reponse1").value = data.results[9];
-                    document.getElementById("reponse2").value = data.results[10];
-                    document.getElementById("reponse3").value = data.results[11];
+//                     for(var i=0;i<data.results.length;i++){
+//                         alert(i+" "+data.results[i]);
+//                     }
+                    document.getElementById("annee").value = data.results[0];//supprimer  : value = ""
+                    document.getElementById("lieu").value = data.results[1];//ajouter (créer var) : value = nom
+                    document.getElementById("lutte").value = data.results[4];
+                    document.getElementById("strategie").value = data.results[5];
+                    document.getElementById("action").value = data.results[10];
+                    document.getElementById("victoire").value = data.results[6];
+                    document.getElementById("anecdote").value = data.results[2];
+                    document.getElementById("citation").value = data.results[11];
+                    document.getElementById("question").value = data.results[13];
+                    document.getElementById("reponse1").value = data.results[7];
+                    document.getElementById("reponse2").value = data.results[8];
+                    document.getElementById("reponse3").value = data.results[9];
                     document.getElementById("video").value = data.results[12];
-                    document.getElementById("article").value = data.results[13];
+                    document.getElementById("article").value = data.results[3];
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
