@@ -56,11 +56,11 @@ public class WriteUser {
             collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
         }
 
-        public void deleteUser(MongoClient mongoClient, User user)  throws IOException,
+        public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException,
                 UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
-            BasicDBObject query = new BasicDBObject("identifiant", user.getIdentifiant());
+            BasicDBObject query = new BasicDBObject("identifiant", identifiant);
 
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
             collection.deleteMany(query);

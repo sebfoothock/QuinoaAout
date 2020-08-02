@@ -76,6 +76,28 @@
         <url-pattern>/Supprimer</url-pattern>
     </servlet-mapping>
 
-
+<!--    <security-constraint>-->
+<!--        <display-name>Quinoa</display-name>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>Zone Protegé</web-resource-name>-->
+<!--            <url-pattern>/*</url-pattern>-->
+<!--            <http-method>POST</http-method>-->
+<!--            <http-method>GET</http-method>-->
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>*</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
+<!--    <security-constraint>-->
+<!--        <display-name>La page d'authentification et les ressources sont exclu</display-name>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>Contenu non protegé</web-resource-name>-->
+<!--            <url-pattern>/accueil.jsp</url-pattern>-->
+<!--            <url-pattern>/images/*</url-pattern>-->
+<!--            <url-pattern>/css/*</url-pattern>-->
+<!--            <url-pattern>/html/*</url-pattern>-->
+<!--            <url-pattern>/js/*</url-pattern>-->
+<!--        </web-resource-collection>-->
+<!--    </security-constraint>-->
 
 </web-app>

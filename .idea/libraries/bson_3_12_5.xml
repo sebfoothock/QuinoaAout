@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="bson-3.12.5">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../bson-3.12.5.jar!/" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>

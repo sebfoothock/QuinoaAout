@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javax.annotation">
+  <library name="mongodb-driver-3.12.5">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javax.annotation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../mongodb-driver-3.12.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

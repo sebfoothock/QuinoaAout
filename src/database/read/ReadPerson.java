@@ -1,14 +1,17 @@
 package database.read;
 
 import beans.Person;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import static com.mongodb.client.model.Filters.eq;
+import org.bson.conversions.Bson;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ReadPerson {
     private final String dbName = "Quinoa";
@@ -24,7 +27,7 @@ public class ReadPerson {
                 Document doc = iterator.next();
                 Person personnage = new Person();
                 personnage.setNom(doc.getString("nom"));
-                personnage.setAnnee(doc.getInteger("annee"));
+                personnage.setAnnee(doc.getInteger("periode"));
                 personnage.setLieu(doc.getString("lieu"));
                 personnage.setLutte(doc.getString("lutte"));
                 personnage.setStrategie(doc.getString("strategie"));
@@ -54,13 +57,16 @@ public class ReadPerson {
         Person personnage = new Person();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> personnages = mongo.getCollection(Personnages);
-        Document doc = personnages.find(eq("nom", nom)).first();//parcours les utilisateurs de la db et rempli la mémoire
+        DBObject query = new BasicDBObject();
+        System.out.println("QUERY: "+nom);
+        query.put("nom", Pattern.compile(nom , Pattern.CASE_INSENSITIVE));
+        Document doc = personnages.find((Bson) query).first();//parcours les utilisateurs de la db et rempli la mémoire
         if(doc.isEmpty()){
             return null;
         }
         try {//récupère l'élément qui est rempli
             personnage.setNom(doc.getString("nom"));
-            personnage.setAnnee(doc.getInteger("annee"));
+            personnage.setAnnee(doc.getInteger("periode"));
             personnage.setLieu(doc.getString("lieu"));
             personnage.setLutte(doc.getString("lutte"));
             personnage.setStrategie(doc.getString("strategie"));
