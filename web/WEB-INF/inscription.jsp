@@ -64,19 +64,23 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
         <div class="row justify-content-md-center">
-            <h1 class="formTitle text-center">Inscription</h1>
+            <h3 class="formTitle text-center">Inscription</h3>
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
-                <div class="form-group ">
-                    <label>Adresse Mail</label>
+                <div class="form-control">
+                    <h6>Adresse Mail</h6>
                     <input type="email" class="form-control" id="identifiant" name="identifiant" placeholder="">
                 </div>
-                <div class="form-group">
-                    <label>Mot de Passe</label>
+                <div class="form-control">
+                    <h6>Mot de Passe</h6>
                     <input type="password" class="form-control" id="password" name="password" placeholder="">
                         <p class="help-block text-danger"></p>
                 </div>
+                <div class="form-control">
+                    <h6>Vérifiaction mot de passe</h6>
+                    <input type="password" placeholder="" id="password2"/>
+                </div>
                 <div class="form-group">
-                <h3>Age</h3>
+                <h6>Age</h6>
                     <div>
                         <Input
                                 type="radio"
@@ -124,7 +128,7 @@
                     </div>
                 </div>
         <div class="form-group">
-                    <h3>Sexe</h3>
+                    <h6>Sexe</h6>
                     <div class="radio">
                             <Input
                                     type="radio"
@@ -157,7 +161,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3>Est-ce que vous vous considérez comme «désobéissant» ?</h3>
+                    <h6>Est-ce que vous vous considérez comme «désobéissant» ?</h6>
                     <div class="radio">
                         <Input
                                 type="radio"
@@ -196,6 +200,64 @@
         </div>
     </div>
 </section>
+
+<script>
+    const form = document.getElementById('inscriptionForm');
+    const identifiant = document.getElementById('identifiant');
+    const password = document.getElementById('password');
+    const password2 = document.getElementById('password2');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        checkInputs();
+    });
+
+    function checkInputs() {
+        // trim to remove the whitespaces
+        const identifiantValue = identifiant.value.trim();
+        const passwordValue = password.value.trim();
+        const password2Value = password2.value.trim();
+
+        if(identifiantValue === '') {
+            setErrorFor(identifiant, 'Email cannot be blank');
+        } else if (!isEmail(identifiantValue)) {
+            setErrorFor(identifiant, 'Not a valid email');
+        } else {
+            setSuccessFor(identifiant);
+        }
+
+        if(passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+        } else {
+            setSuccessFor(password);
+        }
+
+        if(password2Value === '') {
+            setErrorFor(password2, 'Password2 cannot be blank');
+        } else if(passwordValue !== password2Value) {
+            setErrorFor(password2, 'Passwords does not match');
+        } else{
+            setSuccessFor(password2);
+        }
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'form-control error';
+        small.innerText = message;
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-control success';
+    }
+
+    function isEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    }
+</script>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
