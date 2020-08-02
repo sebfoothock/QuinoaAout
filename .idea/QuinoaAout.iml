@@ -5,5 +5,9 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" exported="" name="bson-3.12.51" level="project" />
+>>>>>>> 7b51567dc2e3ed21c910179bad56ded16fab39ac
   </component>
 </module>
