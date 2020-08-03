@@ -16,6 +16,10 @@ import static connection.MongoConnector.getConnector;
 
 @WebServlet(name = "Inscription")
 public class Inscription extends HttpServlet {
+    final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Rechercher.class);
+    org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
+    org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/accueil.jsp";
@@ -31,17 +35,18 @@ public class Inscription extends HttpServlet {
         }
         */
         WriteUser w = new WriteUser();
-        User seb = new User();//faire un post sur ce servet ci pour récupérer les éléments d'inscription
-        seb.setIdentifiant(request.getParameter("identifiant"));
-        seb.setPassword(request.getParameter("password"));
-        seb.setAge(request.getParameter("radioAge"));
-        seb.setSexe(request.getParameter("sexe"));
-        seb.setDesobei(request.getParameter("desobei"));
+        User u = new User();//faire un post sur ce servet ci pour récupérer les éléments d'inscription
+        u.setIdentifiant(request.getParameter("identifiant"));
+        u.setPassword(request.getParameter("password"));
+        u.setAge(request.getParameter("radioAge"));
+        u.setSexe(request.getParameter("sexe"));
+        u.setDesobei(request.getParameter("desobei"));
         
-        w.addUser(seb,getConnector("192.168.129.128"));
+        w.addUser(u,getConnector("192.168.129.128"));
 
-
-        request.getRequestDispatcher(pagePublic).forward(request, response);
+        LOG.info("inscription utilisateur => id : " + u.getIdentifiant());
+        String page = "/WEB-INF/histoireLutte.jsp";
+        request.getRequestDispatcher(page).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

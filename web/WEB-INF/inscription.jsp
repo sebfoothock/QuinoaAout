@@ -67,32 +67,36 @@
         <div class="row justify-content-md-center">
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
                 <div class="form-control">
-                    <h6>Adresse Mail</h6>
-                    <input type="email" id="identifiant" name="identifiant" placeholder="">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>Error message</small>
+                    <label for="identifiant"><h6>Adresse Mail</h6></label>
+                    <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
+                    <div class="erreurChamp">
+                        <small>Error message</small>
+                    </div>
+
                 </div>
                 <div class="form-control">
-                    <h6>Mot de Passe</h6>
-                    <input type="password" id="password" name="password" placeholder="">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>Error message</small>
+                    <label for="password"><h6>Mot de Passe</h6></label>
+                    <input type="password" placeholder="" id="password" class="champText" name="password" />
+                    <div class="erreurChamp">
+                        <small>Error message</small>
+                    </div>
+
                 </div>
                 <div class="form-control">
-                    <h6>Vérifiaction mot de passe</h6>
-                    <input type="password" placeholder="" id="password2"/>
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>Error message</small>
+                    <label for="password2"><h6>Vérification Mot de passe</h6></label>
+                    <input type="password" placeholder="" id="password2" class="champText" name="password2"/>
+                    <div class="erreurChamp">
+                        <small>Error message</small>
+                    </div>
+
                 </div>
-                <div class="form-group">
-                <h6>Age</h6>
+                <div class="form-control">
+                    <h6>Age</h6>
+                    <small id="smallAge">Choisissez une option</small>
                     <div>
                         <Input
                                 type="radio"
-                                name="radioAge"
+                                name="age"
                                 id="16"
                                 value="16"
                         />
@@ -101,7 +105,7 @@
                     <div class="radio">
                         <Input
                                 type="radio"
-                                name="radioAge"
+                                name="age"
                                 id="19"
                                 value="19"
                         />
@@ -110,7 +114,7 @@
                     <div class="radio">
                         <Input
                                 type="radio"
-                                name="radioAge"
+                                name="age"
                                 id="22"
                                 value="22"
                         />
@@ -119,7 +123,7 @@
                     <div class="radio">
                         <Input
                                 type="radio"
-                                name="radioAge"
+                                name="age"
                                 id="26"
                                 value="26"
                         />
@@ -128,48 +132,51 @@
                     <div class="radio">
                         <Input
                                 type="radio"
-                                name="radioAge"
+                                name="age"
                                 id="30"
                                 value="30"
                         />
                         <Label>+ 30</Label>
                     </div>
+
                 </div>
-        <div class="form-group">
+                <div class="form-control">
                     <h6>Sexe</h6>
+                    <small id="smallSexe">Choisissez une option</small>
                     <div class="radio">
-                            <Input
-                                    type="radio"
-                                    name="sexe"
-                                    id="homme"
-                                    value="homme"
-                                    data-testid="homme"
-                            />
+                        <Input
+                                type="radio"
+                                name="sexe"
+                                id="homme"
+                                value="homme"
+                                data-testid="homme"
+                        />
                         <Label>homme</Label>
                     </div>
                     <div class="radio">
-                            <Input
-                                    type="radio"
-                                    name="sexe"
-                                    id="femme"
-                                    value="femme"
-                                    data-testid="femme"
-                            />
+                        <Input
+                                type="radio"
+                                name="sexe"
+                                id="femme"
+                                value="femme"
+                                data-testid="femme"
+                        />
                         <Label>femme</Label>
                     </div>
                     <div class="radio">
-                            <Input
-                                    type="radio"
-                                    name="sexe"
-                                    id="autre"
-                                    value="autre"
-                                    data-testid="autre"
-                            />
+                        <Input
+                                type="radio"
+                                name="sexe"
+                                id="autre"
+                                value="autre"
+                                data-testid="autre"
+                        />
                         <Label>autre</Label>
                     </div>
                 </div>
-                <div>
+                <div class="form-control">
                     <h6>Est-ce que vous vous considérez comme «désobéissant» ?</h6>
+                    <small id="smallDesobei">Choisissez une option</small>
                     <div class="radio">
                         <Input
                                 type="radio"
@@ -200,7 +207,7 @@
                 </div>
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="document.getElementById('inscriptionForm').submit();">
+                    <Button class="btnLogin btn btn-primary" onclick="checkInputs();">
                         <label>S'inscrire</label>
                     </Button>
                 </div>
@@ -210,44 +217,101 @@
 </section>
 
 <script>
-    const form = document.getElementById('inscriptionForm');
     const identifiant = document.getElementById('identifiant');
     const password = document.getElementById('password');
     const password2 = document.getElementById('password2');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        checkInputs();
-    });
 
     function checkInputs() {
         // trim to remove the whitespaces
         const identifiantValue = identifiant.value.trim();
         const passwordValue = password.value.trim();
         const password2Value = password2.value.trim();
+        // const age = document.querySelector('input[name="age"]:checked').value;//n'arrive pas à récupérer la valeur des radios
+
+        var idValidation = false;
+        var passwordValidation = false;
+        var password2Validation = false;
+        var ageValidation = false;
+        var sexeValidation = false;
+        var desobeiValidation = false;
 
         if(identifiantValue === '') {
-            setErrorFor(identifiant, 'Email cannot be blank');
+            setErrorFor(identifiant, 'Ce champ ne peut pas être vide');
+            idValidation = false;
         } else if (!isEmail(identifiantValue)) {
-            setErrorFor(identifiant, 'Not a valid email');
+            setErrorFor(identifiant, 'L\'email n\'est pas valide');
+            idValidation = false;
         } else {
             setSuccessFor(identifiant);
+            idValidation = true;
         }
 
         if(passwordValue === '') {
-            setErrorFor(password, 'Password cannot be blank');
+            setErrorFor(password, 'Ce champ ne peut pas être vide');
+            passwordValidation = false;
         } else {
             setSuccessFor(password);
+            passwordValidation = true;
         }
 
         if(password2Value === '') {
-            setErrorFor(password2, 'Password2 cannot be blank');
+            setErrorFor(password2, 'Ce champ ne peut pas être vide');
+            password2Validation = false;
         } else if(passwordValue !== password2Value) {
-            setErrorFor(password2, 'Passwords does not match');
+            setErrorFor(password2, 'Le mot de passe n\'est pas le même');
+            password2Validation = false;
         } else{
             setSuccessFor(password2);
+            password2Validation = true;
         }
+
+        if(ageValidation === false){
+            const radio = document.getElementsByName("age");
+
+            var i = 0;
+            while (!ageValidation && i < radio.length) {
+                if (radio[i].checked){
+                    ageValidation = true;
+                    document.getElementById("smallAge").style.visibility = "hidden"
+                }
+                i++;
+            }
+            if (!ageValidation) document.getElementById("smallAge").style.visibility = "visible";
+        }
+
+        if(sexeValidation === false){
+            const radio = document.getElementsByName("sexe");
+
+            var i = 0;
+            while (!sexeValidation && i < radio.length) {
+                if (radio[i].checked){
+                    sexeValidation = true;
+                    document.getElementById("smallSexe").style.visibility = "hidden"
+                }
+                i++;
+            }
+            if (!sexeValidation) document.getElementById("smallSexe").style.visibility = "visible";
+        }
+
+        if(desobeiValidation === false){
+            const radio = document.getElementsByName("desobei");
+
+            var i = 0;
+            while (!desobeiValidation && i < radio.length) {
+                if (radio[i].checked){
+                    desobeiValidation = true;
+                    document.getElementById("smallDesobei").style.visibility = "hidden"
+                }
+                i++;
+            }
+            if (!desobeiValidation) document.getElementById("smallDesobei").style.visibility = "visible";
+        }
+
+        if(idValidation === true && passwordValidation === true && password2Validation === true && ageValidation === true && sexeValidation === true && desobeiValidation === true){
+            document.getElementById('inscriptionForm').submit();
+            console.log("Envoyé !")
+        }
+
     }
 
     function setErrorFor(input, message) {
@@ -256,6 +320,7 @@
         formControl.className = 'form-control error';
         small.innerText = message;
     }
+
 
     function setSuccessFor(input) {
         const formControl = input.parentElement;

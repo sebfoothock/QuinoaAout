@@ -16,7 +16,7 @@
   <meta name="author" content="" />
   <title>Dezobey</title>
   <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="../img/quizz.png" />
+  <link rel="icon" type="image/x-icon" href="img/quizz.png" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -24,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
         type="text/css" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="../css/styles.css" type="text/css" rel="stylesheet" />
+  <link href="css/styles.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
   <div class="container">
     <a href="http://www.quinoa.be">
-      <img src="../img/Quinoa.png" class="logoNav" alt="logo Quinoa"/>
+      <img src="img/Quinoa.png" class="logoNav" alt="logo Quinoa"/>
     </a>
     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
             type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -105,7 +105,7 @@
           ficelle, Potentia, Jeu des chaises, Dezobeyi...). Mobilisations.
         </p>
         <h6><a href="http://www.quinoa.be" class="text-white">Lien vers l'ASLB</a></h6>
-        <img src="../img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>
+        <img src="img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>
       </div>
     </div>
   </div>
@@ -137,7 +137,7 @@
           Explorez les luttes (et les victoires) de ces femmes et hommes qui ont désobéi.
         </p>
         <h6><a href="http://www.quinoa.be/je-minforme-3/outils-pedagogiques/desobeir-un-acte-citoyen/">Lien vers la version papier du jeu</a></h6>
-        <img src="../img/dezobey.jpg" class="imgJeu" alt="image jeu"/>
+        <img src="img/dezobey.jpg" class="imgJeu" alt="image jeu"/>
       </div>
     </div>
   </div>
@@ -191,7 +191,7 @@
 <!-- Third party plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <!-- Core theme JS-->
-<script src="../js/scripts.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 
 </html>
