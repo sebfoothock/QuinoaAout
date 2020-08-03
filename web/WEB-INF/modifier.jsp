@@ -69,8 +69,8 @@
     <div class="container center">
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Modifier un personnage</h1>
-            <form id="ajouterForm" class="col-md-10" action="Ajouter" method="POST">
-                <div class="form-group ">
+            <form id="modifierForm" class="col-md-10" action="Modifier" method="POST">
+                <div class="form-group">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
                 </div>
@@ -121,17 +121,17 @@
                 </div>
                 <div class="form-group">
                     <label>Première réponse (réponse correcte)</label>
-                    <input type="text" class="form-control" id="réponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
+                    <input type="text" class="form-control" id="reponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Deuxième réponse</label>
-                    <input type="text" class="form-control" id="réponse2" name="réponse2" placeholder="Réponse 2">
+                    <input type="text" class="form-control" id="reponse2" name="réponse2" placeholder="Réponse 2">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Troisième réponse</label>
-                    <input type="text" class="form-control" id="réponse3" name="réponse3" placeholder="Réponse 3">
+                    <input type="text" class="form-control" id="reponse3" name="réponse3" placeholder="Réponse 3">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
@@ -147,8 +147,8 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="document.getElementById('ajouterForm').submit();">
-                        <label>S'inscrire</label>
+                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
+                        <label>Modifier</label>
                     </Button>
                 </div>
             </form>
@@ -157,7 +157,7 @@
 </section>
 
 <script>
-    document.getElementById("nom").addEventListener("change", function() {
+    function postdata() {
         var element1 = document.getElementById("nom");
         var parameter = "element1=" + element1;
         $.ajax({
@@ -165,8 +165,8 @@
             url: "Ajouter",
             data: parameter,
             dataType: "json",
-            success: function( data, textStatus, jqXHR) {
-                if(data.success){
+            success: function (data, textStatus, jqXHR) {
+                if (data.success) {
 // si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
                     document.getElementById("annee").value = data.results[0];
                     document.getElementById("lieu").value = data.results[1];
@@ -174,11 +174,11 @@
                 }
             },
 
-            error: function(jqXHR, textStatus, errorThrown){
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Erreur: " + textStatus);
             }
         });
-    });
+    }
 </script>
 
 <!-- Bootstrap core JS-->

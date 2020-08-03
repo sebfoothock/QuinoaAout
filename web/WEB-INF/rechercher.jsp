@@ -159,14 +159,14 @@
 <script>
     function postdata(){
         var element1 = document.getElementById("nom").value;
-        var parameter = "id=" + element1 ;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
+        var parameter = "nom=" + element1 ;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
         //alert(parameter);
         $.ajax({
             type: "POST",
             url: "Rechercher",
-            data: parameter,
-            contentType: "application/x-www-form-urlencoded;charset=utf-8",
-            dataType: "json",
+            data: parameter,//envoyé à la classe JAVA grâce à l'url
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",//encodage donnée
+            dataType: "json",//format de donnée reçu
             success: function( data, textStatus, jqXHR) {
                 if(data.success){
 // si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire

@@ -66,7 +66,7 @@
         <h3 class="formTitle text-center">Inscription</h3>
         <div class="row justify-content-md-center">
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
-                <div class="form-control">
+                <div class="form-inscription">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
                     <div class="erreurChamp">
@@ -74,7 +74,7 @@
                     </div>
 
                 </div>
-                <div class="form-control">
+                <div class="form-inscription">
                     <label for="password"><h6>Mot de Passe</h6></label>
                     <input type="password" placeholder="" id="password" class="champText" name="password" />
                     <div class="erreurChamp">
@@ -82,7 +82,7 @@
                     </div>
 
                 </div>
-                <div class="form-control">
+                <div class="form-inscription">
                     <label for="password2"><h6>Vérification Mot de passe</h6></label>
                     <input type="password" placeholder="" id="password2" class="champText" name="password2"/>
                     <div class="erreurChamp">
@@ -90,7 +90,7 @@
                     </div>
 
                 </div>
-                <div class="form-control">
+                <div class="form-inscription">
                     <h6>Age</h6>
                     <small id="smallAge">Choisissez une option</small>
                     <div>
@@ -140,7 +140,7 @@
                     </div>
 
                 </div>
-                <div class="form-control">
+                <div class="form-inscription">
                     <h6>Sexe</h6>
                     <small id="smallSexe">Choisissez une option</small>
                     <div class="radio">
@@ -174,7 +174,7 @@
                         <Label>autre</Label>
                     </div>
                 </div>
-                <div class="form-control">
+                <div class="form-inscription">
                     <h6>Est-ce que vous vous considérez comme «désobéissant» ?</h6>
                     <small id="smallDesobei">Choisissez une option</small>
                     <div class="radio">
@@ -317,14 +317,14 @@
     function setErrorFor(input, message) {
         const formControl = input.parentElement;
         const small = formControl.querySelector('small');
-        formControl.className = 'form-control error';
+        formControl.className = 'form-inscription error';
         small.innerText = message;
     }
 
 
     function setSuccessFor(input) {
         const formControl = input.parentElement;
-        formControl.className = 'form-control success';
+        formControl.className = 'form-inscription success';
     }
 
     function isEmail(email) {

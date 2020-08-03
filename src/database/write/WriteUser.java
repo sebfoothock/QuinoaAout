@@ -17,28 +17,23 @@ public class WriteUser {
         public WriteUser() {
         }
 
-        public void addUser( User user,
-                MongoClient mongoClient) throws IOException,
-                UnsupportedEncodingException {
+        public void addUser( User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
 
             Document document = new Document();
-            document.append("identifiant", user.getIdentifiant())
+            document.append("nom", user.getIdentifiant())
                     .append("password", user.getPassword())
                     .append("age", user.getAge())
                     .append("sexe", user.getSexe())
-                    .append("desobei", user.getDesobei())
+                    .append("desobei", user.getDesobei());
 
-            ;
             collection.insertOne(document);//insertion dans la collection
 
         }
 
-        public void updateUser(User user,
-                MongoClient mongoClient) throws IOException,
-                UnsupportedEncodingException {
+        public void updateUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
             BasicDBObject query = new BasicDBObject("identifiant", user.getIdentifiant());
 
@@ -56,8 +51,7 @@ public class WriteUser {
             collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
         }
 
-        public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException,
-                UnsupportedEncodingException {
+        public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException, UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
             BasicDBObject query = new BasicDBObject("identifiant", identifiant);

@@ -70,7 +70,7 @@
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Ajouter un personnage</h1>
             <form id="ajouterForm" class="col-md-10" action="Ajouter" method="POST">
-                <div class="form-group ">
+                <div class="form-group">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
                 </div>
@@ -121,17 +121,17 @@
                 </div>
                 <div class="form-group">
                     <label>Première réponse (réponse correcte)</label>
-                    <input type="text" class="form-control" id="réponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
+                    <input type="text" class="form-control" id="reponse1" name="reponse1" placeholder="Réponse 1 (correcte)">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Deuxième réponse</label>
-                    <input type="text" class="form-control" id="réponse2" name="réponse2" placeholder="Réponse 2">
+                    <input type="text" class="form-control" id="reponse2" name="reponse2" placeholder="Réponse 2">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Troisième réponse</label>
-                    <input type="text" class="form-control" id="réponse3" name="réponse3" placeholder="Réponse 3">
+                    <input type="text" class="form-control" id="reponse3" name="reponse3" placeholder="Réponse 3">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
@@ -147,8 +147,8 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="document.getElementById('ajouterForm').submit();">
-                        <label>S'inscrire</label>
+                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
+                        <label>Ajouter</label>
                     </Button>
                 </div>
             </form>
@@ -157,40 +157,45 @@
 </section>
 
 <script>
+    function postdata(){
+        var element1 = document.getElementById("nom").value;
+        var element2 = document.getElementById("annee").value;
+        var element3 = document.getElementById("lieu").value;
+        var element4 = document.getElementById("lutte").value;
+        var element5 = document.getElementById("strategie").value;
+        var element6 = document.getElementById("action").value;
+        var element7 = document.getElementById("victoire").value;
+        var element8 = document.getElementById("anecdote").value;
+        var element9 = document.getElementById("citation").value;
+        var element10 = document.getElementById("question").value;
+        var element11 = document.getElementById("reponse1").value;
+        var element12 = document.getElementById("reponse2").value;
+        var element13 = document.getElementById("reponse3").value;
+        var element14 = document.getElementById("video").value;
+        var element15 = document.getElementById("article").value;
 
-    document.getElementById("ajouterForm").addEventListener("submit", function() {
-        var element1 = document.getElementById("nom");
-        var parameter = "id=" + element1;
+        alert(parameter);
+        console.log(parameter)
+
+        parameter = "nom=" + element1 + "&annee=" + element2 + "&lieu=" + element3 + "&lutte=" + element4 + "&strategie=" + element5 + "&action=" + element6 + "&victoire=" + element7 + "&anecdote=" + element8
+        + "&citation=" + element9 + "&question=" + element10 + "&reponse1=" + element11 + "&reponse2=" + element12 + "&reponse3=" + element13 + "&video=" + element14 + "&article=" + element15; //forge les paramètres pour l'URL
+
         $.ajax({
             type: "POST",
-            url: "Rechercher",
-            data: parameter,
-            dataType: "json",
-            success: function( data, textStatus, jqXHR) {
-                if(data.success){
-// si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
-                    document.getElementById("annee").value = data.results[0];
-                    document.getElementById("lieu").value = data.results[1];
-                    document.getElementById("lutte").value = data.results[2];
-                    document.getElementById("strategie").value = data.results[3];
-                    document.getElementById("action").value = data.results[4];
-                    document.getElementById("victoire").value = data.results[5];
-                    document.getElementById("anecdote").value = data.results[6];
-                    document.getElementById("citation").value = data.results[7];
-                    document.getElementById("question").value = data.results[8];
-                    document.getElementById("reponse1").value = data.results[9];
-                    document.getElementById("reponse2").value = data.results[10];
-                    document.getElementById("reponse3").value = data.results[11];
-                    document.getElementById("video").value = data.results[12];
-                    document.getElementById("article").value = data.results[13];
-                }
+            url: "Ajouter",
+            data: parameter,//envoyé à la classe JAVA grâce à l'url
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",//encodage donnée
+            dataType: "json",//format de donnée reçu
+            success: function (data){
+                alert("Personnage ajouté");
+                console.log('success', data);
             },
-
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log("Erreur: " + textStatus);
+            error: function(data){
+                alert("Il y a eu une erreur lors de l'ajout du personnage");
+                console.log('error', data);
             }
         });
-    });
+    }
 </script>
 
 <!-- Bootstrap core JS-->

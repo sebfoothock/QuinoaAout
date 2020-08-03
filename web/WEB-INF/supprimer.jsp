@@ -69,86 +69,16 @@
     <div class="container center">
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Supprimer un personnage</h1>
-            <form id="ajouterForm" class="col-md-10" action="Ajouter" method="POST">
-                <div class="form-group ">
+            <form id="supprimerForm" class="col-md-10" action="Supprimer" method="POST">
+                <div class="form-group">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
-                </div>
-                <div class="form-group">
-                    <label>Année</label>
-                    <input type="number" class="form-control" id="annee" name="annee" placeholder="Année de l'action">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Lieu</label>
-                    <input type="text" class="form-control" id="lieu" name="lieu" placeholder="Lieu de l'action">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Lutte</label>
-                    <input type="text" class="form-control" id="lutte" name="lutte" placeholder="Lutte de la personne">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Stratégie</label>
-                    <input type="text" class="form-control" id="strategie" name="strategie" placeholder="Stratégie de l'action">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Action</label>
-                    <input type="text" class="form-control" id="action" name="action" placeholder="Action de la personne">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Victoire</label>
-                    <input type="text" class="form-control" id="victoire" name="victoire" placeholder="Victoire de la personne">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Anecdote</label>
-                    <input type="text" class="form-control" id="anecdote" name="anecdote" placeholder="Anecdote sur l'action ou l'évènement">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Citation</label>
-                    <input type="text" class="form-control" id="citation" name="citation" placeholder="Citation de la personne">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Question</label>
-                    <input type="text" class="form-control" id="question" name="question" placeholder="Question pour le quizz">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Première réponse (réponse correcte)</label>
-                    <input type="text" class="form-control" id="réponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Deuxième réponse</label>
-                    <input type="text" class="form-control" id="réponse2" name="réponse2" placeholder="Réponse 2">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Troisième réponse</label>
-                    <input type="text" class="form-control" id="réponse3" name="réponse3" placeholder="Réponse 3">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Video</label>
-                    <input type="text" class="form-control" id="video" name="video" placeholder="Lien vers une vidéo">
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                    <label>Article</label>
-                    <input type="text" class="form-control" id="article" name="article" placeholder="Lien vers un article">
-                    <p class="help-block text-danger"></p>
                 </div>
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="document.getElementById('ajouterForm').submit();">
-                        <label>S'inscrire</label>
+                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
+                        <label>Supprimer</label>
                     </Button>
                 </div>
             </form>
@@ -157,40 +87,25 @@
 </section>
 
 <script>
-
-    document.getElementById("ajouterForm").addEventListener("submit", function() {
-        var element1 = document.getElementById("nom");
-        var parameter = "id=" + element1;
-        $.ajax({
-            type: "POST",
-            url: "Rechercher",
-            data: parameter,
-            dataType: "json",
-            success: function( data, textStatus, jqXHR) {
-                if(data.success){
-// si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
-                    document.getElementById("annee").value = data.results[0];
-                    document.getElementById("lieu").value = data.results[1];
-                    document.getElementById("lutte").value = data.results[2];
-                    document.getElementById("strategie").value = data.results[3];
-                    document.getElementById("action").value = data.results[4];
-                    document.getElementById("victoire").value = data.results[5];
-                    document.getElementById("anecdote").value = data.results[6];
-                    document.getElementById("citation").value = data.results[7];
-                    document.getElementById("question").value = data.results[8];
-                    document.getElementById("reponse1").value = data.results[9];
-                    document.getElementById("reponse2").value = data.results[10];
-                    document.getElementById("reponse3").value = data.results[11];
-                    document.getElementById("video").value = data.results[12];
-                    document.getElementById("article").value = data.results[13];
+    function postdata() {
+            var element1 = document.getElementById("nom").value;
+            var parameter = "nom=" + element1;
+            alert(parameter);
+            $.ajax({
+                type: "POST",
+                url: "Supprimer",
+                data: parameter,
+                dataType: "json",
+                success: function (data) {
+                    alert("Personnage ajouté");
+                    console.log("Réussi: " + data);
+                },
+                error: function (data) {
+                    alert("Il y a eu une erreur lors de l'ajout du personnage");
+                    console.log("Erreur: " + data);
                 }
-            },
-
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log("Erreur: " + textStatus);
-            }
-        });
-    });
+            });
+    }
 </script>
 
 <!-- Bootstrap core JS-->
