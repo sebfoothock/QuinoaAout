@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: seb18
-  Date: 01/08/2020
-  Time: 18:02
+  Date: 05/08/2020
+  Time: 17:02
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,7 +28,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="postdata();">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -73,42 +74,44 @@
     <div class="container center">
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Supprimer un personnage</h1>
-            <form id="supprimerForm" class="col-md-10" action="Supprimer" method="POST">
-                <div class="form-group">
-                    <label>Nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
-                </div>
-
-                <br></br>
-                <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
-                        <label>Supprimer</label>
-                    </Button>
-                </div>
-            </form>
+            <br>
+            <table id="listePerso">
+            </table>
         </div>
     </div>
 </section>
 
 <script>
     function postdata() {
-            var element1 = document.getElementById("nom").value;
-            var parameter = "nom=" + element1;
-            alert(parameter);
-            $.ajax({
-                type: "POST",
-                url: "Supprimer",
-                data: parameter,
-                dataType: "json",
-                success: function (data) {
-                    alert("Personnage ajouté");
-                    console.log("Réussi: " + data);
-                },
-                error: function (data) {
-                    alert("Il y a eu une erreur lors de l'ajout du personnage");
-                    console.log("Erreur: " + data);
+        var parameter ="";
+        $.ajax({
+            type: "POST",
+            url: "Liste",
+            data: parameter,
+            dataType: "json",
+            success: function( data, textStatus, jqXHR) {
+                if(data.success) {
+                    console.log(data.results);
+
+                    var table = document.querySelector("table");
+
+                    function generateTable(table, data) {
+                        for (var i = 0; i < data.results.length; i++) {
+                            let row = table.insertRow();
+                            let cell = row.insertCell();
+                            let text = document.createTextNode(data.results[i]);
+                            cell.appendChild(text);
+                            }
+                        }
+                    generateTable(table, data.results);
                 }
-            });
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("Erreur: " + textStatus);
+                console.log("Erreur: " + jqXHR);
+                console.log("Erreur: " + errorThrown);
+            }
+        });
     }
 </script>
 

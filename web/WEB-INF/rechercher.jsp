@@ -57,6 +57,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('rechercherNav').submit();">Rechercher</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
+                    <form id="listeNav" action="Liste" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('listeNav').submit();">Liste</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <form id="supprimerNav" action="Supprimer" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('supprimerNav').submit();">Supprimer</a>
                 </li>
@@ -196,6 +200,33 @@
             }
         });
     }
+    console.log(data.results);
+    document.getElementById("annee").value = data.results;
+
+    function tableCreate() {
+        var body = document.body,
+            tbl = document.createElement('table');
+        tbl.style.width = '100px';
+        tbl.style.border = '1px solid black';
+
+        for (var i = 0; i < 3; i++) {
+            var tr = tbl.insertRow();
+            for (var j = 0; j < 2; j++) {
+                if (i == 2 && j == 1) {
+                    break;
+                } else {
+                    var td = tr.insertCell();
+                    td.appendChild(document.createTextNode('Cell'));
+                    td.style.border = '1px solid black';
+                    if (i == 1 && j == 1) {
+                        td.setAttribute('rowSpan', '2');
+                    }
+                }
+            }
+        }
+        body.appendChild(tbl);
+    }
+
 </script>
 
 <!-- Bootstrap core JS-->

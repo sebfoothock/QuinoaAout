@@ -57,6 +57,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('rechercherNav').submit();">Rechercher</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
+                    <form id="listeNav" action="Liste" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('listeNav').submit();">Liste</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <form id="supprimerNav" action="Supprimer" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('supprimerNav').submit();">Supprimer</a>
                 </li>
@@ -174,11 +178,11 @@
         var element14 = document.getElementById("video").value;
         var element15 = document.getElementById("article").value;
 
-        alert(parameter);
-        console.log(parameter)
-
         parameter = "nom=" + element1 + "&annee=" + element2 + "&lieu=" + element3 + "&lutte=" + element4 + "&strategie=" + element5 + "&action=" + element6 + "&victoire=" + element7 + "&anecdote=" + element8
         + "&citation=" + element9 + "&question=" + element10 + "&reponse1=" + element11 + "&reponse2=" + element12 + "&reponse3=" + element13 + "&video=" + element14 + "&article=" + element15; //forge les paramètres pour l'URL
+
+        alert(parameter);
+        console.log(parameter)
 
         $.ajax({
             type: "POST",
