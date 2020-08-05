@@ -5,7 +5,6 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -44,12 +43,12 @@ public class WritePerson {
         return person;
     }
 
-    public void updatePerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
+    public Person updatePerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
         BasicDBObject query = new BasicDBObject("nom", person.getNom());
 
         MongoDatabase db = mongoClient.getDatabase(database);
-        MongoCollection<Document> collection = db.getCollection("InfosPersonnage");
+        MongoCollection <Document> collection = db.getCollection("InfosPersonnage");
 
         BasicDBObject update = new BasicDBObject();
         update.append("$set", new Document()//$set permet de modifier une colonne
@@ -69,7 +68,8 @@ public class WritePerson {
                 .append("video", person.getVideo())
                 .append("article", person.getArticle())
         );
-        collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
+        collection.updateOne(query, update);//collection.updateOne(query, update, new UpdateOptions().upsert(true)); query = modifie un user sur base de son identifiant , updateOne = modifier un seul document, UpdateOption = si la donnée n'existe pas il va la créer
+        return person;//replaceOne
     }
 
     public Person deletePerson(MongoClient mongoClient, String nom)  throws IOException, UnsupportedEncodingException {

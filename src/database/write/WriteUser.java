@@ -38,7 +38,7 @@ public class WriteUser {
             BasicDBObject query = new BasicDBObject("identifiant", user.getIdentifiant());
 
             MongoDatabase db = mongoClient.getDatabase(database);
-            MongoCollection<Document> collection = db.getCollection("Utilisateurs");
+            MongoCollection <Document> collection = db.getCollection("Utilisateurs");
 
             BasicDBObject update = new BasicDBObject();
             update.append("$set", new Document()//$set permet de modifier une colonne

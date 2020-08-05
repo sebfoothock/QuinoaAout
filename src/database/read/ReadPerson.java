@@ -27,20 +27,20 @@ public class ReadPerson {
                 Document doc = iterator.next();
                 Person personnage = new Person();
                 personnage.setNom(doc.getString("nom"));
-                personnage.setAnnee(doc.getInteger("periode"));
-                personnage.setLieu(doc.getString("lieu"));
-                personnage.setLutte(doc.getString("lutte"));
-                personnage.setStrategie(doc.getString("strategie"));
-                personnage.setAction(doc.getString("action"));
-                personnage.setVictoire(doc.getString("victoire"));
-                personnage.setAnecdote(doc.getString("anecdote"));
-                personnage.setCitation(doc.getString("citation"));
-                personnage.setQuestion(doc.getString("question"));
-                personnage.setReponse1(doc.getString("reponse1"));
-                personnage.setReponse2(doc.getString("reponse2"));
-                personnage.setReponse3(doc.getString("reponse3"));
-                personnage.setVideo(doc.getString("video"));
-                personnage.setArticle(doc.getString("article"));
+//                personnage.setAnnee(doc.getInteger("periode"));
+//                personnage.setLieu(doc.getString("lieu"));
+//                personnage.setLutte(doc.getString("lutte"));
+//                personnage.setStrategie(doc.getString("strategie"));
+//                personnage.setAction(doc.getString("action"));
+//                personnage.setVictoire(doc.getString("victoire"));
+//                personnage.setAnecdote(doc.getString("anecdote"));
+//                personnage.setCitation(doc.getString("citation"));
+//                personnage.setQuestion(doc.getString("question"));
+//                personnage.setReponse1(doc.getString("reponse1"));
+//                personnage.setReponse2(doc.getString("reponse2"));
+//                personnage.setReponse3(doc.getString("reponse3"));
+//                personnage.setVideo(doc.getString("video"));
+//                personnage.setArticle(doc.getString("article"));
                 listPerson.add(personnage);
             }
         }

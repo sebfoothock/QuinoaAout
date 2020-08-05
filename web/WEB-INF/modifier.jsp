@@ -57,6 +57,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('rechercherNav').submit();">Rechercher</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
+                    <form id="listeNav" action="Liste" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('listeNav').submit();">Liste</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <form id="supprimerNav" action="Supprimer" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('supprimerNav').submit();">Supprimer</a>
                 </li>
@@ -121,17 +125,17 @@
                 </div>
                 <div class="form-group">
                     <label>Première réponse (réponse correcte)</label>
-                    <input type="text" class="form-control" id="reponse1" name="réponse1" placeholder="Réponse 1 (correcte)">
+                    <input type="text" class="form-control" id="reponse1" name="reponse1" placeholder="Réponse 1 (correcte)">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Deuxième réponse</label>
-                    <input type="text" class="form-control" id="reponse2" name="réponse2" placeholder="Réponse 2">
+                    <input type="text" class="form-control" id="reponse2" name="reponse2" placeholder="Réponse 2">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label>Troisième réponse</label>
-                    <input type="text" class="form-control" id="reponse3" name="réponse3" placeholder="Réponse 3">
+                    <input type="text" class="form-control" id="reponse3" name="reponse3" placeholder="Réponse 3">
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
@@ -158,24 +162,40 @@
 
 <script>
     function postdata() {
-        var element1 = document.getElementById("nom");
-        var parameter = "element1=" + element1;
-        $.ajax({
+            var element1 = document.getElementById("nom").value;
+            var element2 = document.getElementById("annee").value;
+            var element3 = document.getElementById("lieu").value;
+            var element4 = document.getElementById("lutte").value;
+            var element5 = document.getElementById("strategie").value;
+            var element6 = document.getElementById("action").value;
+            var element7 = document.getElementById("victoire").value;
+            var element8 = document.getElementById("anecdote").value;
+            var element9 = document.getElementById("citation").value;
+            var element10 = document.getElementById("question").value;
+            var element11 = document.getElementById("reponse1").value;
+            var element12 = document.getElementById("reponse2").value;
+            var element13 = document.getElementById("reponse3").value;
+            var element14 = document.getElementById("video").value;
+            var element15 = document.getElementById("article").value;
+
+            parameter = "nom=" + element1 + "&annee=" + element2 + "&lieu=" + element3 + "&lutte=" + element4 + "&strategie=" + element5 + "&action=" + element6 + "&victoire=" + element7 + "&anecdote=" + element8
+                + "&citation=" + element9 + "&question=" + element10 + "&reponse1=" + element11 + "&reponse2=" + element12 + "&reponse3=" + element13 + "&video=" + element14 + "&article=" + element15; //forge les paramètres pour l'URL
+
+            alert(parameter);
+            console.log(parameter)
+
+            $.ajax({
             type: "POST",
-            url: "Ajouter",
+            url: "Modifier",
             data: parameter,
             dataType: "json",
-            success: function (data, textStatus, jqXHR) {
-                if (data.success) {
-// si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
-                    document.getElementById("annee").value = data.results[0];
-                    document.getElementById("lieu").value = data.results[1];
-// etc ...
-                }
+            success: function (data){
+                alert("Personnage ajouté");
+                console.log('success', data);
             },
-
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Erreur: " + textStatus);
+            error: function(data){
+                alert("Il y a eu une erreur lors de l'ajout du personnage");
+                console.log('error', data);
             }
         });
     }
