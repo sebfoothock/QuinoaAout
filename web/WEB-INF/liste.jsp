@@ -73,7 +73,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
         <div class="row justify-content-md-center">
-            <h1 class="formTitle text-center">Supprimer un personnage</h1>
+            <h1 class="formTitle text-center">Liste des personnages</h1>
             <br>
             <table id="listePerso">
             </table>
