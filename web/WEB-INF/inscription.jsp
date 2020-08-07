@@ -53,6 +53,10 @@
                        href="#" onclick="document.getElementById('InscriptionNav').submit();">Inscription</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
+                    <form id="quizNav" action="Quiz" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <form id="histoireLutteNav" action="Histoire" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
@@ -175,7 +179,7 @@
                     </div>
                 </div>
                 <div class="form-inscription">
-                    <h6>Est-ce que vous vous considérez comme «désobéissant» ?</h6>
+                    <h6>Est-ce que vous vous considérez comme «désobéissant·e» ?</h6>
                     <small id="smallDesobei">Choisissez une option</small>
                     <div class="radio">
                         <Input

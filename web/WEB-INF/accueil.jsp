@@ -50,6 +50,10 @@
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
+          <form id="quizNav" action="Quiz" method="GET"></form>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
+        </li>
+        <li class="nav-item mx-0 mx-lg-1">
           <form id="histoireLutteNav" action="Histoire" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
         </li>
@@ -60,23 +64,7 @@
 <!-- Masthead-->
 <header class="masthead text-center">
   <div class="container d-flex align-items-center flex-column">
-    <!-- Masthead Avatar Image-->
-    <!-- <img
-        class="masthead-avatar mb-5"
-        src="assets/img/avataaars.svg"
-        alt=""
-      /> -->
-    <!-- Masthead Heading-->
-    <h1 class="masthead-heading text-uppercase mb-0">Quizz Dezobeyi</h1>
-    <!-- Icon Divider-->
-    <!-- <div class="divider-custom divider-light">
-        <br />
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-        <br />
-      </div> -->
-    <!-- Masthead Subheading-->
+    <h1 class="masthead-heading text-uppercase mb-0">Quiz Dezobeyi</h1>
     <p class="masthead-subheading font-weight-light mb-0">
       Désobeissance civil - Combat pour des libertés
     </p>
@@ -87,22 +75,22 @@
   <div class="container">
     <!-- About Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase">
-      Présentation ASBL
+      Présentation de l'ASBL
     </h2>
     <br />
     <!-- About Section Content-->
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
-          Quinoa est une ONG d'éducation à la citoyenneté mondiale et
-          solidaire (ECMS). L'ECMS est un processus qui vise à provoquer des
-          changements de valeur et de comportement sur le plan individuel et
-          collectif en vue d'un monde plus juste dans lequel ressources et
-          pouvoirs sont équitablement répartis dans le respect de la dignité
-          humaine. Ses actions : projets internationaux (aussi scolaires,
-          maison de jeunes, scouts en Amérique de sud, Afrique et Asie).
-          Projet alternative locales. Animations pédagogiques (Jeu de la
-          ficelle, Potentia, Jeu des chaises, Dezobeyi...). Mobilisations.
+          Quinoa est une ONG d'éducation à la citoyenneté mondiale et solidaire (ECMS).
+          L'ECMS est un processus qui vise à provoquer des changements de valeur et de comportement
+          sur le plan individuel et collectif en vue d'un monde plus juste dans lequel ressources et
+          pouvoirs sont équitablement répartis dans le respect de la dignité humaine.
+        </p>
+        <p class="lead">
+          Ses actions : projets internationaux (aussi scolaires, maison de jeunes, scouts…)
+          en Amérique de sud, Afrique et Asie, Projet alternative locales, animations pédagogiques
+          (Jeu de la ficelle, Potentia, Jeu des chaises, Dezobeyi...).
         </p>
         <h6><a href="http://www.quinoa.be" class="text-white">Lien vers l'ASLB</a></h6>
         <img src="img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>
@@ -115,26 +103,35 @@
   <div class="container">
     <!-- About Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase">
-      Jeu Dezobeyi
+      Les combats de l'ASBL
     </h2>
     <br />
     <!-- About Section Content-->
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
-          Et toi, as-tu déjà desobéi ? Face à l'intimidation, à l'injustice comment réagir ?
-          Faut-il parfois désobéir ? Quinoa asbl propose un outil pédagogique autour de l'action directe non-violente
-          et de la désobéissance civile : du Nord au Sud, l'action directe non-violente est (et a toujours été) un
-          levier de changement social. Droit de vote des femmes, abolition de la ségrégation, récupération de
-          terres... : tous ont été obtenus notamment par des actions de "désobéissance".
+          Les injustices sont parfois perpétrées légalement : l’esclavagisme comme la ségrégation étaient légales !
+          Chez ‘nous’, l’enfermement de personnes migrantes, les salaires misérables, la pollution et le lobby des
+          entreprises transnationales sont tolérés, parfois encouragés, par des lois…
         </p>
         <p class="lead">
-          Le jeu entend partir du vécu des participan•t•e•s pour mieux toucher au coeur des causes qui les animent et
-          les inspirent. L'outil se développe en une ligne du temps sur laquelle le•la participant•e, en plusieurs
-          phase ludiques, peut tester ses connaissances et affuter sa vision du monde en voyageant dans une "autre"
-          Histoire que celle récontée par les "dominants".
-          L'outil laisse aussi la place aux échanges et à l'action avec des mises en situation et débats mouvants.
-          Explorez les luttes (et les victoires) de ces femmes et hommes qui ont désobéi.
+          Face au racisme, au sexisme, aux inégalités sociales, économiques, à la destruction de l’environnement,
+          aux oppressions, aux injustices qui nous touchent et dont nous sommes témoins… <b>comment réagir ? Faut-il
+          parfois désobéir ?</b>
+        </p>
+        <p class="lead">
+          Droit de vote des femmes, abolition de la ségrégation, récupération de terres... : tous ont été obtenus, notamment, par des actions de "désobéissance" !
+        </p>
+        <p class="lead">
+          <b>Quinoa asbl</b> propose un outil pédagogique autour de l'action directe non-violente et de la désobéissance civile : du Nord au Sud, l'action directe non-violente
+          est -et a toujours été- un levier de changement social.
+        </p>
+        <p class="lead">
+          …Et, toi, as-tu déjà désobéi ?
+        </p>
+        <p class="lead">
+          <b>Envie d’aborder la désobéissance civile et l’action directe non-violente avec ta classe ? Quinoa propose une animation pédagogique (2x50 min., à partir de 16 ans)
+            autour de ces questions ! Contacte-nous (<a href="mailto:info@quinoa.be">info@quinoa.be</a>)</b>
         </p>
         <h6><a href="http://www.quinoa.be/je-minforme-3/outils-pedagogiques/desobeir-un-acte-citoyen/">Lien vers la version papier du jeu</a></h6>
         <img src="img/dezobey.jpg" class="imgJeu" alt="image jeu"/>

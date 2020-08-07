@@ -72,10 +72,18 @@
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
+        <h1 class="formTitle text-center">Liste des personnages</h1>
         <div class="row justify-content-md-center">
-            <h1 class="formTitle text-center">Liste des personnages</h1>
             <br>
             <table id="listePerso">
+                <thead>
+                    <tr>
+                        <td id=ref>numéro</td>
+                        <td id=auteur>nom personnage</td>
+                     </tr>
+                </thead>
+                    <tbody id=tableau1>
+                    </tbody>
             </table>
         </div>
     </div>
@@ -93,19 +101,27 @@
                 if(data.success) {
                     console.log(data.results);
 
-                    var table = document.querySelector("table");
+                    function refElem(id){
+                        return document.getElementById(id);
+                    }
 
-                    function generateTable(table, data) {
-                        for (var i = 0; i < data.results.length; i++) {
-                            let row = table.insertRow();
-                            let cell = row.insertCell();
-                            let text = document.createTextNode(data.results[i]);
-                            cell.appendChild(text);
+                    function addElem(id, v) {
+                        var e = refElem(id); // référence
+                        if (e) { e.innerHTML += v } // s'il existe, ajoute
+                    }
+
+                    var table = document.querySelector("table");
+                    var liste = "";
+                        for (let i = 0; i < data.results.length; i++) {
+                            liste += '<tr>';
+                            liste += '<td>' + [i+1] + '</td>';
+                            liste += '<td>' + data.results[i].nom + '</td>';
+                            liste += '</tr>';
                             }
-                        }
-                    generateTable(table, data.results);
+                    addElem('listePerso', liste);
+                    }
                 }
-            },
+            ,
             error: function(jqXHR, textStatus, errorThrown){
                 console.log("Erreur: " + textStatus);
                 console.log("Erreur: " + jqXHR);
@@ -116,7 +132,8 @@
 </script>
 
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<script src="js/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
