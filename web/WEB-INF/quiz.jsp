@@ -75,7 +75,8 @@
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn" onclick="startGame()">Commencer</button>
-            <button id="next-btn" class="next-btn btn hide">Suivant</button>
+            <button id="next-btn" class="next-btn btn hide" onclick="() => {currentQuestionIndex++
+                                                                    setNextQuestion()}">Suivant</button>
         </div>
     </div>
 </div>
@@ -98,9 +99,9 @@
                                 {text: data.results[i].reponse1, correct: true},
                                 {text: data.results[i].reponse2, correct: false},
                                 {text: data.results[i].reponse3, correct: false},
-                                ].sort(function () {
-                                    return 0.5 - Math.random()
-                                }),
+                            ].sort(function () {
+                                return 0.5 - Math.random()
+                            }),
                         });
                     }
                     // for (var i = 0; i < data.results.length; i++) {
@@ -136,6 +137,17 @@
 
     let changeQuestions, currentQuestionIndex;
 
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++
+        setNextQuestion()
+    })
+
+    startButton.addEventListener('click', startGame)
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++
+        setNextQuestion()
+    })
+
     function startGame(){
         startButton.classList.add('hide');
         changeQuestions = questions.sort(() => Math.random() - .5);//mélanger les questions
@@ -150,7 +162,6 @@
     }
 
     function showQuestion(question){
-        console.log(questions);
         questionElement.innerText = question.question;
         question.answers.forEach(answer => {
             const button = document.createElement('button')
@@ -174,17 +185,17 @@
     function selectAnswer(e) {
         const selectedButton = e.target//savoir quelle réponse est sélectionné
         const correct = selectedButton.dataset.correct
-         // setStatusClass(document.getElementById('bodyQuiz'), correct)
+        // setStatusClass(document.getElementById('bodyQuiz'), correct)
         Array.from(answerButtonsElement.children).forEach(button => {//convertir les états de bouton en tableau pour chaque bouton
             setStatusClass(button, button.dataset.correct)
         })
-        // if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        //     nextButton.classList.remove('hide')
-        // } else {
-        //     startButton.innerText = 'Restart'
-        //     startButton.classList.remove('hide')
-        // }
-
+        if (changeQuestions.length > currentQuestionIndex + 1) {//si il y a encore des questions
+            nextButton.classList.remove('hide')
+        } else {//si plus de question on met un bouton recommencer
+            startButton.innerText = 'Recommencer'
+            startButton.classList.remove('hide')
+        }
+        nextButton.classList.remove('hide')
     }
 
     function setStatusClass(element, correct){//prend l'élément et si il est correcte ou pas
