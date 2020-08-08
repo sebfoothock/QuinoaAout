@@ -35,7 +35,7 @@ public class Quiz extends HttpServlet {
             response.setHeader("Access-Control-Allow-Methods", "POST");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
-            ArrayList<Person> pers = new ReadPerson().getPersons(getConnector("192.168.129.128"));//ajout : appel writePerso & supprimer : appel deletePerson
+            ArrayList<Person> pers = new ReadPerson().getPersons(getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Quiz");
 
             Gson gson = new Gson();

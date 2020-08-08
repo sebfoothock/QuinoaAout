@@ -42,7 +42,7 @@ public class Inscription extends HttpServlet {
         u.setSexe(request.getParameter("sexe"));
         u.setDesobei(request.getParameter("desobei"));
         
-        w.addUser(u,getConnector("192.168.129.128"));
+        w.addUser(u,getConnector("192.168.129.133"));
 
         LOG.info("inscription utilisateur => id : " + u.getIdentifiant());
         String page = "/WEB-INF/histoireLutte.jsp";

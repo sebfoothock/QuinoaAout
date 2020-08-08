@@ -11406,7 +11406,7 @@ body.wrong {
   --hue: var(--hue-wrong);
 }*/
 
-.containerQuiz {
+.containerQuiz  {
   width: 800px;
   max-width: 80%;
   background-color: white;
@@ -11434,7 +11434,7 @@ body.wrong {
 }
 
 .btnQuiz.correct {
-  --hue: var(--hue-correct);
+  background-color: var(--primary);
   color: black;
 }
 
@@ -11442,10 +11442,11 @@ body.wrong {
   --hue: var(--hue-wrong);
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .result-btn {
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
+  background-color: var(--primary);
 }
 
 .controls {
@@ -11456,6 +11457,14 @@ body.wrong {
 
 .hide {
   display: none;
+}
+
+.disable {
+  pointer-events: none;
+}
+
+#phraseScore{
+  font-weight: bold;
 }
 
 @media all and (max-width: 600px) {

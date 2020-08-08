@@ -78,11 +78,25 @@
             <button id="next-btn" class="next-btn btn hide" onclick="() => {currentQuestionIndex++
                                                                     setNextQuestion()}">Suivant</button>
         </div>
+
+        <div id="result-container" class="hide text-center">
+            <div>
+                <h3 class="">Tu as fini le Quiz Dezobeyi !</h3>
+            </div>
+            <br>
+            <label>Tu as eu <label id="score"></label> sur 10 !</label>
+            <p id="phraseScore"></p>
+            <div>
+            </div>
+            <button id="restart-btn" class="start-btn btn" onclick="startGame()">Recommencer</button>
+            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>
+        </div>
     </div>
 </div>
 
 <script>
     var questions = [];
+    let score = 0;
     function postdata() {
         var parameter ="";
         $.ajax({
@@ -100,25 +114,13 @@
                                 {text: data.results[i].reponse2, correct: false},
                                 {text: data.results[i].reponse3, correct: false},
                             ].sort(function () {
-                                return 0.5 - Math.random()
+                                return 0.5 - Math.random()//mélange des réponses
                             }),
                         });
                     }
-                    // for (var i = 0; i < data.results.length; i++) {
-                    //     questions = [
-                    //         {
-                    //             question: data.results[i].question,
-                    //             answer: [
-                    //                 {text: data.results[i].reponse1, correct: true},
-                    //                 {text: data.results[i].reponse2, correct: false},
-                    //                 {text: data.results[i].reponse3, correct: false},
-                    //             ].sort(function () {
-                    //                 return 0.5 - Math.random();
-                    //             }),
-                    //         }
-                    //     ]
-                    // }
-
+                    questions = questions.sort(() => Math.random() - .5);//mélanger les questions
+                    questions = questions.slice(0, 10);
+                    console.log(questions);
                 }
             }
             ,
@@ -130,19 +132,14 @@
         });
     }
     const startButton = document.getElementById('start-btn');
-    const nextButton = document.getElementById('next-btn')
+    const nextButton = document.getElementById('next-btn');
     const questionContainerElement = document.getElementById('question-container');
+    const resultContainerElement = document.getElementById('result-container');
     const questionElement = document.getElementById('question');
     const answerButtonsElement = document.getElementById('answer-buttons');
 
-    let changeQuestions, currentQuestionIndex;
+    let currentQuestionIndex;
 
-    nextButton.addEventListener('click', () => {
-        currentQuestionIndex++
-        setNextQuestion()
-    })
-
-    startButton.addEventListener('click', startGame)
     nextButton.addEventListener('click', () => {
         currentQuestionIndex++
         setNextQuestion()
@@ -150,9 +147,9 @@
 
     function startGame(){
         startButton.classList.add('hide');
-        changeQuestions = questions.sort(() => Math.random() - .5);//mélanger les questions
         currentQuestionIndex = 0;
         questionContainerElement.classList.remove('hide');
+        resultContainerElement.classList.add('hide');
         setNextQuestion();
     }
 
@@ -172,6 +169,7 @@
             }
             button.addEventListener('click',selectAnswer)
             answerButtonsElement.appendChild(button)//ajout de nouveau bouton
+            answerButtonsElement.classList.remove('disable')//activer le click sur les réponses
         })
     }
 
@@ -189,13 +187,32 @@
         Array.from(answerButtonsElement.children).forEach(button => {//convertir les états de bouton en tableau pour chaque bouton
             setStatusClass(button, button.dataset.correct)
         })
-        if (changeQuestions.length > currentQuestionIndex + 1) {//si il y a encore des questions
+        if (questions.length > currentQuestionIndex +1 ) {//si il y a encore des questions
             nextButton.classList.remove('hide')
-        } else {//si plus de question on met un bouton recommencer
-            startButton.innerText = 'Recommencer'
-            startButton.classList.remove('hide')
+            answerButtonsElement.classList.add('disable')//annuler le clique sur les réponses pour augmenter le score
+        } else {//si plus de question on affiche le résultat
+            questionContainerElement.classList.add('hide')
+            resultContainerElement.classList.remove('hide')
+            console.log(score)
+            document.getElementById("score").innerText = score;
+            if(score >= 7){
+                document.getElementById("phraseScore").innerText = "Bravo ! Tu es un-e incontestable désobéissant-e 😃...\n" +
+                    "Dezobeyi comporte encore bien d'autres facettes, n'hésite\n" +
+                    "pas à rejouer..."
+            }
+            else if(score >= 5){
+                document.getElementById("phraseScore").innerText = "Tu es un-e désobéissant-e confirmé-e, bien joué !\n"
+                    + "et si tu rejouais pour devenir un-e véritable expert-e ?"
+            }
+            else{
+                document.getElementById("phraseScore").innerText = "Tu es une graine de désobéissant-e !\n" +
+                    "Continue de t'informer dans nos pages et rejoue !"
+            }
         }
-        nextButton.classList.remove('hide')
+        if (selectedButton.dataset = correct) {
+            score++;
+            console.log(score)
+        }
     }
 
     function setStatusClass(element, correct){//prend l'élément et si il est correcte ou pas

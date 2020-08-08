@@ -34,7 +34,7 @@ public class Supprimer extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + nom);
-            beans.Person pers = new database.write.WritePerson().deletePerson(getConnector("192.168.129.128"), nom);
+            beans.Person pers = new database.write.WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
 
             out.close();
         }

@@ -48,9 +48,14 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilNav').submit();">Accueil</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="InscriptionNav" action="Inscription" method="POST"></form>
+                    <form id="InscriptionNav" action="Inscription" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                        href="#" onclick="document.getElementById('InscriptionNav').submit();">Inscription</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <form id="connexionNav" action="Connexion" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                       href="#" onclick="document.getElementById('connexionNav').submit();">Connexion</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="quizNav" action="Quiz" method="GET"></form>

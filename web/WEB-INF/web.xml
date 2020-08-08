@@ -49,6 +49,11 @@
         <servlet-class>servlets.Quiz</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>servlets.Connexion</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Accueil</servlet-name>
         <url-pattern></url-pattern><!-- si vide controller par défaut et remplir si le nom du servlet est différent du controller -->
@@ -96,6 +101,11 @@
         <url-pattern>/Quiz</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+
 <!--    <security-constraint>-->
 <!--        <display-name>Quinoa</display-name>-->
 <!--        <web-resource-collection>-->
@@ -112,12 +122,27 @@
 <!--        <display-name>La page d'authentification et les ressources sont exclu</display-name>-->
 <!--        <web-resource-collection>-->
 <!--            <web-resource-name>Contenu non protegé</web-resource-name>-->
-<!--            <url-pattern>/accueil.jsp</url-pattern>-->
+<!--            <url-pattern>/</url-pattern>-->
+<!--            <url-pattern>/WEB-INF/accueil.jsp</url-pattern>-->
+<!--            <url-pattern>/WEB-INF/inscription.jsp</url-pattern>-->
+<!--            <url-pattern>/WEB-INF/histoireLutte.jsp</url-pattern>-->
 <!--            <url-pattern>/images/*</url-pattern>-->
 <!--            <url-pattern>/css/*</url-pattern>-->
 <!--            <url-pattern>/html/*</url-pattern>-->
 <!--            <url-pattern>/js/*</url-pattern>-->
 <!--        </web-resource-collection>-->
 <!--    </security-constraint>-->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
 
 </web-app>

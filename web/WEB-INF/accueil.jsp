@@ -50,6 +50,10 @@
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
+          <form id="connexionNav" action="Connexion" method="GET"></form>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('connexionNav').submit();">Connexion</a>
+        </li>
+        <li class="nav-item mx-0 mx-lg-1">
           <form id="quizNav" action="Quiz" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
         </li>
@@ -145,29 +149,27 @@
     <div class="row">
       <!-- Footer Location-->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Location</h4>
+        <h4 class="text-uppercase mb-4">Contact</h4>
         <p class="lead mb-0">
-          2215 John Daniel Drive
+          <a href="mailto:info@quinoa.be">info@quinoa.be</a>
           <br />
-          Clark, MO 65243
+          +32 2 893 08 70
         </p>
       </div>
       <!-- Footer Social Icons-->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Around the Web</h4>
-        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+        <h4 class="text-uppercase mb-4">ASBL sur Internet</h4>
+        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/Quinoa.asbl/"><i class="fab fa-fw fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/company/quinoa/?trk=company_logo"><i class="fab fa-fw fa-linkedin-in"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="http://www.quinoa.be"><i class="fab fa-fw fa-dribbble"></i></a>
       </div>
       <!-- Footer About Text-->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+        <h4 class="text-uppercase mb-4">A propos des Web Developer</h4>
         <p class="lead mb-0">
-          Freelance is a free to use, MIT licensed Bootstrap theme created
-          by
-          <a href="http://startbootstrap.com">Start Bootstrap</a>
-          .
+          2 étudiants de l'EPHEC
+          <br>
+          <a href="http://startbootstrap.com">template utilisé</a>
         </p>
       </div>
     </div>

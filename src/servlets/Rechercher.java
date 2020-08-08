@@ -37,7 +37,7 @@ public class Rechercher extends HttpServlet {
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("identifiant: "+identifiant);
             //System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector("192.168.129.128"),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
+            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector("192.168.129.133"),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Nom: "+pers.getNom());
             //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();

@@ -57,7 +57,7 @@ public class Ajouter extends HttpServlet {
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + personnage.getNom());
             //System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.write.WritePerson().addPerson(personnage, getConnector("192.168.129.128"));//ajout : appel writePerso & supprimer : appel deletePerson
+            beans.Person pers = new database.write.WritePerson().addPerson(personnage, getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
             //System.out.println("Nom: "+pers.getNom());
 
             out.close();
