@@ -74,6 +74,7 @@
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Ajouter un personnage</h1>
             <form id="ajouterForm" class="col-md-10" action="Ajouter" method="POST">
+                <h6 class="text-center text-danger">Le champ nom et date est obligatoiree</h6>
                 <div class="form-group">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">

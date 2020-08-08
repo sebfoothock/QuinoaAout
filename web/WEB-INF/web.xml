@@ -126,23 +126,24 @@
 <!--            <url-pattern>/WEB-INF/accueil.jsp</url-pattern>-->
 <!--            <url-pattern>/WEB-INF/inscription.jsp</url-pattern>-->
 <!--            <url-pattern>/WEB-INF/histoireLutte.jsp</url-pattern>-->
-<!--            <url-pattern>/images/*</url-pattern>-->
+<!--            <url-pattern>/img/*</url-pattern>-->
 <!--            <url-pattern>/css/*</url-pattern>-->
 <!--            <url-pattern>/html/*</url-pattern>-->
 <!--            <url-pattern>/js/*</url-pattern>-->
 <!--        </web-resource-collection>-->
 <!--    </security-constraint>-->
+
     <error-page>
         <error-code>403</error-code>
-        <location>/403.jsp</location>
+        <location>/WEB-INF/403.jsp</location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location>/404.jsp</location>
+        <location>/WEB-INF/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/500.jsp</location>
+        <location>/WEB-INF/500.jsp</location>
     </error-page>
 
 </web-app>

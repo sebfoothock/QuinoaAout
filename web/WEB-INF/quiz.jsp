@@ -89,7 +89,7 @@
             <div>
             </div>
             <button id="restart-btn" class="start-btn btn" onclick="startGame()">Recommencer</button>
-            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>
+<%--            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>--%>
         </div>
     </div>
 </div>

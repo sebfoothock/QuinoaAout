@@ -92,6 +92,10 @@
 
 <script>
     function postdata() {
+        var result = confirm("Voulez-vous vraiment supprimer ce personnage ?");
+        if (!result) {
+            throw new Error("Stop script");
+        }
             var element1 = document.getElementById("nom").value;
             var parameter = "nom=" + element1;
             alert(parameter);
@@ -101,6 +105,7 @@
                 data: parameter,
                 dataType: "json",
                 success: function (data) {
+                    confirm("Voulez-vous vraiment supprimer ce personnage ?");
                     alert("Personnage ajouté");
                     console.log("Réussi: " + data);
                 },
