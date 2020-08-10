@@ -161,6 +161,10 @@
     </div>
 </section>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
     function postdata(){
         var element1 = document.getElementById("nom").value;
@@ -182,7 +186,7 @@
         parameter = "nom=" + element1 + "&annee=" + element2 + "&lieu=" + element3 + "&lutte=" + element4 + "&strategie=" + element5 + "&action=" + element6 + "&victoire=" + element7 + "&anecdote=" + element8
         + "&citation=" + element9 + "&question=" + element10 + "&reponse1=" + element11 + "&reponse2=" + element12 + "&reponse3=" + element13 + "&video=" + element14 + "&article=" + element15; //forge les paramètres pour l'URL
 
-        alert(parameter);
+       // alert(parameter);
         console.log(parameter)
 
         $.ajax({
@@ -192,11 +196,11 @@
             contentType: "application/x-www-form-urlencoded;charset=utf-8",//encodage donnée
             dataType: "json",//format de donnée reçu
             success: function (data){
-                alert("Personnage ajouté");
+                bootbox.alert("Personnage ajouté");
                 console.log('success', data);
             },
             error: function(data){
-                alert("Il y a eu une erreur lors de l'ajout du personnage");
+                bootbox.alert("Il y a eu une erreur lors de l'ajout du personnage");
                 console.log('error', data);
             }
         });
@@ -205,10 +209,10 @@
 
 <!-- Bootstrap core JS-->
 <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-<script src="js/jquery.min.js"></script>
+<%--<script src="js/jquery.min.js"></script>--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>

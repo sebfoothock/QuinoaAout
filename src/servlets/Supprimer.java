@@ -1,6 +1,7 @@
 package servlets;
 
 import beans.Person;
+import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +21,10 @@ public class Supprimer extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-
+        LOG.info("POST: Supprimer");
         String nom = request.getParameter("nom");
         try {
-            PrintWriter out = response.getWriter();
+            PrintWriter out = response.getWriter();//mettre en format printwriter pour répondre à AJAX
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Cache-control", "no-cache, no-store");
@@ -34,9 +35,15 @@ public class Supprimer extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + nom);
-            beans.Person pers = new database.write.WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
-
-            out.close();
+            Boolean isDeleted = new database.write.WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
+            JsonObject myObj = new JsonObject();
+            if(isDeleted){
+                myObj.addProperty("success", true);
+            } else {
+                myObj.addProperty("success", false);
+            }
+            out.println(myObj.toString());
+            out.close();//ferme le printwinter
         }
 
         catch(IOException ex){

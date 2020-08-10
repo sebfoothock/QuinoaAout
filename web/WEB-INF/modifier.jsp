@@ -159,6 +159,9 @@
         </div>
     </div>
 </section>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
     function postdata() {
@@ -185,27 +188,29 @@
             console.log(parameter)
 
             $.ajax({
-            type: "POST",
-            url: "Modifier",
-            data: parameter,
-            dataType: "json",
-            success: function (data){
-                alert("Personnage ajouté");
-                console.log('success', data);
-            },
-            error: function(data){
-                alert("Il y a eu une erreur lors de l'ajout du personnage");
-                console.log('error', data);
-            }
-        });
+                type: "POST",
+                url: "Modifier",
+                data: parameter,
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",//encodage donnée
+                dataType: "json",
+                success: function (data){
+                    bootbox.alert("Personnage modifié");
+                    console.log('success', data);
+                },
+                error: function(data){
+                    bootbox.alert("Il y a eu une erreur lors de la modification du personnage");
+                    console.log('error', data);
+                }
+            });
     }
 </script>
 
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<%--<script src="js/jquery.min.js"></script>--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>

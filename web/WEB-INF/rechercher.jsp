@@ -163,8 +163,8 @@
 <script>
     function postdata(){
         var element1 = document.getElementById("nom").value;
-        var parameter = "nom=" + element1 ;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
-        //alert(parameter);
+        var parameter = "id=" + element1 ;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
+        alert(parameter);
         $.ajax({
             type: "POST",
             url: "Rechercher",

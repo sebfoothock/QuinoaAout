@@ -1,6 +1,7 @@
 package servlets;
 
 import beans.Person;
+import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +21,21 @@ public class Modifier extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        LOG.debug("POST Modifier");
         Person personnage = new Person();//créer un objet personne avec tout les request.Paremeter
 
         personnage.setNom(request.getParameter("nom"));
-        personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
+        LOG.debug("nom: " + personnage.getNom());
+        String annee = request.getParameter("annee");
+        if(annee != null){
+            if(!annee.isEmpty()){
+                personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
+            } else {
+                personnage.setAnnee(0);
+            }
+        }
+
+        LOG.debug("annee: " + personnage.getAnnee());
         personnage.setLieu(request.getParameter("lieu"));
         personnage.setLutte(request.getParameter("lutte"));
         personnage.setStrategie(request.getParameter("strategie"));
@@ -35,10 +47,12 @@ public class Modifier extends HttpServlet {
         personnage.setReponse1(request.getParameter("reponse1"));
         personnage.setReponse2(request.getParameter("reponse2"));
         personnage.setReponse3(request.getParameter("reponse3"));
+        LOG.debug("reponse: " + personnage.getReponse1());
         personnage.setVideo(request.getParameter("video"));
         personnage.setArticle(request.getParameter("article"));
 
         try {
+            LOG.debug("PrintWriter start");
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -50,9 +64,14 @@ public class Modifier extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + personnage.getNom());
-            //System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.write.WritePerson().updatePerson(personnage, getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
-            //System.out.println("Nom: "+pers.getNom());
+            Boolean isModified = new database.write.WritePerson().updatePerson(personnage, getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
+            JsonObject myObj = new JsonObject();
+            if(isModified){
+                myObj.addProperty("success", true);
+            } else {
+                myObj.addProperty("success", false);
+            }
+            out.println(myObj.toString());
 
             out.close();
         }

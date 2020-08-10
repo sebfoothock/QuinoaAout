@@ -71,7 +71,7 @@
   <div class="container d-flex align-items-center flex-column">
     <h1 class="masthead-heading text-uppercase mb-0">Quiz Dezobeyi</h1>
     <p class="masthead-subheading font-weight-light mb-0">
-      Désobeissance civil - Combat pour des libertés
+      Désobéissance civile - Combat pour des libertés
     </p>
   </div>
 </header>
@@ -88,14 +88,14 @@
       <div class="col-md-10 text-center">
         <p class="lead">
           Quinoa est une ONG d'éducation à la citoyenneté mondiale et solidaire (ECMS).
-          L'ECMS est un processus qui vise à provoquer des changements de valeur et de comportement
+          L'ECMS est un processus qui vise à provoquer des changements de valeurs et de comportements
           sur le plan individuel et collectif en vue d'un monde plus juste dans lequel ressources et
           pouvoirs sont équitablement répartis dans le respect de la dignité humaine.
         </p>
         <p class="lead">
-          Ses actions : projets internationaux (aussi scolaires, maison de jeunes, scouts…)
-          en Amérique de sud, Afrique et Asie, Projet alternative locales, animations pédagogiques
-          (Jeu de la ficelle, Potentia, Jeu des chaises, Dezobeyi...).
+          Ses actions : projets internationaux tels que scolaires, maisons de jeunes, scoutisme
+          en Amérique de sud, Afrique et Asie, projets alternatifs locaux, animations pédagogiques
+          (jeu de la ficelle, Potentia, jeu des chaises, Dezobeyi...).
         </p>
         <h6><a href="http://www.quinoa.be" class="text-white">Lien vers l'ASLB</a></h6>
         <img src="img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>

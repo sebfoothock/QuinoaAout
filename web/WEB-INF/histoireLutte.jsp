@@ -91,7 +91,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/1_ACED.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/1_ACED.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 2-->
@@ -103,7 +103,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/2_ACT%20UP.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/2_ACT%20UP.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 3-->
@@ -115,7 +115,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/3_AHED%20TAMIMI.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/3_AHED%20TAMIMI.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 4-->
@@ -127,7 +127,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/4_ASMAA%20MAHFOUZ.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/4_ASMAA%20MAHFOUZ.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 5-->
@@ -139,7 +139,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/5_BLM.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/5_BLM.jpg" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 6-->
@@ -151,7 +151,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/personnage/ACTU/6_CAROLA%20RACKETE.jpg" alt="" />
+                    <img class="img-fluid" src="img/personnage/actu/6_CAROLA%20RACKETE.jpg" alt="" />
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="img/personnage/ACTU/1_ACED.jpg" alt="" />
+                            <img class="img-fluid rounded mb-5" src="img/personnage/actu/1_ACED.jpg" alt="" />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-5">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.

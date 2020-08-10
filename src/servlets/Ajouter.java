@@ -1,10 +1,8 @@
 package servlets;
 
 import beans.Person;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mongodb.client.MongoClient;
+import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.util.Properties;
 
 import static connection.MongoConnector.getConnector;
 
@@ -29,7 +27,9 @@ public class Ajouter extends HttpServlet {
         Person personnage = new Person();//créer un objet personne avec tout les request.Paremeter
 
         personnage.setNom(request.getParameter("nom"));
+
         personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
+
         personnage.setLieu(request.getParameter("lieu"));
         personnage.setLutte(request.getParameter("lutte"));
         personnage.setStrategie(request.getParameter("strategie"));
@@ -45,6 +45,8 @@ public class Ajouter extends HttpServlet {
         personnage.setArticle(request.getParameter("article"));
 
         try {
+            String db_host = new connection.ConfProperties().getHostProperties();
+
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -57,9 +59,20 @@ public class Ajouter extends HttpServlet {
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + personnage.getNom());
             //System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.write.WritePerson().addPerson(personnage, getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
-            //System.out.println("Nom: "+pers.getNom());
+            WritePerson w_pers = new database.write.WritePerson();
+            JsonObject myObj = new JsonObject();
+            if(db_host != null){
+                w_pers.addPerson(personnage, getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
+                if(w_pers.isAdded(getConnector(db_host),personnage.getNom())){
+                    myObj.addProperty("success", true);
+                } else {
+                    myObj.addProperty("success", false);
+                }
+            } else {
+                myObj.addProperty("success", false);
+            }
 
+            out.println(myObj.toString());
             out.close();
         }
 
@@ -73,6 +86,7 @@ public class Ajouter extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/ajouter.jsp";
+
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

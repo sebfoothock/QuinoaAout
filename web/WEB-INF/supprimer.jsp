@@ -74,6 +74,10 @@
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Supprimer un personnage</h1>
             <form id="supprimerForm" class="col-md-10" action="Supprimer" method="POST">
+                <h6 class="text-center text-danger">Il faut que le nom du personnage ai les majuscules aux bons endroits</h6>
+                <br>
+                <h6 class="text-center text-danger">Conseil : faire un copier coller du nom dans la liste</h6>
+                <br>
                 <div class="form-group">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
@@ -89,41 +93,65 @@
         </div>
     </div>
 </section>
-
+<%--utilisé pour le JS donc l'exécution marche en focntion de l'ordre du code--%>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function postdata() {
-        var result = confirm("Voulez-vous vraiment supprimer ce personnage ?");
-        if (!result) {
-            throw new Error("Stop script");
-        }
-            var element1 = document.getElementById("nom").value;
-            var parameter = "nom=" + element1;
-            alert(parameter);
-            $.ajax({
-                type: "POST",
-                url: "Supprimer",
-                data: parameter,
-                dataType: "json",
-                success: function (data) {
-                    confirm("Voulez-vous vraiment supprimer ce personnage ?");
-                    alert("Personnage ajouté");
-                    console.log("Réussi: " + data);
+
+        bootbox.confirm({
+            message: "Voulez-vous vraiment supprimer ce personnage ?",
+            buttons: {
+                confirm: {
+                    label: 'Oui',
+                    className: 'btn-success'
                 },
-                error: function (data) {
-                    alert("Il y a eu une erreur lors de l'ajout du personnage");
-                    console.log("Erreur: " + data);
+                cancel: {
+                    label: 'Non',
+                    className: 'btn-danger'
                 }
-            });
+            },
+            callback: function (result) {
+                console.log('This was logged in the callback: ' + result);
+                if(result){
+                    var element1 = document.getElementById("nom").value;
+                    var parameter = "nom=" + element1;
+                    alert(parameter);
+                    result = null;
+                    $.ajax({
+                        type: "POST",
+                        url: "Supprimer",
+                        data: parameter,
+                        dataType: "json",
+                        success: function (data) {
+                            bootbox.alert("Personnage supprimé");
+                            console.log("Réussi: " + data);
+                        },
+                        error: function (data) {
+                            bootbox.alert("Il y a eu une erreur lors de la suppression du personnage");
+                            console.log("Erreur: " + data);
+                        }
+                    });
+                }
+            }
+        });
     }
 </script>
 
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+
+<%--utilisé par HTMl donc peut être mis à la fin--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
+
+<%--bootbox confirm alert--%>
+
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
+
 </body>
 
 </html>
