@@ -48,7 +48,7 @@
         </li>
         <li class="nav-item mx-0 mx-lg-1">
           <form id="inscriptionNav" action="Inscription" method="GET"></form>
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
           <form id="connexionNav" action="Connexion" method="GET"></form>
