@@ -24,6 +24,7 @@ public class Supprimer extends HttpServlet {
         LOG.info("POST: Supprimer");
         String nom = request.getParameter("nom");
         try {
+            String db_host = new connection.ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();//mettre en format printwriter pour répondre à AJAX
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -37,10 +38,12 @@ public class Supprimer extends HttpServlet {
             LOG.info("nom: " + nom);
             Boolean isDeleted = new database.write.WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
             JsonObject myObj = new JsonObject();
-            if(isDeleted){
-                myObj.addProperty("success", true);
-            } else {
-                myObj.addProperty("success", false);
+            if(db_host != null) {
+                if (isDeleted) {
+                    myObj.addProperty("success", true);
+                } else {
+                    myObj.addProperty("success", false);
+                }
             }
             out.println(myObj.toString());
             out.close();//ferme le printwinter

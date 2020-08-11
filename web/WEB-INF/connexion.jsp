@@ -74,7 +74,7 @@
     <div class="container center">
         <h3 class="formTitle text-center">Connexion</h3>
         <div class="row justify-content-md-center">
-            <form id="connexionForm" class="col-md-10" action="Connexion" method="POST">
+            <form id="connexionForm" class="col-md-10">
                 <div class="form-inscription">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />

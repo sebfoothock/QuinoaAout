@@ -25,6 +25,7 @@ public class Quiz extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
+            String db_host = new connection.ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -35,22 +36,21 @@ public class Quiz extends HttpServlet {
             response.setHeader("Access-Control-Allow-Methods", "POST");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
-            ArrayList<Person> pers = new ReadPerson().getPersons(getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
-            LOG.info("Quiz");
 
-            Gson gson = new Gson();
-            JsonObject myObj = new JsonObject();
+            if(db_host != null) {
+                ArrayList<Person> pers = new ReadPerson().getPersons(getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
+                Gson gson = new Gson();
+                JsonObject myObj = new JsonObject();
 
-            JsonElement bdcObj = gson.toJsonTree(pers);
-            if(pers!= null){
-                myObj.addProperty("success", true);
+                JsonElement bdcObj = gson.toJsonTree(pers);
+                if (pers != null) {
+                    myObj.addProperty("success", true);
+                } else {
+                    myObj.addProperty("success", false);
+                }
+                myObj.add("results", bdcObj);
+                out.println(myObj.toString());
             }
-            else {
-                myObj.addProperty("success", false);
-            }
-            myObj.add("results", bdcObj);
-            out.println(myObj.toString());
-
             out.close();
         } catch(IOException ex){
             LOG.error(ex);

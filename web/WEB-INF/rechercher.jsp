@@ -160,6 +160,10 @@
     </div>
 </section>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
     function postdata(){
         var element1 = document.getElementById("nom").value;
@@ -177,6 +181,7 @@
 //                     for(var i=0;i<data.results.length;i++){
 //                         alert(i+" "+data.results[i]);
 //                     }
+                    bootbox.alert("Personnage recherché");
                     document.getElementById("annee").value = data.results[0];//supprimer  : value = ""
                     document.getElementById("lieu").value = data.results[1];//ajouter (créer var) : value = nom
                     document.getElementById("lutte").value = data.results[4];
@@ -194,6 +199,7 @@
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
+                bootbox.alert("Il y a eu une erreur lors de la recherche du personnage");
                 console.log("Erreur: " + textStatus);
                 console.log("Erreur: " + jqXHR);
                 console.log("Erreur: " + errorThrown);

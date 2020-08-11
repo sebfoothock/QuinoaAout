@@ -2,6 +2,7 @@ package servlets;
 
 import beans.Person;
 import com.google.gson.JsonObject;
+import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +53,7 @@ public class Modifier extends HttpServlet {
         personnage.setArticle(request.getParameter("article"));
 
         try {
-            LOG.debug("PrintWriter start");
+            String db_host = new connection.ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -64,12 +65,14 @@ public class Modifier extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + personnage.getNom());
-            Boolean isModified = new database.write.WritePerson().updatePerson(personnage, getConnector("192.168.129.133"));//ajout : appel writePerso & supprimer : appel deletePerson
+            WritePerson m_pers = new database.write.WritePerson();//ajout : appel writePerso & supprimer : appel deletePerson
             JsonObject myObj = new JsonObject();
-            if(isModified){
-                myObj.addProperty("success", true);
-            } else {
-                myObj.addProperty("success", false);
+            if(db_host != null) {
+                if (m_pers.updatePerson(personnage, getConnector(db_host))) {
+                    myObj.addProperty("success", true);
+                } else {
+                    myObj.addProperty("success", false);
+                }
             }
             out.println(myObj.toString());
 

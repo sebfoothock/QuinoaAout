@@ -27,7 +27,7 @@
     <link href="css/styles.css" type="text/css" rel="stylesheet" />
 </head>
 
-<body id="page-top" onload="postdata();">
+<body id="page-top" onload="postdata()">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -67,12 +67,17 @@
 <div id="bodyQuiz">
     <div class="containerQuiz">
         <div id="question-container" class="hide">
-            <div id="question">Question</div>
+            <div id="themeQuiz" class="textQuiz">theme</div>
+            <div id="question" class="text-center">Question</div>
             <div id="answer-buttons" class="btn-grid">
-                <button class="btnQuiz">Answer 1</button>
-                <button class="btnQuiz">Answer 2</button>
-                <button class="btnQuiz">Answer 3</button>
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
             </div>
+        </div>
+        <div id="debutQuiz" class="text-center textQuiz">
+            <p>Le quiz dure 5 minutes et contient 10 questions</p>
+            <h3><b>Bonne chance !</b></h3>
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn" onclick="startGame()">Commencer</button>
@@ -89,7 +94,7 @@
             <p id="phraseScore"></p>
             <div>
             </div>
-            <button id="restart-btn" class="start-btn btn" onclick="startGame()">Recommencer</button>
+            <button id="restart-btn" class="start-btn btn" onclick="postdata()">Recommencer</button>
 <%--            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>--%>
         </div>
     </div>
@@ -109,6 +114,7 @@
                 if (data.success) {
                     for (var i = 0; i < data.results.length; i++) {
                         questions.push({
+                            nom: data.results[i].nom,
                             question: data.results[i].question,
                             answers: [
                                 {text: data.results[i].reponse1, correct: true},
@@ -138,6 +144,9 @@
     const resultContainerElement = document.getElementById('result-container');
     const questionElement = document.getElementById('question');
     const answerButtonsElement = document.getElementById('answer-buttons');
+    const debutQuiz = document.getElementById('debutQuiz');
+    const themeQuiz = document.getElementById('themeQuiz');
+
 
     let currentQuestionIndex;
 
@@ -146,10 +155,15 @@
         setNextQuestion()
     })
 
+    function addElem(id, v) {
+        if (id) { id.innerHTML += v } // s'il existe, ajoute
+    }
+
     function startGame(){
         startButton.classList.add('hide');
         currentQuestionIndex = 0;
         questionContainerElement.classList.remove('hide');
+        debutQuiz.classList.add('hide');
         resultContainerElement.classList.add('hide');
         setNextQuestion();
     }
@@ -160,11 +174,22 @@
     }
 
     function showQuestion(question){
-        questionElement.innerText = question.question;
+        addElem(questionElement, question.question);
+        addElem(themeQuiz, question.nom);
+        if(question){
+            question.question = " ";
+        }
+        if(question.nom){
+            question.nom = " ";
+        }
+        //  questionElement.innerText = question.question;
+        //  themeQuiz.innerText = question.question;
         question.answers.forEach(answer => {
             const button = document.createElement('button')
             button.innerText = answer.text //insérer le text
-            button.classList.add('btnQuiz')//qui va permettre d'appliquer le style btnQuiz.correct, .wrong, ...
+            button.classList.add('textQuiz')
+            button.classList.add('btnQuiz')
+            button.classList.add('btn')//qui va permettre d'appliquer le style btnQuiz.correct, .wrong, ...
             if (answer.correct){
                 button.dataset.correct = answer.correct//ajoute un attribut dataset à notre bouton => .correct
             }
@@ -179,6 +204,9 @@
         while (answerButtonsElement.firstChild) {//si answerButtonElement a un enfant
             answerButtonsElement.removeChild(answerButtonsElement.firstChild)//retire les boutons enfants
         }
+        questionElement.removeChild(questionElement.firstChild)
+        themeQuiz.removeChild(themeQuiz.firstChild)
+
     }
 
     function selectAnswer(e) {

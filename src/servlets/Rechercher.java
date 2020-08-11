@@ -25,6 +25,7 @@ public class Rechercher extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String identifiant = request.getParameter("id");//créer un objet personne avec tout les request.Paremeter
         try{
+            String db_host = new connection.ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -37,7 +38,9 @@ public class Rechercher extends HttpServlet {
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("identifiant: " + identifiant);
             //System.out.println("identifiant: "+identifiant);
-            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector("192.168.129.133"),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
+
+            if(db_host != null) {
+            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector(db_host),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Nom: "+pers.getNom());
             //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();
@@ -60,14 +63,15 @@ public class Rechercher extends HttpServlet {
             JsonObject myObj = new JsonObject();
 
             JsonElement bdcObj = gson.toJsonTree(result);
-            if(result!= null){
-                myObj.addProperty("success", true);
+
+                if (result != null) {
+                    myObj.addProperty("success", true);
+                } else {
+                    myObj.addProperty("success", false);
+                }
+                myObj.add("results", bdcObj);
+                out.println(myObj.toString());
             }
-            else {
-                myObj.addProperty("success", false);
-            }
-            myObj.add("results", bdcObj);
-            out.println(myObj.toString());
 
             out.close();
         } catch(IOException ex){
