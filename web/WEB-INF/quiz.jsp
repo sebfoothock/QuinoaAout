@@ -67,17 +67,17 @@
 <div id="bodyQuiz">
     <div class="containerQuiz">
         <div id="question-container" class="hide">
-            <div id="themeQuiz" class="textQuiz">theme</div>
-            <div id="question" class="text-center">Question</div>
+            <div id="themeQuiz" class="textQuiz text-center">theme</div>
+            <div id="questionQuiz" class="text-center titreQuiz">Question</div>
             <div id="answer-buttons" class="btn-grid">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
                 <button class="btn">Answer 3</button>
             </div>
         </div>
-        <div id="debutQuiz" class="text-center textQuiz">
-            <p>Le quiz dure 5 minutes et contient 10 questions</p>
-            <h3><b>Bonne chance !</b></h3>
+        <div id="debut-container" class="text-center textQuiz">
+            <p class="textQuiz"> Le quiz dure 5 minutes et contient 10 questions</p>
+            <p class="titreQuiz">Bonne chance !</p>
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn" onclick="startGame()">Commencer</button>
@@ -86,15 +86,13 @@
         </div>
 
         <div id="result-container" class="hide text-center">
-            <div>
-                <h3 class="">Tu as fini le Quiz Dezobeyi !</h3>
-            </div>
+                <p class="titreQuiz">Tu as fini le Quiz Dezobeyi !</p>
             <br>
             <label>Tu as eu <label id="score"></label> sur 10 !</label>
             <p id="phraseScore"></p>
             <div>
             </div>
-            <button id="restart-btn" class="start-btn btn" onclick="postdata()">Recommencer</button>
+            <button id="restart-btn" class="start-btn btn" onclick="window.location.reload()">Recommencer</button>
 <%--            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>--%>
         </div>
     </div>
@@ -109,6 +107,7 @@
             type: "POST",
             url: "Quiz",
             data: parameter,
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             dataType: "json",
             success: function( data, textStatus, jqXHR) {
                 if (data.success) {
@@ -142,9 +141,9 @@
     const nextButton = document.getElementById('next-btn');
     const questionContainerElement = document.getElementById('question-container');
     const resultContainerElement = document.getElementById('result-container');
-    const questionElement = document.getElementById('question');
+    const questionElement = document.getElementById('questionQuiz');
     const answerButtonsElement = document.getElementById('answer-buttons');
-    const debutQuiz = document.getElementById('debutQuiz');
+    const debutQuiz = document.getElementById('debut-container');
     const themeQuiz = document.getElementById('themeQuiz');
 
 
@@ -175,7 +174,7 @@
 
     function showQuestion(question){
         addElem(questionElement, question.question);
-        addElem(themeQuiz, question.nom);
+        addElem(themeQuiz,"Sujet de la question : " + question.nom);
         if(question){
             question.question = " ";
         }
@@ -206,7 +205,6 @@
         }
         questionElement.removeChild(questionElement.firstChild)
         themeQuiz.removeChild(themeQuiz.firstChild)
-
     }
 
     function selectAnswer(e) {

@@ -27,9 +27,14 @@ public class Ajouter extends HttpServlet {
         Person personnage = new Person();//créer un objet personne avec tout les request.Paremeter
 
         personnage.setNom(request.getParameter("nom"));
-
-        personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
-
+        String annee = request.getParameter("annee");
+        if(annee != null){
+            if(!annee.isEmpty()){
+                personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
+            } else {
+                personnage.setAnnee(0);
+            }
+        }
         personnage.setLieu(request.getParameter("lieu"));
         personnage.setLutte(request.getParameter("lutte"));
         personnage.setStrategie(request.getParameter("strategie"));

@@ -14,6 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    //ne pas mettre en cache les champs de la pages
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
@@ -88,7 +92,6 @@
                     <div class="erreurChamp">
                         <small>Error message</small>
                     </div>
-
                 </div>
                 <br></br>
                 <div class="wrapper">
@@ -102,6 +105,8 @@
 </section>
 
 <script>
+    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
+
     const identifiant = document.getElementById('identifiant');
     const password = document.getElementById('password');
 

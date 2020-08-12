@@ -14,6 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+//ne pas mettre en cache les champs de la pages
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
@@ -74,7 +78,8 @@
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Supprimer un personnage</h1>
             <form id="supprimerForm" class="col-md-10" action="Supprimer" method="POST">
-                <h6 class="text-center text-danger">Il faut que le nom du personnage ai les majuscules aux bons endroits</h6>
+                <br>
+                <h6 class="text-center text-danger">Il faut que le nom du personnage soit écrit exactement de la même manière (attention majuscule)</h6>
                 <br>
                 <h6 class="text-center text-danger">Conseil : faire un copier coller du nom dans la liste</h6>
                 <br>
@@ -85,7 +90,7 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
+                    <Button class="btnLogin btn btn-primary" onclick="postdata(e);">
                         <label>Supprimer</label>
                     </Button>
                 </div>
@@ -98,8 +103,9 @@
 <script src="js/bootbox.all.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    function postdata() {
+    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
 
+    function postdata() {
         bootbox.confirm({
             message: "Voulez-vous vraiment supprimer ce personnage ?",
             buttons: {
@@ -125,7 +131,8 @@
                         data: parameter,
                         dataType: "json",
                         success: function (data) {
-                            bootbox.alert("Personnage supprimé");
+                            bootbox.alert("Personnage supprimé" +
+                                "\nVérifier si il est bien supprimé dans Liste");
                             console.log("Réussi: " + data);
                         },
                         error: function (data) {
