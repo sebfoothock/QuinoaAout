@@ -90,7 +90,7 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="postdata(e);">
+                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
                         <label>Supprimer</label>
                     </Button>
                 </div>
@@ -131,8 +131,7 @@
                         data: parameter,
                         dataType: "json",
                         success: function (data) {
-                            bootbox.alert("Personnage supprimé" +
-                                "\nVérifier si il est bien supprimé dans Liste");
+                            bootbox.alert("Personnage supprimé ! <br> Vérifier si il est bien supprimé dans Liste");
                             console.log("Réussi: " + data);
                         },
                         error: function (data) {

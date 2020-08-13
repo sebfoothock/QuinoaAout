@@ -14,10 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    //ne pas mettre en cache les champs de la pages
-    <meta http-equiv='cache-control' content='no-cache'>
-    <meta http-equiv='expires' content='0'>
-    <meta http-equiv='pragma' content='no-cache'>
     <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
@@ -54,7 +50,7 @@
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="inscriptionNav" action="Inscription" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
+                       href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="connexionNav" action="Connexion" method="GET"></form>
@@ -79,14 +75,14 @@
         <h3 class="formTitle text-center">Connexion</h3>
         <div class="row justify-content-md-center">
             <form id="connexionForm" class="col-md-10">
-                <div class="form-inscription">
+                <div class="form-group">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
                     <div class="erreurChamp">
                         <small>Error message</small>
                     </div>
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <label for="password"><h6>Mot de Passe</h6></label>
                     <input type="password" placeholder="" id="password" class="champText" name="password" />
                     <div class="erreurChamp">
@@ -105,8 +101,6 @@
 </section>
 
 <script>
-    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
-
     const identifiant = document.getElementById('identifiant');
     const password = document.getElementById('password');
 

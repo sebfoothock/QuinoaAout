@@ -69,7 +69,7 @@
 <!-- Masthead-->
 <header class="masthead text-center">
   <div class="container d-flex align-items-center flex-column">
-    <h1 class="masthead-heading text-uppercase mb-0">Quiz Dezobeyi</h1>
+    <h1 class="masthead-heading text-uppercase mb-0 font3D">Quiz Dezobeyi</h1>
     <p class="masthead-subheading font-weight-light mb-0">
       Désobéissance civile - Combat pour des libertés
     </p>

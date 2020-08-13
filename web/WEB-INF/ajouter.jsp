@@ -240,7 +240,7 @@
         }
 
         if(nomValidation === true && anneeValidation === true && questionValidation === true && reponse1Validation === true && reponse2Validation === true && reponse3Validation === true){
-            postdata(e);
+            postdata();
             console.log("Envoyé !");
         }
     }

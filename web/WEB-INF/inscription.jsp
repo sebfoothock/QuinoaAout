@@ -14,10 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    //ne pas mettre en cache les champs de la pages
-    <meta http-equiv='cache-control' content='no-cache'>
-    <meta http-equiv='expires' content='0'>
-    <meta http-equiv='pragma' content='no-cache'>
     <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
@@ -54,7 +50,7 @@
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="InscriptionNav" action="Inscription" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="#" onclick="document.getElementById('InscriptionNav').submit();">Inscription</a>
+                       href="#" onclick="document.getElementById('InscriptionNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="connexionNav" action="Connexion" method="GET"></form>
@@ -78,8 +74,12 @@
     <div class="container center">
         <h3 class="formTitle text-center">Inscription</h3>
         <div class="row justify-content-md-center">
+            <form id="Connexion" action="Connexion" method="GET"></form>
+            <Button class="btnLogin btn btn-primary" onclick="document.getElementById('Connexion').submit();">
+                <label>Si vous avez déjà un compte</label>
+            </Button>
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
-                <div class="form-inscription">
+                <div class="form-group">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
                     <div class="erreurChamp">
@@ -87,7 +87,7 @@
                     </div>
 
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <label for="password"><h6>Mot de Passe</h6></label>
                     <input type="password" placeholder="" id="password" class="champText" name="password" />
                     <div class="erreurChamp">
@@ -95,7 +95,7 @@
                     </div>
 
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <label for="password2"><h6>Vérification Mot de passe</h6></label>
                     <input type="password" placeholder="" id="password2" class="champText" name="password2"/>
                     <div class="erreurChamp">
@@ -103,7 +103,7 @@
                     </div>
 
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <h6>Age</h6>
                     <small id="smallAge">Choisissez une option</small>
                     <div>
@@ -153,7 +153,7 @@
                     </div>
 
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <h6>Sexe</h6>
                     <small id="smallSexe">Choisissez une option</small>
                     <div class="radio">
@@ -187,7 +187,7 @@
                         <Label>autre</Label>
                     </div>
                 </div>
-                <div class="form-inscription">
+                <div class="form-group">
                     <h6>Est-ce que vous vous considérez comme «désobéissant·e» ?</h6>
                     <small id="smallDesobei">Choisissez une option</small>
                     <div class="radio">
@@ -230,8 +230,6 @@
 </section>
 
 <script>
-    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
-
     const identifiant = document.getElementById('identifiant');
     const password = document.getElementById('password');
     const password2 = document.getElementById('password2');
@@ -332,14 +330,14 @@
     function setErrorFor(input, message) {
         const formControl = input.parentElement;
         const small = formControl.querySelector('small');
-        formControl.className = 'form-inscription error';
+        formControl.className = 'form-group error';
         small.innerText = message;
     }
 
 
     function setSuccessFor(input) {
         const formControl = input.parentElement;
-        formControl.className = 'form-inscription success';
+        formControl.className = 'form-group success';
     }
 
     function isEmail(email) {

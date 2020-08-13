@@ -76,8 +76,9 @@
             </div>
         </div>
         <div id="debut-container" class="text-center textQuiz">
+            <p class="font3D" id="dezobeyTitreQuiz">Quiz Dezobeyi</p>
             <p class="textQuiz"> Le quiz dure 5 minutes et contient 10 questions</p>
-            <p class="titreQuiz">Bonne chance !</p>
+<%--            <p class="titreQuiz">Bonne chance !</p>--%>
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn" onclick="startGame()">Commencer</button>

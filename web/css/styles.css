@@ -11153,9 +11153,6 @@ a.text-dark:focus {
 }
 
 .masthead {
-  padding-top: calc(6rem + 74px);
-  padding-bottom: 6rem;
-  /* background-color: var(--primary); */
   background-image: url("../img/foule.png");
   background-attachment: fixed;
   background-position: center;
@@ -11163,15 +11160,16 @@ a.text-dark:focus {
   background-size: cover;
   height: 100vh;
   color: var(--secondary);
+  padding-top: 40vh;
 }
 
 .masthead .masthead-heading {
-  font-size: 2.75rem;
-  line-height: 2.75rem;
+  font-size: 3.4em;
 }
 
 .masthead .masthead-subheading {
   font-size: 1.25rem;
+  margin-top: 100px;
 }
 
 .masthead .masthead-avatar {
@@ -11180,19 +11178,19 @@ a.text-dark:focus {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
-    padding-bottom: 6rem;
+    padding-top: 25vh;
   }
 
   .masthead .masthead-heading {
-    font-size: 4rem;
+    font-size: 7em;
     line-height: 3.5rem;
     margin-top: 150px;
   }
 
   .masthead .masthead-subheading {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
     margin-top: 100px;
+    font-weight: bold;
   }
 }
 
@@ -11396,12 +11394,16 @@ td, th {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: var(--secondary);
+  background-image: url("../img/foule.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .containerQuiz  {
   min-width: 700px;
-  max-width: 80%;
+  max-width: 50%;
   min-height: 300px;
   background-color: white;
   border-radius: 5px;
@@ -11497,6 +11499,11 @@ button.btn {
   font-weight: bold;
 }
 
+#dezobeyTitreQuiz{
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
 /*page d'erreur*/
 
 * {
@@ -11586,8 +11593,18 @@ body {
   box-shadow: 0px 4px 15px -5px #0046d5;
 }
 
+/*font*/
 
-@media all and (max-width: 700px) {
+@font-face {
+  font-family: perspective;
+  src: url('../font/Perspective.ttf');
+}
+
+.font3D{
+  font-family: perspective;
+}
+
+@media all and (max-width: 900px) {
   .logoNav {
     width: 50vw;
   }
@@ -11630,6 +11647,11 @@ body {
   }
   .notfound .notfound-404 h1 {
     font-size: 112px;
+  }
+
+  #dezobeyTitreQuiz{
+    font-size: 45px;
+    font-weight: bold;
   }
 
   @media all and (max-width: 370px) {
