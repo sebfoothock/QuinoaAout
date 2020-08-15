@@ -76,6 +76,35 @@
   </div>
 </header>
 <!-- About Section-->
+<section class="page-section  mb-0" >
+  <div class="container">
+    <!-- About Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase">
+      Le jeu !
+    </h2>
+    <br />
+<!-- About Section Content-->
+    <div class="row justify-content-center">
+      <div class="col-md-10 text-center">
+        <p class="lead">
+          En cliquant sur l’onglet  <b>‘Joue !’</b>, tu accèderas à la version ‘Quizz’ de Dezobeyi : à travers une vingtaine de questions, 
+          explore les luttes et les victoires de ces femmes et hommes qui ont désobéi !
+        </p>
+        <p class="lead">
+          Avant de te lancer, tu peux aussi parcourir la ligne du temps et t’informer 
+          sur ces désobéissant·e·s qui, à travers le monde et les époques se battent pour plus de justice ! <b>Clique sur ‘Histoires de luttes’ !</b>
+        </p>
+        <p class="lead">
+          N’hésite pas à créer ton compte pour comptabiliser tes points et découvrir quel·le désobéissant·e tu es <b> Clique sur ‘Connexion’</b>
+        </p>
+        <p class="lead">
+          Tu peux refaire le quizz plusieurs fois, des questions différentes te seront proposées pour te permettre de découvrir de nouveaux modes de résistances.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Section-->
 <section class="page-section bg-primary mb-0" id="about">
   <div class="container">
     <!-- About Section Heading-->
