@@ -87,7 +87,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
-          En cliquant sur l’onglet  <b>‘Joue !’</b>, tu accèderas à la version ‘Quizz’ de Dezobeyi : à travers une vingtaine de questions, 
+          En cliquant sur l’onglet  <b>‘Joue !’</b>, tu accèderas à la version ‘Quizz’ de Dezobeyi : à travers une dizaine de questions, 
           explore les luttes et les victoires de ces femmes et hommes qui ont désobéi !
         </p>
         <p class="lead">
