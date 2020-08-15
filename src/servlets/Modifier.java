@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import static connection.MongoConnector.getConnector;
 
@@ -88,6 +89,9 @@ public class Modifier extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/modifier.jsp";
+        String db_host = new connection.ConfProperties().getHostProperties();
+        ArrayList<Person> listPerson = new database.read.ReadPerson().getPersons(getConnector(db_host));
+        request.setAttribute("listPerson",listPerson);//envoie le tableau qui sera réutilisable dans la JSP
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

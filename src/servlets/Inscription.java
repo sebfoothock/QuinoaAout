@@ -1,7 +1,9 @@
 package servlets;
 
 import beans.User;
+import com.google.gson.JsonObject;
 import database.read.ReadUser;
+import database.write.WritePerson;
 import database.write.WriteUser;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import static connection.MongoConnector.getConnector;
@@ -22,33 +25,50 @@ public class Inscription extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String pagePublic = "/WEB-INF/accueil.jsp";
-        /* récupération de la liste des utilisateurs de la DB
-        ReadUser user = new ReadUser();
-        ArrayList <User> listUsers = user.getUsers(getConnector("192.168.129.128"));
-        for(User current : listUsers){//afficher les utilisateurs en console
-            System.out.println("id : " + current.getIdentifiant());
-            System.out.println("mdp : " + current.getPassword());
-            System.out.println("age : " + current.getAge());
-            System.out.println("sexe : " + current.getSexe());
-            System.out.println("desobei : " + current.getDesobei());
+
+        User user = new User();//création user
+
+        user.setIdentifiant(request.getParameter("identifiant"));
+        user.setPassword(request.getParameter("password"));
+        user.setAge(request.getParameter("radioAge"));
+        user.setSexe(request.getParameter("sexe"));
+        user.setDesobei(request.getParameter("desobei"));
+
+
+        try {
+        String db_host = new connection.ConfProperties().getHostProperties();
+
+        PrintWriter out = response.getWriter();
+            response.setContentType("text/html; charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("Cache-control", "no-cache, no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "-1");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+            response.setHeader("Access-Control-Max-Age", "86400");
+            WriteUser w_user = new database.write.WriteUser();
+
+            LOG.info("inscription utilisateur => id : " + user.getIdentifiant());
+        JsonObject myObj = new JsonObject();
+        if(db_host != null) {
+            w_user.addUser(user, getConnector(db_host));
+            if (w_user.isAdded(getConnector(db_host), user.getIdentifiant())) {
+                myObj.addProperty("success", true);
+            } else {
+                myObj.addProperty("error", false);
+            }
         }
-        */
-        WriteUser w = new WriteUser();
-        User u = new User();//faire un post sur ce servet ci pour récupérer les éléments d'inscription
-        u.setIdentifiant(request.getParameter("identifiant"));
-        u.setPassword(request.getParameter("password"));
-        u.setAge(request.getParameter("radioAge"));
-        u.setSexe(request.getParameter("sexe"));
-        u.setDesobei(request.getParameter("desobei"));
-        
-        w.addUser(u,getConnector("192.168.129.133"));
+            out.println(myObj.toString());
+            out.close();
+        }
 
-        LOG.info("inscription utilisateur => id : " + u.getIdentifiant());
-        String page = "/WEB-INF/histoireLutte.jsp";
-        request.getRequestDispatcher(page).forward(request, response);
+        catch(IOException ex){
+            LOG.error(ex);
+            //System.out.println("Erreur: "+ex);
+        }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/inscription.jsp";

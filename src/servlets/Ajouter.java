@@ -71,10 +71,10 @@ public class Ajouter extends HttpServlet {
                 if(w_pers.isAdded(getConnector(db_host),personnage.getNom())){
                     myObj.addProperty("success", true);
                 } else {
-                    myObj.addProperty("success", false);
+                    myObj.addProperty("error", false);
                 }
             } else {
-                myObj.addProperty("success", false);
+                myObj.addProperty("error", false);
             }
 
             out.println(myObj.toString());

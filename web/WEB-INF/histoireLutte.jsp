@@ -250,9 +250,53 @@
     </div>
 </div>
 
+//
+
 <script>
+    var questions = [];
+    function postdata() {
+        var parameter ="";
+        $.ajax({
+            type: "POST",
+            url: "HistoireLutte",
+            data: parameter,
+            dataType: "json",
+            success: function( data, textStatus, jqXHR) {
+                if (data.success) {
+                    for (var i = 0; i < data.results.length; i++) {
+                        questions.push({
+                            nom: data.results[i].nom,
+                            annee: data.results[i].annee,
+                            lieu: data.results[i].lieu,
+                            strategie: data.results[i].strategie,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
+                            annee: data.results[i].annee,
 
+                            question: data.results[i].question,
+                            answers: [
+                                {text: data.results[i].reponse1, correct: true},
+                                {text: data.results[i].reponse2, correct: false},
+                                {text: data.results[i].reponse3, correct: false},
+                            ],
 
+                        });
+                    }
+                    console.log(questions);
+                }
+            }
+            ,
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("Erreur: " + textStatus);
+                console.log("Erreur: " + jqXHR);
+                console.log("Erreur: " + errorThrown);
+            }
+        });
+    }
 </script>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

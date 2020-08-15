@@ -99,7 +99,17 @@
     </div>
 </div>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
+    if('${inscrit}' == '1'){
+        bootbox.alert("Vous êtes inscrit");
+    }
+
+
+
     var questions = [];
     let score = 0;
     function postdata() {
@@ -261,10 +271,11 @@
 </script>
 
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<%--<script src="js/jquery.min.js"></script>--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>

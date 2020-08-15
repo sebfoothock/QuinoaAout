@@ -229,6 +229,10 @@
     </div>
 </section>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootbox.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
     const identifiant = document.getElementById('identifiant');
     const password = document.getElementById('password');
@@ -236,9 +240,9 @@
 
     function checkInputs() {
         // trim to remove the whitespaces
-        const identifiantValue = identifiant.value.trim();
-        const passwordValue = password.value.trim();
-        const password2Value = password2.value.trim();
+        var identifiantValue = identifiant.value.trim();
+        var passwordValue = password.value.trim();
+        var password2Value = password2.value.trim();
         // const age = document.querySelector('input[name="age"]:checked').value;//n'arrive pas à récupérer la valeur des radios
 
         var idValidation = false;
@@ -284,6 +288,7 @@
             var i = 0;
             while (!ageValidation && i < radio.length) {
                 if (radio[i].checked){
+                    var ageValue = radio[i].checked;
                     ageValidation = true;
                     document.getElementById("smallAge").style.visibility = "hidden"
                 }
@@ -298,6 +303,7 @@
             var i = 0;
             while (!sexeValidation && i < radio.length) {
                 if (radio[i].checked){
+                    var sexeValue = radio[i].checked;
                     sexeValidation = true;
                     document.getElementById("smallSexe").style.visibility = "hidden"
                 }
@@ -312,6 +318,7 @@
             var i = 0;
             while (!desobeiValidation && i < radio.length) {
                 if (radio[i].checked){
+                    var desobeiValue = radio[i].checked;
                     desobeiValidation = true;
                     document.getElementById("smallDesobei").style.visibility = "hidden"
                 }
@@ -321,8 +328,28 @@
         }
 
         if(idValidation === true && passwordValidation === true && password2Validation === true && ageValidation === true && sexeValidation === true && desobeiValidation === true){
-            document.getElementById('inscriptionForm').submit();
             console.log("Envoyé !")
+
+            parameter = "identifiant=" + identifiantValue + "&password=" + passwordValue + "&age=" + ageValue + "&sexe=" + sexeValue + "&desobei=" + desobeiValue ; //forge les paramètres pour l'URL
+
+            // alert(parameter);
+            console.log(parameter)
+            $.ajax({
+                type: "POST",
+                url: "Inscription",
+                data: parameter,//envoyé à la classe JAVA grâce à l'url
+                dataType: "json",//format de donnée reçu
+                success: function (data){
+
+
+                    console.log('success', data);
+                    window.location.replace("http://localhost:8080/Quinoa_war_exploded/Quiz?inscrit=1");
+                },
+                error: function(data){
+                    bootbox.alert("Erreur lors de l'inscription");
+                    console.log('error', data);
+                }
+            });
         }
 
     }
@@ -345,10 +372,19 @@
     }
 </script>
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>--%>
+<%--<!-- Third party plugin JS-->--%>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
+<%--<!-- Core theme JS-->--%>
+<%--<script src="js/scripts.js"></script>--%>
+
+<!-- Bootstrap core JS-->
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<%--<script src="js/jquery.min.js"></script>--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>

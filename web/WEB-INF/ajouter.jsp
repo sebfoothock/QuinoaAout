@@ -193,7 +193,6 @@
         var reponse2Validation = false;
         var reponse3Validation = false;
 
-
         if(nomValue === '') {
             document.getElementById("smallNom").style.visibility = "visible"
             nomValidation = false;

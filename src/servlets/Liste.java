@@ -25,6 +25,7 @@ public class Liste extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
+            String db_host = new connection.ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -36,22 +37,24 @@ public class Liste extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             //System.out.println("identifiant: "+identifiant);
-            ArrayList<Person> pers = new ReadPerson().getPersons(getConnector("192.168.129.135"));//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Liste des personnages");
             //System.out.println("Nom: "+pers.getNom());
 
             Gson gson = new Gson();
             JsonObject myObj = new JsonObject();
 
-            JsonElement bdcObj = gson.toJsonTree(pers);
-            if(pers!= null){
-                myObj.addProperty("success", true);
+
+            if(db_host != null) {
+                ArrayList<Person> pers = new ReadPerson().getPersons(getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
+                if (pers != null) {
+                    myObj.addProperty("success", true);
+                    JsonElement bdcObj = gson.toJsonTree(pers);
+                    myObj.add("results", bdcObj);
+                    out.println(myObj.toString());
+                } else {
+                    myObj.addProperty("success", false);
+                }
             }
-            else {
-                myObj.addProperty("success", false);
-            }
-            myObj.add("results", bdcObj);
-            out.println(myObj.toString());
 
             out.close();
         } catch(IOException ex){

@@ -63,11 +63,12 @@ public class Rechercher extends HttpServlet {
             JsonObject myObj = new JsonObject();
 
             JsonElement bdcObj = gson.toJsonTree(result);
-
-                if (result != null) {
-                    myObj.addProperty("success", true);
-                } else {
-                    myObj.addProperty("success", false);
+                if(db_host != null) {
+                    if (result != null) {
+                        myObj.addProperty("success", true);
+                    } else {
+                        myObj.addProperty("success", false);
+                    }
                 }
                 myObj.add("results", bdcObj);
                 out.println(myObj.toString());

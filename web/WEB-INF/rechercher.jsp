@@ -169,7 +169,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
+    $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete
 
     function postdata(){
         var element1 = document.getElementById("nom").value;

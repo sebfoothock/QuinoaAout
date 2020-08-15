@@ -59,4 +59,16 @@ public class WriteUser {
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
             collection.deleteMany(query);
         }
+
+    public Boolean isAdded(MongoClient mongoClient, String identifiant){//vérifie si ajouté
+        MongoDatabase db = mongoClient.getDatabase(database);
+        BasicDBObject query = new BasicDBObject("identifiant", identifiant);
+        MongoCollection<Document> collection = db.getCollection("Utilisateurs");
+        long nb_count = collection.countDocuments(query);//donne le nombre de document en fonction du nom du personnage
+        if(nb_count > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -61,6 +61,8 @@ public class Quiz extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/quiz.jsp";
+        String inscrit = request.getParameter("inscrit");
+        request.setAttribute("inscrit",inscrit);//crée une variable qui sera réutilisable dans la JSP
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

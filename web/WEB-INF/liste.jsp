@@ -72,6 +72,7 @@
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
+        <br>
         <h1 class="formTitle text-center">Liste des personnages</h1>
         <div class="row justify-content-md-center">
             <br>

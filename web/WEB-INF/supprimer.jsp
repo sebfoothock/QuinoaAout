@@ -79,7 +79,7 @@
             <h1 class="formTitle text-center">Supprimer un personnage</h1>
             <form id="supprimerForm" class="col-md-10" action="Supprimer" method="POST">
                 <br>
-                <h6 class="text-center text-danger">Il faut que le nom du personnage soit écrit exactement de la même manière (attention majuscule)</h6>
+                <h6 class="text-center text-danger">Il faut que le nom du personnage soit écrit exactement de la même manière (attention aux majuscules)</h6>
                 <br>
                 <h6 class="text-center text-danger">Conseil : faire un copier coller du nom dans la liste</h6>
                 <br>
@@ -90,7 +90,7 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="postdata();">
+                    <Button class="btnLogin btn btn-primary" onclick="postdata(event);">
                         <label>Supprimer</label>
                     </Button>
                 </div>
@@ -105,7 +105,8 @@
 <script>
     $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
 
-    function postdata() {
+    function postdata(e) {
+        e.preventDefault()
         bootbox.confirm({
             message: "Voulez-vous vraiment supprimer ce personnage ?",
             buttons: {
