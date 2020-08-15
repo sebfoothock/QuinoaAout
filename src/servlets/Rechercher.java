@@ -41,7 +41,7 @@ public class Rechercher extends HttpServlet {
 
             if(db_host != null) {
             beans.Person pers = new database.read.ReadPerson().getPerson(getConnector(db_host),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
-            LOG.info("Nom: "+pers.getNom());
+            LOG.info("Nom: "+ pers.getNom());
             //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();
             result.add(String.valueOf(pers.getAnnee()));

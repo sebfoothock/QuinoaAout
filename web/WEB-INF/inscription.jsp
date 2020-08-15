@@ -75,10 +75,12 @@
         <h3 class="formTitle text-center">Inscription</h3>
         <div class="row justify-content-md-center">
             <form id="Connexion" action="Connexion" method="GET"></form>
-            <Button class="btnLogin btn btn-primary" onclick="document.getElementById('Connexion').submit();">
-                <label>Si vous avez déjà un compte</label>
-            </Button>
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
+                <div class="wrapper">
+                    <button class="btnLogin btn btn-primary" onclick="document.getElementById('Connexion').submit();">
+                        <label>Si vous avez déjà un compte</label>
+                    </button>
+                </div>
                 <div class="form-group">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />

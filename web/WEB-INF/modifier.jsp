@@ -179,8 +179,9 @@
     $("#nom")[0].addEventListener("change",function(){
 
         if (!($("#nom")[0].innerHTML)) {
-            var parameter = "id=" + $("#nom")[0].innerHTML;//forge les paramètres pour l'URL   ////  exemple:  + "&annee="+element2
-            //alert(parameter);
+            var element1 = document.getElementById("nom").value;
+            var parameter = "id=" + element1 ;
+            // alert(parameter);
             $.ajax({
                 type: "POST",
                 url: "Rechercher",
