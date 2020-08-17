@@ -91,7 +91,7 @@ public class Modifier extends HttpServlet {
         String pagePublic = "/WEB-INF/modifier.jsp";
         String db_host = new connection.ConfProperties().getHostProperties();
         ArrayList<Person> listPerson = new database.read.ReadPerson().getPersons(getConnector(db_host));
-        request.setAttribute("listPerson",listPerson);//envoie le tableau qui sera réutilisable dans la JSP
+        request.setAttribute("listPerson",listPerson);//envoie le tableau qui sera réutilisable dans la JSP pour l'autocomplete
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.javatpoint.rest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>Accueil</servlet-name>
         <servlet-class>servlets.Accueil</servlet-class>
 
@@ -53,6 +63,11 @@
         <servlet-name>Connexion</servlet-name>
         <servlet-class>servlets.Connexion</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>Accueil</servlet-name>
@@ -106,32 +121,36 @@
         <url-pattern>/Connexion</url-pattern>
     </servlet-mapping>
 
-<!--    <security-constraint>-->
-<!--        <display-name>Quinoa</display-name>-->
-<!--        <web-resource-collection>-->
-<!--            <web-resource-name>Zone Protegé</web-resource-name>-->
-<!--            <url-pattern>/*</url-pattern>-->
-<!--            <http-method>POST</http-method>-->
-<!--            <http-method>GET</http-method>-->
-<!--        </web-resource-collection>-->
-<!--        <auth-constraint>-->
-<!--            <role-name>*</role-name>-->
-<!--        </auth-constraint>-->
-<!--    </security-constraint>-->
-<!--    <security-constraint>-->
-<!--        <display-name>La page d'authentification et les ressources sont exclu</display-name>-->
-<!--        <web-resource-collection>-->
-<!--            <web-resource-name>Contenu non protegé</web-resource-name>-->
-<!--            <url-pattern>/</url-pattern>-->
-<!--            <url-pattern>/WEB-INF/accueil.jsp</url-pattern>-->
-<!--            <url-pattern>/WEB-INF/inscription.jsp</url-pattern>-->
-<!--            <url-pattern>/WEB-INF/histoireLutte.jsp</url-pattern>-->
-<!--            <url-pattern>/img/*</url-pattern>-->
-<!--            <url-pattern>/css/*</url-pattern>-->
-<!--            <url-pattern>/html/*</url-pattern>-->
-<!--            <url-pattern>/js/*</url-pattern>-->
-<!--        </web-resource-collection>-->
-<!--    </security-constraint>-->
+    <security-constraint>
+        <display-name>Quinoa</display-name>
+        <web-resource-collection>
+            <web-resource-name>Zone Protegé</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+       <auth-constraint><!-- il faut une authentification-->
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>La page d'authentification et les ressources sont exclu</display-name>
+        <web-resource-collection>
+            <web-resource-name>Contenu non protegé</web-resource-name>
+            <url-pattern>/Accueil</url-pattern>
+            <url-pattern>/</url-pattern>
+            <url-pattern>/test</url-pattern>
+            <url-pattern>/WEB-INF/connexion.jsp</url-pattern>
+            <url-pattern>/accueil.jsp</url-pattern>
+            <url-pattern>/WEB-INF/inscription.jsp</url-pattern>
+            <url-pattern>/WEB-INF/histoireLutte.jsp</url-pattern>
+            <url-pattern>/img/*</url-pattern>
+            <url-pattern>/css/*</url-pattern>
+            <url-pattern>/html/*</url-pattern>
+            <url-pattern>/js/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
 
     <error-page>
         <error-code>403</error-code>
@@ -147,10 +166,10 @@
     </error-page>
 
     <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name> MongoDBRealm</realm-name>
+       <auth-method>FORM</auth-method><!-- défini le type d'authentification-->
+        <realm-name>MongoDBRealm</realm-name>
         <form-login-config>
-            <form-login-page>/WEB-INF/connexion.jsp</form-login-page>
+            <form-login-page>/WEB-INF/connexion.jsp</form-login-page><!-- indique le lieu du formulaire-->
             <form-error-page>/WEB-INF/500.jsp</form-error-page>
         </form-login-config>
     </login-config>

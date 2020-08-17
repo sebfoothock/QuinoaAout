@@ -64,6 +64,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Histoire de lutte</a>
                 </li>
             </ul>
+            <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <div class="slider round"></div>
+            </label>
         </div>
     </div>
 </nav>

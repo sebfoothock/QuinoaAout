@@ -59,6 +59,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
+            <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <div class="slider round"></div>
+            </label>
         </div>
     </div>
 </nav>
@@ -104,12 +108,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
+    const switchConnexion = document.getElementById('switch');
+    switchConnexion.classList.add('hide');
+    console.log(coucou);
+
     if('${inscrit}' == '1'){
         bootbox.alert("Vous êtes inscrit");
     }
-
-
-
     var questions = [];
     let score = 0;
     function postdata() {

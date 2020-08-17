@@ -75,7 +75,7 @@
     <div class="container center">
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Rechercher un personnage</h1>
-            <form id="rechercherForm" class="col-md-10">
+            <form id="rechercherForm" class="col-md-10" action="Modifier" method="POST">
                 <div class="form-group ">
                     <label>Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
@@ -152,7 +152,7 @@
 <script src="js/bootbox.all.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -261,7 +261,7 @@
 
 <!-- Bootstrap core JS-->
 <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-<script src="js/jquery.min.js"></script>
+<%--<script src="js/jquery.min.js"></script>--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
 <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>--%>

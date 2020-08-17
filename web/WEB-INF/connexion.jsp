@@ -66,6 +66,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
+            <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <div class="slider round"></div>
+            </label>
         </div>
     </div>
 </nav>
@@ -74,17 +78,17 @@
     <div class="container center">
         <h3 class="formTitle text-center">Connexion</h3>
         <div class="row justify-content-md-center">
-            <form id="connexionForm" class="col-md-10">
+            <form id="connexionForm" class="col-md-10" action="j_security_check" method="post">
                 <div class="form-group">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
-                    <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
+                    <input type="email" placeholder="" id="identifiant" class="champText" name="j_username" />
                     <div class="erreurChamp">
                         <small>Error message</small>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password"><h6>Mot de Passe</h6></label>
-                    <input type="password" placeholder="" id="password" class="champText" name="password" />
+                    <input type="password" placeholder="" id="password" class="champText" name="j_password" />
                     <div class="erreurChamp">
                         <small>Error message</small>
                     </div>

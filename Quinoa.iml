@@ -39,5 +39,29 @@
     <orderEntry type="library" name="mongodb-driver-core-3.12.5" level="project" />
     <orderEntry type="library" name="gson-2.8.2" level="project" />
     <orderEntry type="library" name="javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" name="aopalliance-repackaged-2.3.0-b10" level="project" />
+    <orderEntry type="library" name="asm-debug-all-5.0.2" level="project" />
+    <orderEntry type="library" name="hk2-api-2.3.0-b10" level="project" />
+    <orderEntry type="library" name="hk2-locator-2.3.0-b10" level="project" />
+    <orderEntry type="library" name="hk2-utils-2.3.0-b10" level="project" />
+    <orderEntry type="library" name="javassist-3.18.1-GA" level="project" />
+    <orderEntry type="library" name="javax.annotation-api-1.2" level="project" />
+    <orderEntry type="library" name="javax.inject-2.3.0-b10" level="project" />
+    <orderEntry type="library" name="javax.servlet-api-3.0.1" level="project" />
+    <orderEntry type="library" name="javax.ws.rs-api-2.0.1" level="project" />
+    <orderEntry type="library" name="jaxb-api-2.2.7" level="project" />
+    <orderEntry type="library" name="jersey-client" level="project" />
+    <orderEntry type="library" name="jersey-common" level="project" />
+    <orderEntry type="library" name="jersey-container-servlet-core" level="project" />
+    <orderEntry type="library" name="jersey-container-servlet" level="project" />
+    <orderEntry type="library" name="jersey-core-1.9.1" level="project" />
+    <orderEntry type="library" name="jersey-guava-2.13" level="project" />
+    <orderEntry type="library" name="jersey-media-multipart-2.13" level="project" />
+    <orderEntry type="library" name="jersey-server" level="project" />
+    <orderEntry type="library" name="mimepull" level="project" />
+    <orderEntry type="library" name="org.osgi.core-4.2.0" level="project" />
+    <orderEntry type="library" name="osgi-resource-locator-1.0.1" level="project" />
+    <orderEntry type="library" name="persistence-api-1.0" level="project" />
+    <orderEntry type="library" name="validation-api-1.1.0.Final" level="project" />
   </component>
 </module>

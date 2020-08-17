@@ -7,6 +7,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import database.write.WritePerson;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -16,6 +17,10 @@ import java.util.regex.Pattern;
 public class ReadPerson {
     private final String dbName = "Quinoa";
     private final String Personnages = "InfosPersonnage";
+
+    final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ReadPerson.class);
+    org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
+    org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
     public ArrayList<Person> getPersons(MongoClient client){//récupérer tout des utilisateurs
         ArrayList <Person> listPerson = new ArrayList<>();

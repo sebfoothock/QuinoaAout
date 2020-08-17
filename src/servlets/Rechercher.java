@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.Person;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -84,6 +85,9 @@ public class Rechercher extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/rechercher.jsp";
+        String db_host = new connection.ConfProperties().getHostProperties();
+        ArrayList<Person> listPerson = new database.read.ReadPerson().getPersons(getConnector(db_host));
+        request.setAttribute("listPerson",listPerson);
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

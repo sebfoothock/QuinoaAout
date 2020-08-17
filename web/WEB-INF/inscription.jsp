@@ -66,6 +66,10 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
+            <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <div class="slider round"></div>
+            </label>
         </div>
     </div>
 </nav>
@@ -290,7 +294,7 @@
             var i = 0;
             while (!ageValidation && i < radio.length) {
                 if (radio[i].checked){
-                    var ageValue = radio[i].checked;
+                    var ageValue = radio[i].value;
                     ageValidation = true;
                     document.getElementById("smallAge").style.visibility = "hidden"
                 }
@@ -305,7 +309,7 @@
             var i = 0;
             while (!sexeValidation && i < radio.length) {
                 if (radio[i].checked){
-                    var sexeValue = radio[i].checked;
+                    var sexeValue = radio[i].value;
                     sexeValidation = true;
                     document.getElementById("smallSexe").style.visibility = "hidden"
                 }
@@ -320,7 +324,7 @@
             var i = 0;
             while (!desobeiValidation && i < radio.length) {
                 if (radio[i].checked){
-                    var desobeiValue = radio[i].checked;
+                    var desobeiValue = radio[i].value;
                     desobeiValidation = true;
                     document.getElementById("smallDesobei").style.visibility = "hidden"
                 }
@@ -334,7 +338,7 @@
 
             parameter = "identifiant=" + identifiantValue + "&password=" + passwordValue + "&age=" + ageValue + "&sexe=" + sexeValue + "&desobei=" + desobeiValue ; //forge les paramètres pour l'URL
 
-            // alert(parameter);
+            alert(parameter);
             console.log(parameter)
             $.ajax({
                 type: "POST",
@@ -342,8 +346,6 @@
                 data: parameter,//envoyé à la classe JAVA grâce à l'url
                 dataType: "json",//format de donnée reçu
                 success: function (data){
-
-
                     console.log('success', data);
                     window.location.replace("http://localhost:8080/Quinoa_war_exploded/Quiz?inscrit=1");
                 },

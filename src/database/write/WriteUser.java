@@ -10,25 +10,55 @@ import org.bson.Document;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class WriteUser {
-    private final String database = "Quinoa";
+    private final String database = "security_realm";
+
+    final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(WriteUser.class);
+    org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
+    org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
         public WriteUser() {
         }
-
+        
         public void addUser( User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            String today = dateFormat.format(date);
+
             MongoDatabase db = mongoClient.getDatabase(database);
-            MongoCollection<Document> collection = db.getCollection("Utilisateurs");
+            MongoCollection<Document> collection = db.getCollection("authentification");
+
+            String password =  user.getPassword();
+            MessageDigest messageDigest = null;
+            try {
+                messageDigest = MessageDigest.getInstance("SHA-256");
+            } catch (NoSuchAlgorithmException e) {
+                LOG.error(e);
+            }
+            messageDigest.update(password.getBytes());
+            byte byteData[] = messageDigest.digest();
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < byteData.length; i++) {
+                String hex=Integer.toHexString(0xff & byteData[i]);
+                if (hex.length()==1)
+                    hexString.append('0');
+                hexString.append(hex);
+            }
 
             Document document = new Document();
             document.append("nom", user.getIdentifiant())
-                    .append("password", user.getPassword())
+                    .append("password",hexString.toString())
                     .append("age", user.getAge())
                     .append("sexe", user.getSexe())
-                    .append("desobei", user.getDesobei());
-
+                    .append("desobei", user.getDesobei())
+                    .append("creation_date",today);
             collection.insertOne(document);//insertion dans la collection
 
         }

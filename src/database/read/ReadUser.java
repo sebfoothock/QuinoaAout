@@ -24,11 +24,12 @@ public class ReadUser {
             while (iterator.hasNext()) {//parcours la collection et récupère ses éléments
                 Document doc = iterator.next();
                 User user = new User();
-                user.setIdentifiant(doc.getString("identifiant"));
+                user.setIdentifiant(doc.getString("username"));
                 user.setPassword(doc.getString("password"));
                 user.setAge(doc.getString("age"));
                 user.setAge(doc.getString("sexe"));
                 user.setAge(doc.getString("desobei"));
+
                 listUser.add(user);
             }
         }

@@ -23,6 +23,14 @@ public class Inscription extends HttpServlet {
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
@@ -30,10 +38,9 @@ public class Inscription extends HttpServlet {
 
         user.setIdentifiant(request.getParameter("identifiant"));
         user.setPassword(request.getParameter("password"));
-        user.setAge(request.getParameter("radioAge"));
+        user.setAge(request.getParameter("age"));
         user.setSexe(request.getParameter("sexe"));
         user.setDesobei(request.getParameter("desobei"));
-
 
         try {
         String db_host = new connection.ConfProperties().getHostProperties();
