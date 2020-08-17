@@ -139,16 +139,17 @@
         <web-resource-collection>
             <web-resource-name>Contenu non protegé</web-resource-name>
             <url-pattern>/Accueil</url-pattern>
+            <url-pattern>/Connexion</url-pattern>
+            <url-pattern>/Histoire</url-pattern>
+            <url-pattern>/Inscription</url-pattern>
+            <url-pattern>/Liste</url-pattern>
             <url-pattern>/</url-pattern>
             <url-pattern>/test</url-pattern>
-            <url-pattern>/WEB-INF/connexion.jsp</url-pattern>
-            <url-pattern>/accueil.jsp</url-pattern>
-            <url-pattern>/WEB-INF/inscription.jsp</url-pattern>
-            <url-pattern>/WEB-INF/histoireLutte.jsp</url-pattern>
             <url-pattern>/img/*</url-pattern>
             <url-pattern>/css/*</url-pattern>
             <url-pattern>/html/*</url-pattern>
             <url-pattern>/js/*</url-pattern>
+            <url-pattern>/font/*</url-pattern>
         </web-resource-collection>
     </security-constraint>
 

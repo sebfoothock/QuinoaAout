@@ -11674,6 +11674,21 @@ input:checked + .slider:after
   font-family: perspective;
 }
 
+/*Histoire de lutte*/
+
+#boutonsHistoire{
+  display: contents;
+}
+
+.divHistoire{
+  text-align: center;
+}
+
+.btnHistoire{
+  width: 200px;
+  min-height: 100px;
+}
+
 @media all and (max-width: 900px) {
   .logoNav {
     width: 50vw;

@@ -111,7 +111,6 @@
                         if (e) { e.innerHTML += v } // s'il existe, ajoute
                     }
 
-                    var table = document.querySelector("table");
                     var liste = "";
                         for (let i = 0; i < data.results.length; i++) {
                             liste += '<tr>';

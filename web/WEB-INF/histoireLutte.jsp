@@ -27,7 +27,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="postdata();">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -75,186 +75,20 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
+        <br>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
             Histoire de Lutte
         </h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
+        <br>
+        <br>
         <!-- Portfolio Grid Items-->
         <div class="row">
-            <!-- Portfolio Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/1_ACED.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 2-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/2_ACT%20UP.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/3_AHED%20TAMIMI.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 4-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/4_ASMAA%20MAHFOUZ.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 5-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/5_BLM.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 6-->
-            <div class="col-md-6 col-lg-4">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                    <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="img/personnage/actu/6_CAROLA%20RACKETE.jpg" alt="" />
-                </div>
-            </div>
+           <div id="boutonsHistoire"></div>
         </div>
     </div>
 </section>
-<!-- Footer-->
-<footer class="footer text-center">
-    <div class="container">
-        <div class="row">
-            <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Location</h4>
-                <p class="lead mb-0">
-                    2215 John Daniel Drive
-                    <br />
-                    Clark, MO 65243
-                </p>
-            </div>
-            <!-- Footer Social Icons-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Around the Web</h4>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                        class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                        class="fab fa-fw fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-            </div>
-            <!-- Footer About Text-->
-            <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                <p class="lead mb-0">
-                    Freelance is a free to use, MIT licensed Bootstrap theme created
-                    by
-                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                    .
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright © Your Website 2020</small></div>
-</div>
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
-<div class="scroll-to-top d-lg-none position-fixed">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i
-            class="fa fa-chevron-up"></i></a>
-</div>
 <!-- Portfolio Modals-->
-<!-- Portfolio Modal 1-->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
-     aria-labelledby="portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true"><i class="fas fa-times"></i></span>
-            </button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                id="portfolioModal1Label">
-                                Log Cabin
-                            </h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="divider-custom-line"></div>
-                            </div>
-                            <!-- Portfolio Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="img/personnage/actu/1_ACED.jpg" alt="" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Mollitia neque assumenda ipsam nihil, molestias magnam,
-                                recusandae quos quis inventore quisquam velit asperiores,
-                                vitae? Reprehenderit soluta, eos quod consequuntur itaque.
-                                Nam.
-                            </p>
-                            <button class="btn btn-primary" data-dismiss="modal">
-                                <i class="fas fa-times fa-fw"></i>
-                                Close Window
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-//
+<div id="modals"></div>
 
 <script>
     var questions = [];
@@ -262,35 +96,87 @@
         var parameter ="";
         $.ajax({
             type: "POST",
-            url: "HistoireLutte",
+            url: "Liste",
             data: parameter,
             dataType: "json",
             success: function( data, textStatus, jqXHR) {
                 if (data.success) {
+                        console.log(data.results);
+
+                        function refElem(id){
+                            return document.getElementById(id);
+                        }
+
+                        function addElem(id, v) {
+                            var e = refElem(id); // référence
+                            if (e) { e.innerHTML += v } // s'il existe, ajoute
+                        }
+
+                        var button = "";
                     for (var i = 0; i < data.results.length; i++) {
-                        questions.push({
-                            nom: data.results[i].nom,
-                            annee: data.results[i].annee,
-                            lieu: data.results[i].lieu,
-                            strategie: data.results[i].strategie,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-                            annee: data.results[i].annee,
-
-                            question: data.results[i].question,
-                            answers: [
-                                {text: data.results[i].reponse1, correct: true},
-                                {text: data.results[i].reponse2, correct: false},
-                                {text: data.results[i].reponse3, correct: false},
-                            ],
-
-                        });
+                        button += '<div class="divHistoire col-md-6 col-lg-4 mb-5">\n' +
+                            '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal' + i + '">\n' +
+                            '                    <label>' + data.results[i].nom + '</label>\n' +
+                            '                </button>\n' +
+                            '            </div>';
                     }
-                    console.log(questions);
+                    addElem('boutonsHistoire', button);
+                        var modal = "";
+                    for (var i = 0; i < data.results.length; i++) {
+                        modal += '<div class="col-md-6 col-lg-4 mb-5">\n' +
+                            '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal1">\n' +
+                            '                    <label>' + data.results[i].nom + '</label>\n' +
+                            '                </button>\n' +
+                            '            </div>';
+                        modal += '<!-- Portfolio Modal ' + i + '-->\n' +
+                            '<div class="portfolio-modal modal fade" id="portfolioModal' + i + '" tabindex="-1" role="dialog"\n' +
+                            '     aria-labelledby="portfolioModal1Label" aria-hidden="true">\n' +
+                            '    <div class="modal-dialog modal-xl" role="document">\n' +
+                            '        <div class="modal-content">\n' +
+                            '            <button class="close" type="button" data-dismiss="modal" aria-label="Close">\n' +
+                            '                <span aria-hidden="true"><i class="fas fa-times"></i></span>\n' +
+                            '            </button>\n' +
+                            '            <div class="modal-body text-center">\n' +
+                            '                <div class="container">\n' +
+                            '                    <div class="row justify-content-center">\n' +
+                            '                        <div class="col-lg-8">\n' +
+                            '                            <!-- Portfolio Modal - Title-->\n' +
+                            '                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"\n' +
+                            '                                id="portfolioModal1Label">';
+                        modal += data.results[i].nom;
+                        modal += '<!-- Portfolio Modal - Text-->\n' +
+                            '                            <p class="mb-5">'+
+                            '<b>Année de l\'action<\b> :' + data.results[i].annee +
+                            '</p>';
+                        modal += '<button class="btn btn-primary" data-dismiss="modal">\n' +
+                            '                                <i class="fas fa-times fa-fw"></i>\n' +
+                            '                                Fermé la Fenêtre\n' +
+                            '                            </button>\n' +
+                            '                        </div>\n' +
+                            '                    </div>\n' +
+                            '                </div>\n' +
+                            '            </div>\n' +
+                            '        </div>\n' +
+                            '    </div>\n' +
+                            '</div>';
+                        //
+                        //     nom: ,
+                        //     annee: ,
+                        //     lieu: data.results[i].lieu,
+                        //     strategie: data.results[i].strategie,
+                        //     action: data.results[i].action,
+                        //     victoire: data.results[i].victoire,
+                        //     anecdote: data.results[i].anecdote,
+                        //     citation: data.results[i].citation,
+                        //     question: data.results[i].question,
+                        //     reponse1: data.results[i].reponse1,
+                        //     reponse2: data.results[i].reponse2,
+                        //     reponse3: data.results[i].reponse3,
+                        //     video: data.results[i].video,
+                        //     article: data.results[i].article,
+
+                    }
+                    addElem('modals', modal);
                 }
             }
             ,
