@@ -79,15 +79,15 @@
     </p>
   </div>
 </header>
-<!-- About Section-->
-<section class="page-section  mb-0" >
+<!-- Le jeu Section-->
+<section class="page-section bg-primary mb-0" >
   <div class="container">
-    <!-- About Section Heading-->
+    <!-- Le jeu Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase">
       Le jeu !
     </h2>
     <br />
-<!-- About Section Content-->
+<!-- Le jeu Section Content-->
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
@@ -104,19 +104,22 @@
         <p class="lead">
           Tu peux refaire le quizz plusieurs fois, des questions différentes te seront proposées pour te permettre de découvrir de nouveaux modes de résistances.
         </p>
+        <h6><a href="http://www.quinoa.be/je-minforme-3/outils-pedagogiques/desobeir-un-acte-citoyen/" class="text-white">Lien vers la version papier du jeu</a></h6>
+        <br>
+        <img src="img/dezobey.jpg" class="imgJeu" alt="image jeu"/>
       </div>
     </div>
   </div>
 </section>
-<!-- About Section-->
-<section class="page-section bg-primary mb-0" id="about">
+<!-- Présentation de l'ASBL Section-->
+<section class="page-section mb-0">
   <div class="container">
-    <!-- About Section Heading-->
+    <!-- Présentation de l'ASBL Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase">
       Présentation de l'ASBL
     </h2>
     <br />
-    <!-- About Section Content-->
+    <!-- Présentation de l'ASBL Section Content-->
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
@@ -130,21 +133,21 @@
           en Amérique de sud, Afrique et Asie, projets alternatifs locaux, animations pédagogiques
           (jeu de la ficelle, Potentia, jeu des chaises, Dezobeyi...).
         </p>
-        <h6><a href="http://www.quinoa.be" class="text-white">Lien vers l'ASLB</a></h6>
+        <h6><a href="http://www.quinoa.be">Lien vers l'ASLB</a></h6>
         <img src="img/Quinoa.png" class="imgLogo" alt="logo Quinoa"/>
       </div>
     </div>
   </div>
 </section>
-<!-- About Section-->
-<section class="page-section  mb-0" >
+<!-- combats de l'ASBL Section -->
+<section class="page-section bg-primary mb-0">
   <div class="container">
-    <!-- About Section Heading-->
+    <!-- combats de l'ASBL Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase">
       Les combats de l'ASBL
     </h2>
     <br />
-    <!-- About Section Content-->
+    <!-- combats de l'ASBL Section Content-->
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <p class="lead">
@@ -169,10 +172,8 @@
         </p>
         <p class="lead">
           <b>Envie d’aborder la désobéissance civile et l’action directe non-violente avec ta classe ? Quinoa propose une animation pédagogique (2x50 min., à partir de 16 ans)
-            autour de ces questions ! Contacte-nous (<a href="mailto:info@quinoa.be">info@quinoa.be</a>)</b>
+            autour de ces questions ! Contacte-nous (<a href="mailto:info@quinoa.be" class="text-white"> info@quinoa.be </a>)</b>
         </p>
-        <h6><a href="http://www.quinoa.be/je-minforme-3/outils-pedagogiques/desobeir-un-acte-citoyen/">Lien vers la version papier du jeu</a></h6>
-        <img src="img/dezobey.jpg" class="imgJeu" alt="image jeu"/>
       </div>
     </div>
   </div>
@@ -192,18 +193,19 @@
       </div>
       <!-- Footer Social Icons-->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">ASBL sur Internet</h4>
+        <h4 class="text-uppercase mb-4">L'ASBL sur Internet</h4>
         <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/Quinoa.asbl/"><i class="fab fa-fw fa-facebook-f"></i></a>
         <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/company/quinoa/?trk=company_logo"><i class="fab fa-fw fa-linkedin-in"></i></a>
         <a class="btn btn-outline-light btn-social mx-1" href="http://www.quinoa.be"><i class="fab fa-fw fa-dribbble"></i></a>
       </div>
       <!-- Footer About Text-->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">A propos des Web Developer</h4>
+        <h4 class="text-uppercase mb-4">Dévelloper par</h4>
         <p class="lead mb-0">
-          2 étudiants de l'EPHEC
+          étudiant en IT à l'EPHEC
           <br>
-          <a href="http://startbootstrap.com">template utilisé</a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/sébastien-raemdonck-87a864182/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+          <br>
         </p>
       </div>
     </div>
@@ -211,7 +213,7 @@
 </footer>
 <!-- Copyright Section-->
 <div class="copyright py-4 text-center text-white">
-  <div class="container"><small>Copyright © Your Website 2020</small></div>
+  Template by <a href="https://startbootstrap.com/themes/freelancer/">Start Bootstrap</a>
 </div>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
 <div class="scroll-to-top d-lg-none position-fixed">
