@@ -83,7 +83,7 @@
         <br>
         <!-- Portfolio Grid Items-->
         <div class="row">
-           <div id="boutonsHistoire"></div>
+            <div id="boutonsHistoire"></div>
         </div>
     </div>
 </section>
@@ -101,18 +101,18 @@
             dataType: "json",
             success: function( data, textStatus, jqXHR) {
                 if (data.success) {
-                        console.log(data.results);
+                    console.log(data.results);
 
-                        function refElem(id){
-                            return document.getElementById(id);
-                        }
+                    function refElem(id){
+                        return document.getElementById(id);
+                    }
 
-                        function addElem(id, v) {
-                            var e = refElem(id); // référence
-                            if (e) { e.innerHTML += v } // s'il existe, ajoute
-                        }
+                    function addElem(id, v) {
+                        var e = refElem(id); // référence
+                        if (e) { e.innerHTML += v } // s'il existe, ajoute
+                    }
 
-                        var button = "";
+                    var button = "";
                     for (var i = 0; i < data.results.length; i++) {
                         button += '<div class="divHistoire col-md-6 col-lg-4 mb-5">\n' +
                             '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal' + i + '">\n' +
@@ -121,7 +121,7 @@
                             '            </div>';
                     }
                     addElem('boutonsHistoire', button);
-                        var modal = "";
+                    var modal = "";
                     for (var i = 0; i < data.results.length; i++) {
                         modal += '<div class="col-md-6 col-lg-4 mb-5">\n' +
                             '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal1">\n' +
@@ -143,11 +143,38 @@
                             '                            <!-- Portfolio Modal - Title-->\n' +
                             '                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"\n' +
                             '                                id="portfolioModal1Label">';
-                        modal += data.results[i].nom;
-                        modal += '<!-- Portfolio Modal - Text-->\n' +
-                            '                            <p class="mb-5">'+
-                            '<b>Année de l\'action<\b> :' + data.results[i].annee +
-                            '</p>';
+                        modal += data.results[i].nom + '</h2>';
+                        modal += '<!-- Portfolio Modal - Text-->\n';
+                        modal +=    '<br>' +
+                        '                            <p class="mb-5">'+
+                        '<b>Année de l\'action : </b>' + data.results[i].annee + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Lieu de l\'action : </b>' + data.results[i].lieu + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Lutte de la personne : </b>' + data.results[i].lutte + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Stratégie de l\'action : </b>' + data.results[i].strategie + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Action de la personne : </b>' + data.results[i].action + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Victoire de la personne : </b>' + data.results[i].victoire + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Anecdote sur l\'action ou la personne : </b>' + data.results[i].anecdote + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Citation de la personne : </b>' + data.results[i].citation + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Question pour le quizz : </b>' + data.results[i].question + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Réponse 1 (correcte) : </b>' + data.results[i].reponse1 + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Réponse 2 : </b>' + data.results[i].reponse2 + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Réponse 3 : </b>' + data.results[i].reponse3 + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Lien vers vidéo : </b>' + data.results[i].video + '</p>';
+                        modal += '<p class="mb-5">'+
+                        '<b>Lien vers un article : </b>' + data.results[i].article + '</p>';
+
                         modal += '<button class="btn btn-primary" data-dismiss="modal">\n' +
                             '                                <i class="fas fa-times fa-fw"></i>\n' +
                             '                                Fermé la Fenêtre\n' +

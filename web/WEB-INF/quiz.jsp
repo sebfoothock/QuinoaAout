@@ -108,9 +108,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    const switchConnexion = document.getElementById('switch');
-    switchConnexion.classList.add('hide');
-    console.log(coucou);
+    // const switchConnexion = document.getElementById('switch');
+    // switchConnexion.classList.add('hide');
+    // console.log(coucou);
 
     if('${inscrit}' == '1'){
         bootbox.alert("Vous êtes inscrit");
