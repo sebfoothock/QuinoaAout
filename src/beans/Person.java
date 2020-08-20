@@ -1,5 +1,9 @@
 package beans;
 
+/**
+ * Cette classe défini un objet Person qui correspond à un personnage qui a été désobéissant dans sa vie
+ */
+
 public class Person {
 
     String nom;
@@ -17,6 +21,25 @@ public class Person {
     String reponse3;
     String video;
     String article;
+
+    /**
+     *
+     * @param nom Le nom du personnage ou groupe
+     * @param annee L'année de l'action réalisé par le personnage
+     * @param lieu Le lieu de l'action du personnage
+     * @param lutte La lutte du personnage
+     * @param strategie La stratégie de l'action du personnage
+     * @param action L'action du personnage
+     * @param victoire La victoire du personnage
+     * @param anecdote Une anecdote du personnage ou de l'action
+     * @param citation Une citation de la personne ou du groupe
+     * @param question La question destiné au quiz
+     * @param reponse1 La réponse 1 à la question qui est la bonne réponse
+     * @param reponse2 La réponse 2 à la question
+     * @param reponse3 La réponse 3 à la question
+     * @param video Lien vers une vidéo
+     * @param article Lien vers un article
+     */
 
     public Person(String nom, Integer annee, String lieu, String lutte, String strategie, String action, String victoire, String anecdote, String citation, String question, String reponse1, String reponse2, String reponse3, String video, String article){
         this.nom = nom;

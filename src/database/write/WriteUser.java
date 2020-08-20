@@ -53,7 +53,7 @@ public class WriteUser {
             }
 
             Document document = new Document();
-            document.append("nom", user.getIdentifiant())
+            document.append("username", user.getIdentifiant())
                     .append("password",hexString.toString())
                     .append("age", user.getAge())
                     .append("sexe", user.getSexe())
@@ -65,14 +65,14 @@ public class WriteUser {
 
         public void updateUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
-            BasicDBObject query = new BasicDBObject("identifiant", user.getIdentifiant());
+            BasicDBObject query = new BasicDBObject("username", user.getIdentifiant());
 
             MongoDatabase db = mongoClient.getDatabase(database);
             MongoCollection <Document> collection = db.getCollection("Utilisateurs");
 
             BasicDBObject update = new BasicDBObject();
             update.append("$set", new Document()//$set permet de modifier une colonne
-                    .append("identifiant", user.getIdentifiant())
+                    .append("username", user.getIdentifiant())
                     .append("password", user.getPassword())
                     .append("age", user.getAge())
                     .append("sexe", user.getSexe())
@@ -84,7 +84,7 @@ public class WriteUser {
         public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException, UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
-            BasicDBObject query = new BasicDBObject("identifiant", identifiant);
+            BasicDBObject query = new BasicDBObject("username", identifiant);
 
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
             collection.deleteMany(query);
@@ -92,7 +92,7 @@ public class WriteUser {
 
     public Boolean isAdded(MongoClient mongoClient, String identifiant){//vérifie si ajouté
         MongoDatabase db = mongoClient.getDatabase(database);
-        BasicDBObject query = new BasicDBObject("identifiant", identifiant);
+        BasicDBObject query = new BasicDBObject("username", identifiant);
         MongoCollection<Document> collection = db.getCollection("Utilisateurs");
         long nb_count = collection.countDocuments(query);//donne le nombre de document en fonction du nom du personnage
         if(nb_count > 0){

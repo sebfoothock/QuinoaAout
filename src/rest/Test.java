@@ -15,5 +15,4 @@ public class Test {
         return "<html> " + "<title>" + "Hello Jersey" + "</title>"
                 + "<body><h1>" + "Hello Jersey HTML" + "</h1></body>" + "</html> ";
     }
-
 }

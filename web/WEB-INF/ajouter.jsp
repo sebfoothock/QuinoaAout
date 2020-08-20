@@ -85,7 +85,7 @@
                 <br>
                 <div class="form-group">
                     <label>Nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne" required>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom de la Personne ou du groupe" required>
                     <div class="erreurChamp">
                         <small id="smallNom">Ce champ ne peut pas être vide</small>
                     </div>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <label>Lutte</label>
-                    <input type="text" class="form-control" id="lutte" name="lutte" placeholder="Lutte de la personne">
+                    <input type="text" class="form-control" id="lutte" name="lutte" placeholder="Lutte de la personne ou du groupe">
                 </div>
                 <div class="form-group">
                     <label>Stratégie</label>
@@ -111,19 +111,19 @@
                 </div>
                 <div class="form-group">
                     <label>Action</label>
-                    <input type="text" class="form-control" id="action" name="action" placeholder="Action de la personne">
+                    <input type="text" class="form-control" id="action" name="action" placeholder="Action de la personne ou du groupe">
                 </div>
                 <div class="form-group">
                     <label>Victoire</label>
-                    <input type="text" class="form-control" id="victoire" name="victoire" placeholder="Victoire de la personne">
+                    <input type="text" class="form-control" id="victoire" name="victoire" placeholder="Victoire de la personne ou du groupe">
                 </div>
                 <div class="form-group">
                     <label>Anecdote</label>
-                    <input type="text" class="form-control" id="anecdote" name="anecdote" placeholder="Anecdote sur l'action ou l'évènement">
+                    <input type="text" class="form-control" id="anecdote" name="anecdote" placeholder="Anecdote sur l'action ou du personnage">
                 </div>
                 <div class="form-group">
                     <label>Citation</label>
-                    <input type="text" class="form-control" id="citation" name="citation" placeholder="Citation de la personne">
+                    <input type="text" class="form-control" id="citation" name="citation" placeholder="Citation de la personne ou du groupe">
                 </div>
                 <div class="form-group">
                     <label>Question</label>

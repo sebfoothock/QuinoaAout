@@ -97,89 +97,167 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+    function data() {
+        var currentYear = new Date().getFullYear()
+        var users = []
 
-    function refElem(id){
-        return document.getElementById(id);
+        var nbInscrit;
+        var age16;
+        var age19;
+        var age22;
+        var age25;
+        var age30;
+        var homme;
+        var femme;
+        var autre;
+        var desobeiOui;
+        var desobeiPeu;
+        var desobeiNon;
+
+        axios.get("/users")
+            .then( (response) => {
+                this.users({response: response})
+            })
+            .catch( (error) => {
+                console.log(error);
+            })
+
+        var filterUsers = users.filter(creation_date => currentYear);
+
+        for(let i = 0; i < filterUsers.length; i++){
+            nbInscrit++;
+            switch (age) {
+                case '16':
+                    age16++;
+                    break;
+                case '19':
+                    age19++;
+                    break;
+                case '21':
+                    age22++;
+                    break;
+                case '25':
+                    age25++;
+                    break;
+                case '30':
+                    age30++;
+                    break;
+                default:
+                    age30++;
+            }
+            switch (sexe) {
+                case 'homme':
+                    homme++;
+                    break;
+                case 'femme':
+                    femme++;
+                    break;
+                case 'autre':
+                    autre++;
+                    break;
+                default:
+                    autre++;
+            }
+            switch (desobei) {
+                case 'oui':
+                    desobeiOui++;
+                    break;
+                case 'non':
+                    desobeiNon++;
+                    break;
+                case 'un peu':
+                    desobeiPeu++;
+                    break;
+                default:
+                    desobeiNon++;
+            }
+
+        }
+
+        function refElem(id) {
+            return document.getElementById(id);
+        }
+
+        function addElem(id, v) {
+            var e = refElem(id); // référence
+            if (e) {
+                e.innerHTML += v
+            } // s'il existe, ajoute
+        }
+
+
+        addElem('annee', currentYear)
+
+
+        var tab = "";
+        for (let i = 0; i < 1; i++) {
+            // tab += '<tr>';
+            // tab += '<td>' + 'nombre de connexion en ' + currentYear + '</td>';
+            // tab += '<td>' + +'</td>';
+            // tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'nombre d\'inscrit en ' + currentYear + '</td>';
+            tab += '<td>' + nbInscrit +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'agé entre 16 et 18 ans' + '</td>';
+            tab += '<td>' + age16 +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'agé entre 19 et 21 ans' + '</td>';
+            tab += '<td>' + age19 +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'agé entre 22 et 25 ans' + '</td>';
+            tab += '<td>' + age22 +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
+            tab += '<td>' + age25 +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'agé de plus 30 ans' + '</td>';
+            tab += '<td>' + age30 +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'homme' + '</td>';
+            tab += '<td>' + homme +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'femme' + '</td>';
+            tab += '<td>' + femme +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'autre' + '</td>';
+            tab += '<td>' + autre +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'se considère désobéissant·e' + '</td>';
+            tab += '<td>' + desobeiOui+'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'se considère un peu désobéissant·e' + '</td>';
+            tab += '<td>' + desobeiPeu +'</td>';
+            tab += '</tr>';
+
+            tab += '<tr>';
+            tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
+            tab += '<td>' + desobeiNon +'</td>';
+            tab += '</tr>';
+        }
+        addElem('tabStat', tab);
     }
-
-    function addElem(id, v) {
-        var e = refElem(id); // référence
-        if (e) { e.innerHTML += v } // s'il existe, ajoute
-    }
-
-    var currentYear = new Date().getFullYear()
-    addElem('annee', currentYear)
-
-
-
-    var tab = "";
-    for (let i = 0; i < 1; i++) {
-        tab += '<tr>';
-        tab += '<td>' + 'nombre de connexion en ' + currentYear + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'nombre d\'inscrit en ' + currentYear + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'agé entre 16 et 18 ans' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'agé entre 19 et 21 ans' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'agé entre 22 et 25 ans' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'agé de plus 30 ans' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'homme' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'femme' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'autre' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'se considère désobéissant·e' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'se considère un peu désobéissant·e' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-
-        tab += '<tr>';
-        tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
-        tab += '<td>' +  + '</td>';
-        tab += '</tr>';
-    }
-    addElem('tabStat', tab);
 </script>
 
 </body>

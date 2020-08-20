@@ -1,5 +1,9 @@
 package beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class User {
     String identifiant;
     String password;
@@ -7,16 +11,20 @@ public class User {
     String sexe;
     String desobei;
 
-    public User(String identifiant, String password, String age, String sexe, String desobei){
+    String date;
+//    SimpleDateFormat dt = new SimpleDateFormat("dd-mm-yyyyy hh:mm");
+//    Date date = dt.parse(date_s);
+
+    public User(String identifiant, String password, String age, String sexe, String desobei, String date) throws ParseException {
         this.identifiant = identifiant;
         this.password = password;
         this.age = age;
         this.sexe = sexe;
         this.desobei = desobei;
-
+        this.date = date;
     }
 
-    public User(){
+    public User() throws ParseException {
     }
 
     public String getIdentifiant() {
@@ -57,5 +65,13 @@ public class User {
 
     public void setDesobei(String desobei) {
         this.desobei = desobei;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

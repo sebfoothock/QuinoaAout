@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import static connection.MongoConnector.getConnector;
@@ -34,7 +35,12 @@ public class Inscription extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        User user = new User();//création user
+        User user = null;//création user
+        try {
+            user = new User();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         user.setIdentifiant(request.getParameter("identifiant"));
         user.setPassword(request.getParameter("password"));

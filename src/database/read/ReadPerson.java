@@ -14,6 +14,10 @@ import org.bson.conversions.Bson;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+/**
+ * Cette classe est destiné a lire le contenue d'un ou de tout les personnages de la base de données
+ */
+
 public class ReadPerson {
     private final String dbName = "Quinoa";
     private final String Personnages = "InfosPersonnage";
@@ -22,7 +26,13 @@ public class ReadPerson {
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
-    public ArrayList<Person> getPersons(MongoClient client){//récupérer tout des utilisateurs
+    /**
+     * Cette méthode permet de récupérer le contenu de tout les personnages de la base de données
+     * @param client ?
+     * @return une ArrayList des personnages
+     */
+
+    public ArrayList<Person> getPersons(MongoClient client){
         ArrayList <Person> listPerson = new ArrayList<>();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> personnages = mongo.getCollection(Personnages);
@@ -58,7 +68,14 @@ public class ReadPerson {
         return listPerson;
     }
 
-    public Person getPerson(MongoClient client, String nom){//récupérer des personnages
+    /**
+     * Cette méthode permet de récupérer le contenu d'un personnage de la base de données
+     * @param client L'instance du connecteur Mongo DB
+     * @param nom Le nom du personnage pour lequel nous voulons récurer les information
+     * @return un objet Person avec les informations du personnage
+     */
+
+    public Person getPerson(MongoClient client, String nom){
         Person personnage = new Person();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> personnages = mongo.getCollection(Personnages);

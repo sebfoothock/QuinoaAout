@@ -8,6 +8,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import static com.mongodb.client.model.Filters.eq;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 
@@ -27,8 +28,9 @@ public class ReadUser {
                 user.setIdentifiant(doc.getString("username"));
                 user.setPassword(doc.getString("password"));
                 user.setAge(doc.getString("age"));
-                user.setAge(doc.getString("sexe"));
-                user.setAge(doc.getString("desobei"));
+                user.setSexe(doc.getString("sexe"));
+                user.setDesobei(doc.getString("desobei"));
+                user.setDate(doc.getString("creation_date"));
 
                 listUser.add(user);
             }
@@ -42,7 +44,15 @@ public class ReadUser {
         return listUser;
     }
 
-    public User getUser(MongoClient client, String identifiant){//récupérer un utilisateur
+    /**
+     *
+     * @param client
+     * @param identifiant
+     * @return
+     * @throws ParseException
+     */
+
+    public User getUser(MongoClient client, String identifiant) throws ParseException {//récupérer un utilisateur
         User user = new User();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> utilisateurs = mongo.getCollection(Utilisateurs);
@@ -54,8 +64,9 @@ public class ReadUser {
             user.setIdentifiant(doc.getString("identifiant"));
             user.setPassword(doc.getString("password"));
             user.setAge(doc.getString("age"));
-            user.setAge(doc.getString("sexe"));
-            user.setAge(doc.getString("desobei"));
+            user.setSexe(doc.getString("sexe"));
+            user.setDesobei(doc.getString("desobei"));
+            user.setDate(doc.getString("creation_date"));
         }
         catch (Exception e) {
             System.out.println(e);
