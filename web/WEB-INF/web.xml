@@ -3,7 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <servlet>
+
+    <servlet><!--Pour API REST-->
         <servlet-name>Jersey REST Service</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
@@ -13,10 +14,14 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>Accueil</servlet-name>
         <servlet-class>servlets.Accueil</servlet-class>
-
     </servlet>
 
     <servlet>
@@ -64,10 +69,10 @@
         <servlet-class>servlets.Connexion</servlet-class>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>Jersey REST Service</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>Statistique</servlet-name>
+        <servlet-class>servlets.Statistique</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>Accueil</servlet-name>
@@ -119,6 +124,11 @@
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Statistique</servlet-name>
+        <url-pattern>/Statistique</url-pattern>
     </servlet-mapping>
 
     <security-constraint>

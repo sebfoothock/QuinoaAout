@@ -20,7 +20,7 @@
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
         type="text/css" />
   <!-- Core theme CSS (includes Bootstrap)-->
@@ -205,6 +205,7 @@
           étudiant en IT à l'EPHEC
           <br>
           <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/sébastien-raemdonck-87a864182/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/aymeric-ponj%C3%A9e-91153b180/"><i class="fab fa-fw fa-linkedin-in"></i></a>
           <br>
         </p>
       </div>

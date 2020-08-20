@@ -8,18 +8,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/test")//Rest n'aime pas les majuscules
 public class Test {
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String sayPlainTextHello() {
-        return "Hello Jersey Plain";
-    }
-    // This method is called if XML is requested
-    @GET
-    @Produces(MediaType.TEXT_XML)
-    public String sayXMLHello() {
-        return "<?xml version=\"1.0\"?>" + "<hello> Hello Jersey" + "</hello>";
-    }
-
     // This method is called if HTML is requested
     @GET
     @Produces(MediaType.TEXT_HTML)

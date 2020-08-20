@@ -1,11 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: seb18
-  Date: 05/08/2020
-  Time: 17:02
+  Date: 18/08/2020
+  Time: 20:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+
     <title>Dezobey</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="img/quizz.png" />
@@ -28,7 +28,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top" onload="postdata();">
+<body id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -67,82 +67,120 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="statistiqueNav" action="Statistique" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('statistiqueNav').submit();">Statistique</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('statistiqueNavNav').submit();">Statistique</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- Portfolio Section-->
+
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
         <br>
-        <h1 class="formTitle text-center">Liste des personnages</h1>
+        <h1 class="formTitle text-center">Statistique<label id="annee"></label></h1>
         <div class="row justify-content-md-center">
             <br>
-            <table id="listePerso">
+            <table id="stat">
                 <thead>
-                    <tr>
-                        <td id=ref>numéro</td>
-                        <td id=auteur>nom personnage</td>
-                     </tr>
+                <tr>
+                    <td id=ref>Champs</td>
+                    <td id=auteur>Données des inscriptions</td>
+                </tr>
                 </thead>
-                    <tbody id=tableau1>
-                    </tbody>
+                <tbody id=tabStat>
+                </tbody>
             </table>
         </div>
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script>
-    function postdata() {
-        var parameter ="";
-        $.ajax({
-            type: "POST",
-            url: "Liste",
-            data: parameter,
-            dataType: "json",
-            success: function( data, textStatus, jqXHR) {
-                if(data.success) {
-                    console.log(data.results);
 
-                    function refElem(id){
-                        return document.getElementById(id);
-                    }
-
-                    function addElem(id, v) {
-                        var e = refElem(id); // référence
-                        if (e) { e.innerHTML += v } // s'il existe, ajoute
-                    }
-
-                    var liste = "";
-                        for (let i = 0; i < data.results.length; i++) {
-                            liste += '<tr>';
-                            liste += '<td>' + [i+1] + '</td>';
-                            liste += '<td>' + data.results[i].nom + '</td>';
-                            liste += '</tr>';
-                            }
-                    addElem('listePerso', liste);
-                    }
-                }
-            ,
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log("Erreur: " + textStatus);
-                console.log("Erreur: " + jqXHR);
-                console.log("Erreur: " + errorThrown);
-            }
-        });
+    function refElem(id){
+        return document.getElementById(id);
     }
+
+    function addElem(id, v) {
+        var e = refElem(id); // référence
+        if (e) { e.innerHTML += v } // s'il existe, ajoute
+    }
+
+    var currentYear = new Date().getFullYear()
+    addElem('annee', currentYear)
+
+
+
+    var tab = "";
+    for (let i = 0; i < 1; i++) {
+        tab += '<tr>';
+        tab += '<td>' + 'nombre de connexion en ' + currentYear + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'nombre d\'inscrit en ' + currentYear + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'agé entre 16 et 18 ans' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'agé entre 19 et 21 ans' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'agé entre 22 et 25 ans' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'agé de plus 30 ans' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'homme' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'femme' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'autre' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'se considère désobéissant·e' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'se considère un peu désobéissant·e' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+
+        tab += '<tr>';
+        tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
+        tab += '<td>' +  + '</td>';
+        tab += '</tr>';
+    }
+    addElem('tabStat', tab);
 </script>
 
-<!-- Bootstrap core JS-->
-<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-<script src="js/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-<!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
-
 </html>

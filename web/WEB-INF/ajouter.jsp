@@ -65,6 +65,10 @@
                     <form id="supprimerNav" action="Supprimer" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('supprimerNav').submit();">Supprimer</a>
                 </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <form id="statistiqueNav" action="Statistique" method="GET"></form>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('statistiqueNav').submit();">Statistique</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -72,6 +76,7 @@
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
+        <br>
         <div class="row justify-content-md-center">
             <h1 class="formTitle text-center">Ajouter un personnage</h1>
             <form id="ajouterForm" class="col-md-10" action="Ajouter" method="POST">

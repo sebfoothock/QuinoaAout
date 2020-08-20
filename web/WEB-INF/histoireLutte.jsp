@@ -80,6 +80,8 @@
             Histoire de Lutte
         </h2>
         <br>
+        <h6 class="text-center text-info">Vous retrouverez ci-dessous des informations des personnages du quiz</h6>
+        <br>
         <br>
         <!-- Portfolio Grid Items-->
         <div class="row">
