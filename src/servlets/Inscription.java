@@ -2,8 +2,6 @@ package servlets;
 
 import beans.User;
 import com.google.gson.JsonObject;
-import database.read.ReadUser;
-import database.write.WritePerson;
 import database.write.WriteUser;
 
 import javax.servlet.ServletException;
@@ -47,7 +45,9 @@ public class Inscription extends HttpServlet {
         user.setAge(request.getParameter("age"));
         user.setSexe(request.getParameter("sexe"));
         user.setDesobei(request.getParameter("desobei"));
-
+        ArrayList<String> roles = new ArrayList<>();
+        roles.add("player");
+        user.setRoles(roles);
         try {
         String db_host = new connection.ConfProperties().getHostProperties();
 

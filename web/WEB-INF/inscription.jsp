@@ -66,11 +66,11 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
-            <label class="switch">
-                <input type="checkbox" id="togBtn">
-                <div class="slider round"></div>
-            </label>
         </div>
+        <label id="switch">
+            <input type="checkbox" id="togBtn">
+            <div class="slider round"></div>
+        </label>
     </div>
 </nav>
 <!-- Portfolio Section-->
@@ -338,7 +338,7 @@
 
             parameter = "identifiant=" + identifiantValue + "&password=" + passwordValue + "&age=" + ageValue + "&sexe=" + sexeValue + "&desobei=" + desobeiValue ; //forge les paramètres pour l'URL
 
-            alert(parameter);
+            // alert(parameter);
             console.log(parameter)
             $.ajax({
                 type: "POST",

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 
 public class ReadUser {
-    private final String dbName = "Quinoa";
-    private final String Utilisateurs = "Utilisateurs";
+    private final String dbName = "security_realm";
+    private final String Utilisateurs = "authentification";
 
     public ArrayList <User> getUsers(MongoClient client){//récupérer tout des utilisateurs
         ArrayList <User> listUser = new ArrayList<>();
@@ -56,12 +56,12 @@ public class ReadUser {
         User user = new User();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> utilisateurs = mongo.getCollection(Utilisateurs);
-        Document doc = utilisateurs.find(eq("identifiant", identifiant)).first();//parcours les utilisateurs de la db et rempli la mémoire
+        Document doc = utilisateurs.find(eq("username", identifiant)).first();//parcours les utilisateurs de la db et rempli la mémoire
         if(doc.isEmpty()){
             return null;
         }
         try {//récupère l'élément qui est rempli
-            user.setIdentifiant(doc.getString("identifiant"));
+            user.setIdentifiant(doc.getString("username"));
             user.setPassword(doc.getString("password"));
             user.setAge(doc.getString("age"));
             user.setSexe(doc.getString("sexe"));

@@ -59,11 +59,13 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
-            <label class="switch">
-                <input type="checkbox" id="togBtn">
-                <div class="slider round"></div>
-            </label>
         </div>
+        <c:if test="${ !empty sessionScope.identifiant }">
+            <label id="switch">
+                <input type="checkbox" id="togBtn">
+                <div id="slider" class="slider round"></div>
+            </label>
+        </c:if>
     </div>
 </nav>
 
@@ -106,8 +108,29 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootbox.all.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+if(document.getElementById("switch")){
+    const slider = document.getElementById('slider');
+    const switch1 = document.getElementById("switch");
+    const togBtn = document.getElementById("togBtn");
+
+    switch1.addEventListener("click", function(){
+        slider.classList.add('hide');
+        togBtn.classList.add('hide');
+
+        axios.post("Deconnexion")
+            .then(function (response) {
+            console.log(response);
+            window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
+}
+
     // const switchConnexion = document.getElementById('switch');
     // switchConnexion.classList.add('hide');
     // console.log(coucou);

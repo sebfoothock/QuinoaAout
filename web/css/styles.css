@@ -274,7 +274,7 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  /*margin: 0;*/
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -11594,7 +11594,7 @@ body {
 
 /* LogOut  */
 
-.switch {
+#switch {
   position: relative;
   display: inline-block;
   width: 90px;
@@ -11611,7 +11611,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ca2222;
+  background-color: green;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
@@ -11631,7 +11631,7 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2ab934;
+  background-color: var(--third);
 }
 
 input:focus + .slider {
@@ -11646,7 +11646,7 @@ input:checked + .slider:before {
 
 .slider:after
 {
-  content:'OFF';
+  content:'ON';
   color: white;
   display: block;
   position: absolute;
@@ -11659,7 +11659,7 @@ input:checked + .slider:before {
 
 input:checked + .slider:after
 {
-  content:'ON';
+  content:'OFF';
 }
 
 /*font*/

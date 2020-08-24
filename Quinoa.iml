@@ -63,5 +63,6 @@
     <orderEntry type="library" name="osgi-resource-locator-1.0.1" level="project" />
     <orderEntry type="library" name="persistence-api-1.0" level="project" />
     <orderEntry type="library" name="validation-api-1.1.0.Final" level="project" />
+    <orderEntry type="library" name="junit:junit:4.13" level="project" />
   </component>
 </module>

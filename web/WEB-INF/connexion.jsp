@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -66,11 +67,14 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
             </ul>
-            <label class="switch">
-                <input type="checkbox" id="togBtn">
-                <div class="slider round"></div>
-            </label>
         </div>
+        <c:if test="${ !empty sessionScope.identifiant }">
+            <label id="switch">
+                <input type="checkbox" id="togBtn">
+                <div id="slider" class="slider round"></div>
+            </label>
+        </c:if>
+
     </div>
 </nav>
 <!-- Portfolio Section-->
@@ -78,7 +82,8 @@
     <div class="container center">
         <h3 class="formTitle text-center">Connexion</h3>
         <div class="row justify-content-md-center">
-            <form id="connexionForm" class="col-md-10" action="j_security_check" method="post">
+            <%-- j_security_check renvoie vers le fichier server.xml de tomee--%>
+           <form id="connexionForm" class="col-md-10" action="j_security_check" method="post">
                 <div class="form-group">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="j_username" />
@@ -104,9 +109,30 @@
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script>
-    const identifiant = document.getElementById('identifiant');
-    const password = document.getElementById('password');
+    if(document.getElementById("switch")) {
+        const identifiant = document.getElementById('identifiant');
+        const password = document.getElementById('password');
+        const slider = document.getElementById('slider');
+        const switch1 = document.getElementById("switch");
+        const togBtn = document.getElementById("togBtn");
+
+        switch1.addEventListener("click", function () {
+            slider.classList.add('hide');
+            togBtn.classList.add('hide');
+
+            axios.post("Deconnexion")
+                .then(function (response) {
+                    console.log(response);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+    }
 
     function checkInputs() {
         // trim to remove the whitespaces

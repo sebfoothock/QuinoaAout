@@ -28,7 +28,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="data()">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -80,6 +80,7 @@
         <h1 class="formTitle text-center">Statistique<label id="annee"></label></h1>
         <div class="row justify-content-md-center">
             <br>
+            <input type="number">
             <table id="stat">
                 <thead>
                 <tr>
@@ -101,78 +102,99 @@
         var currentYear = new Date().getFullYear()
         var users = []
 
-        var nbInscrit;
-        var age16;
-        var age19;
-        var age22;
-        var age25;
-        var age30;
-        var homme;
-        var femme;
-        var autre;
-        var desobeiOui;
-        var desobeiPeu;
-        var desobeiNon;
+        var nbInscrit = 0;
+        var age16 = 0;
+        var age19 = 0;
+        var age22 = 0;
+        var age26 = 0;
+        var age30 = 0;
+        var homme = 0;
+        var femme = 0;
+        var autre = 0;
+        var desobeiOui = 0;
+        var desobeiPeu = 0;
+        var desobeiNon = 0;
 
-        axios.get("/users")
+        axios.get("stats/users")
             .then( (response) => {
-                this.users({response: response})
+
+                console.log("response: "+response.data)
+                //this.users({response: response})
+
+                var filterUsers = response.data; //= users.filter(users.creation_date => currentYear);
+
+                for(let i = 0; i < filterUsers.length; i++){
+                    nbInscrit++;
+                    console.log("age: "+filterUsers[i].age);
+                    switch (filterUsers[i].age) {
+                        case '16':
+                            age16++;
+                            break;
+                        case '19':
+                            age19++;
+                            break;
+                        case '21':
+                            age22++;
+                            break;
+                        case '26':
+                            age26++;
+                            break;
+                        case '30':
+                            age30++;
+                            break;
+                        default:
+                            age30++;
+                    }
+                    switch (filterUsers[i].sexe) {
+                        case 'homme':
+                            homme++;
+                            break;
+                        case 'femme':
+                            femme++;
+                            break;
+                        case 'autre':
+                            autre++;
+                            break;
+                        default:
+                            autre++;
+                    }
+                    switch (filterUsers[i].desobei) {
+                        case 'oui':
+                            desobeiOui++;
+                            break;
+                        case 'non':
+                            desobeiNon++;
+                            break;
+                        case 'un peu':
+                            desobeiPeu++;
+                            break;
+                        default:
+                            desobeiNon++;
+                    }
+
+                }
+                function refElem(id) {
+                    return document.getElementById(id);
+                }
+
+                function addElem(id, v) {
+                    var e = refElem(id); // référence
+                    if (e) {
+                        e.innerHTML += v
+                    } // s'il existe, ajoute
+                }
+
+                addElem("nbInscrit", nbInscrit);
+                addElem("age16", age16);
+
+                // affectation dans les éléments du DOM
+
             })
             .catch( (error) => {
                 console.log(error);
             })
 
-        var filterUsers = users.filter(creation_date => currentYear);
 
-        for(let i = 0; i < filterUsers.length; i++){
-            nbInscrit++;
-            switch (age) {
-                case '16':
-                    age16++;
-                    break;
-                case '19':
-                    age19++;
-                    break;
-                case '21':
-                    age22++;
-                    break;
-                case '25':
-                    age25++;
-                    break;
-                case '30':
-                    age30++;
-                    break;
-                default:
-                    age30++;
-            }
-            switch (sexe) {
-                case 'homme':
-                    homme++;
-                    break;
-                case 'femme':
-                    femme++;
-                    break;
-                case 'autre':
-                    autre++;
-                    break;
-                default:
-                    autre++;
-            }
-            switch (desobei) {
-                case 'oui':
-                    desobeiOui++;
-                    break;
-                case 'non':
-                    desobeiNon++;
-                    break;
-                case 'un peu':
-                    desobeiPeu++;
-                    break;
-                default:
-                    desobeiNon++;
-            }
-
-        }
 
         function refElem(id) {
             return document.getElementById(id);
@@ -190,7 +212,6 @@
 
 
         var tab = "";
-        for (let i = 0; i < 1; i++) {
             // tab += '<tr>';
             // tab += '<td>' + 'nombre de connexion en ' + currentYear + '</td>';
             // tab += '<td>' + +'</td>';
@@ -198,12 +219,12 @@
 
             tab += '<tr>';
             tab += '<td>' + 'nombre d\'inscrit en ' + currentYear + '</td>';
-            tab += '<td>' + nbInscrit +'</td>';
+            tab += '<td id="nbInscrit"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'agé entre 16 et 18 ans' + '</td>';
-            tab += '<td>' + age16 +'</td>';
+            tab += '<td id="age16"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
@@ -218,7 +239,7 @@
 
             tab += '<tr>';
             tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
-            tab += '<td>' + age25 +'</td>';
+            tab += '<td>' + age26 +'</td>';
             tab += '</tr>';
 
             tab += '<tr>';
@@ -255,7 +276,7 @@
             tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
             tab += '<td>' + desobeiNon +'</td>';
             tab += '</tr>';
-        }
+
         addElem('tabStat', tab);
     }
 </script>

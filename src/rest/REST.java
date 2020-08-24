@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static connection.MongoConnector.getConnector;
-
+@Path("/stats")
 @Produces("application/json")
 @Consumes("application/json")
 public class REST {
@@ -27,7 +27,7 @@ public class REST {
         public List<User> getUsers() {
             if (db_host != null) {
                 ArrayList<User> user = new ReadUser().getUsers(getConnector(db_host));
-                LOG.info("getUser pour les statistiques");
+                LOG.info("getUser pour les statistiques: "+user.get(0).getIdentifiant());
                 return user;
             }
             else{

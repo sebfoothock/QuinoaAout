@@ -1,8 +1,7 @@
 package beans;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class User {
     String identifiant;
@@ -10,12 +9,11 @@ public class User {
     String age;
     String sexe;
     String desobei;
-
     String date;
-//    SimpleDateFormat dt = new SimpleDateFormat("dd-mm-yyyyy hh:mm");
-//    Date date = dt.parse(date_s);
+    ArrayList<String> roles;
 
-    public User(String identifiant, String password, String age, String sexe, String desobei, String date) throws ParseException {
+
+    public User(String identifiant, String password, String age, String sexe, String desobei, String date, ArrayList<String> roles) throws ParseException {
         this.identifiant = identifiant;
         this.password = password;
         this.age = age;
@@ -73,5 +71,13 @@ public class User {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public ArrayList<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(ArrayList<String> roles) {
+        this.roles = roles;
     }
 }

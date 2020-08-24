@@ -64,11 +64,11 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Histoire de lutte</a>
                 </li>
             </ul>
-            <label class="switch">
-                <input type="checkbox" id="togBtn">
-                <div class="slider round"></div>
-            </label>
         </div>
+        <label id="switch">
+            <input type="checkbox" id="togBtn">
+            <div class="slider round"></div>
+        </label>
     </div>
 </nav>
 <!-- Portfolio Section-->
@@ -188,22 +188,6 @@
                             '        </div>\n' +
                             '    </div>\n' +
                             '</div>';
-                        //
-                        //     nom: ,
-                        //     annee: ,
-                        //     lieu: data.results[i].lieu,
-                        //     strategie: data.results[i].strategie,
-                        //     action: data.results[i].action,
-                        //     victoire: data.results[i].victoire,
-                        //     anecdote: data.results[i].anecdote,
-                        //     citation: data.results[i].citation,
-                        //     question: data.results[i].question,
-                        //     reponse1: data.results[i].reponse1,
-                        //     reponse2: data.results[i].reponse2,
-                        //     reponse3: data.results[i].reponse3,
-                        //     video: data.results[i].video,
-                        //     article: data.results[i].article,
-
                     }
                     addElem('modals', modal);
                 }

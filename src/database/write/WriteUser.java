@@ -58,7 +58,8 @@ public class WriteUser {
                     .append("age", user.getAge())
                     .append("sexe", user.getSexe())
                     .append("desobei", user.getDesobei())
-                    .append("creation_date",today);
+                    .append("creation_date",today)
+                    .append("roles", user.getRoles());
             collection.insertOne(document);//insertion dans la collection
 
         }

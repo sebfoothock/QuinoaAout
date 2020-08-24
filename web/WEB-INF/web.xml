@@ -25,6 +25,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>servlets.Deconnexion</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>Inscription</servlet-name>
         <servlet-class>servlets.Inscription</servlet-class>
     </servlet>
@@ -78,6 +83,11 @@
         <servlet-name>Accueil</servlet-name>
         <url-pattern></url-pattern><!-- si vide controller par défaut et remplir si le nom du servlet est différent du controller -->
         <url-pattern>/Accueil</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/Deconnexion</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -150,6 +160,7 @@
             <web-resource-name>Contenu non protegé</web-resource-name>
             <url-pattern>/Accueil</url-pattern>
             <url-pattern>/Connexion</url-pattern>
+            <url-pattern>/Deconnexion</url-pattern>
             <url-pattern>/Histoire</url-pattern>
             <url-pattern>/Inscription</url-pattern>
             <url-pattern>/Liste</url-pattern>
@@ -176,6 +187,7 @@
         <location>/WEB-INF/500.jsp</location>
     </error-page>
 
+
     <login-config>
        <auth-method>FORM</auth-method><!-- défini le type d'authentification-->
         <realm-name>MongoDBRealm</realm-name>
@@ -184,6 +196,12 @@
             <form-error-page>/WEB-INF/500.jsp</form-error-page>
         </form-login-config>
     </login-config>
+
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
 
     <!-- Security roles referenced by this web application -->
     <security-role>
