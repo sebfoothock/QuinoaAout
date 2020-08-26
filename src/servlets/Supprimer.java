@@ -1,7 +1,8 @@
 package servlets;
 
-import beans.Person;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class Supprimer extends HttpServlet {
         LOG.info("POST: Supprimer");
         String nom = request.getParameter("nom");
         try {
-            String db_host = new connection.ConfProperties().getHostProperties();
+            String db_host = new ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();//mettre en format printwriter pour répondre à AJAX
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -36,7 +37,7 @@ public class Supprimer extends HttpServlet {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + nom);
-            Boolean isDeleted = new database.write.WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
+            Boolean isDeleted = new WritePerson().deletePerson(getConnector("192.168.129.133"), nom);
             JsonObject myObj = new JsonObject();
             if(db_host != null) {
                 if (isDeleted) {

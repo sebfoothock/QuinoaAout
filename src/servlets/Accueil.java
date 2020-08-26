@@ -17,6 +17,10 @@ public class Accueil extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/accueil.jsp";
+
+        String identifiant = "test";
+        request.setAttribute("identifiant", identifiant);
+
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

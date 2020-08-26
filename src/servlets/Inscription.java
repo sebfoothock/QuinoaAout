@@ -2,6 +2,7 @@ package servlets;
 
 import beans.User;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
 import database.write.WriteUser;
 
 import javax.servlet.ServletException;
@@ -49,7 +50,7 @@ public class Inscription extends HttpServlet {
         roles.add("player");
         user.setRoles(roles);
         try {
-        String db_host = new connection.ConfProperties().getHostProperties();
+        String db_host = new ConfProperties().getHostProperties();
 
         PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
@@ -61,7 +62,7 @@ public class Inscription extends HttpServlet {
             response.setHeader("Access-Control-Allow-Methods", "POST");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.setHeader("Access-Control-Max-Age", "86400");
-            WriteUser w_user = new database.write.WriteUser();
+            WriteUser w_user = new WriteUser();
 
             LOG.info("inscription utilisateur => id : " + user.getIdentifiant());
         JsonObject myObj = new JsonObject();

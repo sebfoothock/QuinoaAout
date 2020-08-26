@@ -4,6 +4,7 @@ import beans.Person;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
 import database.read.ReadPerson;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class Liste extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
-            String db_host = new connection.ConfProperties().getHostProperties();
+            String db_host = new ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -53,11 +54,6 @@
                        href="#" onclick="document.getElementById('InscriptionNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="connexionNav" action="Connexion" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="#" onclick="document.getElementById('connexionNav').submit();">Connexion</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
                     <form id="quizNav" action="Quiz" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
                 </li>
@@ -67,10 +63,12 @@
                 </li>
             </ul>
         </div>
-        <label id="switch">
-            <input type="checkbox" id="togBtn">
-            <div class="slider round"></div>
-        </label>
+        <c:if test="${ !empty sessionScope.identifiant }">
+            <label id="switch">
+                <input type="checkbox" id="togBtn">
+                <div id="slider" class="slider round"></div>
+            </label>
+        </c:if>
     </div>
 </nav>
 <!-- Portfolio Section-->
@@ -238,6 +236,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootbox.all.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
     const identifiant = document.getElementById('identifiant');
@@ -373,6 +372,26 @@
 
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    }
+
+    if(document.getElementById("switch")){
+        const slider = document.getElementById('slider');
+        const switch1 = document.getElementById("switch");
+        const togBtn = document.getElementById("togBtn");
+
+        switch1.addEventListener("click", function(){
+            slider.classList.add('hide');
+            togBtn.classList.add('hide');
+
+            axios.post("Deconnexion")
+                .then(function (response) {
+                    console.log(response);
+                    window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
     }
 </script>
 <!-- Bootstrap core JS-->

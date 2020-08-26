@@ -80,7 +80,7 @@
         <h1 class="formTitle text-center">Statistique<label id="annee"></label></h1>
         <div class="row justify-content-md-center">
             <br>
-            <input type="number">
+<%--            <input type="number">--%>
             <table id="stat">
                 <thead>
                 <tr>
@@ -186,6 +186,16 @@
 
                 addElem("nbInscrit", nbInscrit);
                 addElem("age16", age16);
+                addElem("age19", age19);
+                addElem("age22", age22);
+                addElem("age26", age26);
+                addElem("age30", age30);
+                addElem("homme", homme);
+                addElem("femme", femme);
+                addElem("autre", autre);
+                addElem("desobeiOui", desobeiOui);
+                addElem("desobeiNon", desobeiNon);
+                addElem("desobeiPeu", desobeiPeu);
 
                 // affectation dans les éléments du DOM
 
@@ -229,52 +239,52 @@
 
             tab += '<tr>';
             tab += '<td>' + 'agé entre 19 et 21 ans' + '</td>';
-            tab += '<td>' + age19 +'</td>';
+            tab += '<td id="age19"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'agé entre 22 et 25 ans' + '</td>';
-            tab += '<td>' + age22 +'</td>';
+            tab += '<td id="age22"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
-            tab += '<td>' + age26 +'</td>';
+            tab += '<td id="age26"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'agé de plus 30 ans' + '</td>';
-            tab += '<td>' + age30 +'</td>';
+            tab += '<td id="age30"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'homme' + '</td>';
-            tab += '<td>' + homme +'</td>';
+            tab += '<td id="homme"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'femme' + '</td>';
-            tab += '<td>' + femme +'</td>';
+            tab += '<td id="femme"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'autre' + '</td>';
-            tab += '<td>' + autre +'</td>';
+            tab += '<td id="autre"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'se considère désobéissant·e' + '</td>';
-            tab += '<td>' + desobeiOui+'</td>';
+            tab += '<td id="desobeiOui"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'se considère un peu désobéissant·e' + '</td>';
-            tab += '<td>' + desobeiPeu +'</td>';
+            tab += '<td id="desobeiPeu"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
             tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
-            tab += '<td>' + desobeiNon +'</td>';
+            tab += '<td id="desobeiNon"></td>';
             tab += '</tr>';
 
         addElem('tabStat', tab);

@@ -1,15 +1,14 @@
 package database.read;
 
-import beans.Person;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import database.write.WritePerson;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import beans.Person;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -40,7 +39,7 @@ public class ReadPerson {
         try {
             while (iterator.hasNext()) {//parcours la collection et récupère ses éléments
                 Document doc = iterator.next();
-                Person personnage = new Person();
+                Person personnage = new Person("Gandhy", 1930, "Inde", "Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde", "victoire", "anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique", "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires", " 1jour une actu. - Gandhi", "article");
                 personnage.setNom(doc.getString("nom"));
                 personnage.setAnnee(doc.getInteger("periode"));
                 personnage.setLieu(doc.getString("lieu"));
@@ -76,7 +75,7 @@ public class ReadPerson {
      */
 
     public Person getPerson(MongoClient client, String nom){
-        Person personnage = new Person();
+        Person personnage = new Person("Gandhy", 1930, "Inde", "Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde", "victoire", "anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique", "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires", " 1jour une actu. - Gandhi", "article");
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> personnages = mongo.getCollection(Personnages);
         DBObject query = new BasicDBObject();

@@ -4,6 +4,8 @@ import beans.Person;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.read.ReadPerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +28,7 @@ public class Rechercher extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String identifiant = request.getParameter("id");//créer un objet personne avec tout les request.Paremeter
         try{
-            String db_host = new connection.ConfProperties().getHostProperties();
+            String db_host = new ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -41,7 +43,7 @@ public class Rechercher extends HttpServlet {
             //System.out.println("identifiant: "+identifiant);
 
             if(db_host != null) {
-            beans.Person pers = new database.read.ReadPerson().getPerson(getConnector(db_host),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
+            Person pers = new ReadPerson().getPerson(getConnector(db_host),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Nom: "+ pers.getNom());
             //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();
@@ -85,8 +87,8 @@ public class Rechercher extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/rechercher.jsp";
-        String db_host = new connection.ConfProperties().getHostProperties();
-        ArrayList<Person> listPerson = new database.read.ReadPerson().getPersons(getConnector(db_host));
+        String db_host = new ConfProperties().getHostProperties();
+        ArrayList<Person> listPerson = new ReadPerson().getPersons(getConnector(db_host));
         request.setAttribute("listPerson",listPerson);
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }

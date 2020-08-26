@@ -3,14 +3,12 @@ package test;
 import beans.User;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import database.write.WritePerson;
 import org.bson.Document;
 import org.junit.Test;
+import connection.ConfProperties;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import static com.mongodb.client.model.Filters.eq;
 import static connection.MongoConnector.getConnector;
@@ -23,13 +21,13 @@ public class ReadUserTest {
 
     private final String dbName = "security_realm";
     private final String Utilisateurs = "authentification";
-    String db_host = new connection.ConfProperties().getHostProperties();
+    String db_host = new ConfProperties().getHostProperties();
 
     @Test
     public void getUserTest() throws ParseException {//récupérer un utilisateur
         LOG.info("getUserTest started");
         MongoClient client = getConnector(db_host);
-        String identifiant = "admin@quinoa.be";
+        String identifiant = "seb@ephec.be";
         User user = new User();
         MongoDatabase mongo = client.getDatabase(dbName);
         MongoCollection <Document> utilisateurs = mongo.getCollection(Utilisateurs);
@@ -52,8 +50,12 @@ public class ReadUserTest {
         catch (Exception e) {
             System.out.println(e);
         }
-        assertEquals("admin@quinoa.be",user.getIdentifiant());
-        assertEquals("admin@quinoa.be",user.getIdentifiant());
+        assertEquals("seb@ephec.be",user.getIdentifiant());
+        assertEquals("155290511d5c4bfb1369217d6846c8eef1ed6a564579516eaf36cf5598ac92de", user.getPassword());
+        assertEquals("17/08/2020 00:32",user.getDate());
+        assertEquals("oui",user.getDesobei());
+        assertEquals("homme",user.getSexe());
+        assertEquals("19",user.getAge());
     }
 
 }

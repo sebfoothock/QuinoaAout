@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -51,10 +52,6 @@
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <form id="connexionNav" action="Connexion" method="GET"></form>
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('connexionNav').submit();">Connexion</a>
-        </li>
-        <li class="nav-item mx-0 mx-lg-1">
           <form id="quizNav" action="Quiz" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
         </li>
@@ -62,12 +59,20 @@
           <form id="histoireLutteNav" action="Histoire" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
         </li>
+        <c:if test="${ !empty sessionScope.role }">
+        <li class="nav-item mx-0 mx-lg-1">
+          <form id="AjouterNav" action="Ajouter" method="GET"></form>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('AjouterNav').submit();">Admin</a>
+        </li>
+        </c:if>
       </ul>
     </div>
-    <label id="switch">
-      <input type="checkbox" id="togBtn">
-      <div class="slider round"></div>
-    </label>
+    <c:if test="${ !empty sessionScope.identifiant }">
+      <label id="switch">
+        <input type="checkbox" id="togBtn">
+        <div id="slider" class="slider round"></div>
+      </label>
+    </c:if>
   </div>
 </nav>
 <!-- Masthead-->
@@ -221,6 +226,34 @@
   <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i
           class="fa fa-chevron-up"></i></a>
 </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    alert('<%=request.getAttribute("identifiant")%>');
+
+  if(document.getElementById("switch")){
+    const slider = document.getElementById('slider');
+    const switch1 = document.getElementById("switch");
+    const togBtn = document.getElementById("togBtn");
+
+    switch1.addEventListener("click", function(){
+      slider.classList.add('hide');
+      togBtn.classList.add('hide');
+
+      axios.post("Deconnexion")
+              .then(function (response) {
+                console.log(response);
+                window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+    });
+  }
+</script>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>

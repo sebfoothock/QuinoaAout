@@ -2,6 +2,7 @@ package servlets;
 
 import beans.Person;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
 import database.write.WritePerson;
 
 import javax.servlet.ServletException;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Properties;
 
 import static connection.MongoConnector.getConnector;
 
@@ -24,7 +23,7 @@ public class Ajouter extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        Person personnage = new Person();//créer un objet personne avec tout les request.Paremeter
+        Person personnage = new Person("Gandhy", 1930, "Inde", "Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde", "victoire", "anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique", "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires", " 1jour une actu. - Gandhi", "article");//créer un objet personne avec tout les request.Paremeter
 
         personnage.setNom(request.getParameter("nom"));
         String annee = request.getParameter("annee");
@@ -50,7 +49,7 @@ public class Ajouter extends HttpServlet {
         personnage.setArticle(request.getParameter("article"));
 
         try {
-            String db_host = new connection.ConfProperties().getHostProperties();
+            String db_host = new ConfProperties().getHostProperties();
 
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
@@ -64,7 +63,7 @@ public class Ajouter extends HttpServlet {
             response.setHeader("Access-Control-Max-Age", "86400");
             LOG.info("nom: " + personnage.getNom());
             //System.out.println("identifiant: "+identifiant);
-            WritePerson w_pers = new database.write.WritePerson();
+            WritePerson w_pers = new WritePerson();
             JsonObject myObj = new JsonObject();
             if(db_host != null){
                 w_pers.addPerson(personnage, getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson

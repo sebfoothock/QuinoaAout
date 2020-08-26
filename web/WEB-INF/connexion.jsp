@@ -74,7 +74,6 @@
                 <div id="slider" class="slider round"></div>
             </label>
         </c:if>
-
     </div>
 </nav>
 <!-- Portfolio Section-->
@@ -112,28 +111,6 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    if(document.getElementById("switch")) {
-        const identifiant = document.getElementById('identifiant');
-        const password = document.getElementById('password');
-        const slider = document.getElementById('slider');
-        const switch1 = document.getElementById("switch");
-        const togBtn = document.getElementById("togBtn");
-
-        switch1.addEventListener("click", function () {
-            slider.classList.add('hide');
-            togBtn.classList.add('hide');
-
-            axios.post("Deconnexion")
-                .then(function (response) {
-                    console.log(response);
-
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        });
-    }
-
     function checkInputs() {
         // trim to remove the whitespaces
         const identifiantValue = identifiant.value.trim();
@@ -184,6 +161,26 @@
 
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    }
+
+    if(document.getElementById("switch")){
+        const slider = document.getElementById('slider');
+        const switch1 = document.getElementById("switch");
+        const togBtn = document.getElementById("togBtn");
+
+        switch1.addEventListener("click", function(){
+            slider.classList.add('hide');
+            togBtn.classList.add('hide');
+
+            axios.post("Deconnexion")
+                .then(function (response) {
+                    console.log(response);
+                    window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
     }
 </script>
 <!-- Bootstrap core JS-->

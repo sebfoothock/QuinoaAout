@@ -1,12 +1,11 @@
 package database.write;
 
-import beans.Person;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import servlets.Rechercher;
+import beans.Person;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

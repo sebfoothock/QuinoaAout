@@ -1,7 +1,6 @@
 package connection;
 
 import servlets.Ajouter;
-import servlets.Modifier;
 
 import java.io.IOException;
 import java.io.InputStream;

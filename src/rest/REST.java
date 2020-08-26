@@ -1,6 +1,7 @@
 package rest;
 
 import beans.User;
+import connection.ConfProperties;
 import database.read.ReadUser;
 import servlets.Rechercher;
 
@@ -20,18 +21,18 @@ public class REST {
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
-    String db_host = new connection.ConfProperties().getHostProperties();
+    String db_host = new ConfProperties().getHostProperties();
 
-        @Path("/users")//Rest n'aime pas les majuscules
-        @GET
-        public List<User> getUsers() {
-            if (db_host != null) {
-                ArrayList<User> user = new ReadUser().getUsers(getConnector(db_host));
-                LOG.info("getUser pour les statistiques: "+user.get(0).getIdentifiant());
-                return user;
-            }
-            else{
-                return null;
-            }
+    @Path("/users")//Rest n'aime pas les majuscules
+    @GET
+    public List<User> getUsers() {
+        if (db_host != null) {
+            ArrayList<User> user = new ReadUser().getUsers(getConnector(db_host));
+            LOG.info("getUser pour les statistiques: "+user.get(0).getIdentifiant());
+            return user;
         }
+        else{
+            return null;
+        }
+    }
 }

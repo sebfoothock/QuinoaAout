@@ -1,12 +1,12 @@
 package database.write;
 
-import beans.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
+import beans.User;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +26,7 @@ public class WriteUser {
         public WriteUser() {
         }
         
-        public void addUser( User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
+        public void addUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
