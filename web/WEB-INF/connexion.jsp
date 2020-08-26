@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="histoireLutteNav" action="Histoire" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoires de luttes</a>
                 </li>
             </ul>
         </div>
