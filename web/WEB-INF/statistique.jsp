@@ -77,7 +77,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
         <br>
-        <h1 class="formTitle text-center">Statistique<label id="annee"></label></h1>
+        <h1 class="formTitle text-center">Statistique <label id="annee"></label></h1>
         <div class="row justify-content-md-center">
             <br>
 <%--            <input type="number">--%>
@@ -115,7 +115,7 @@
         var desobeiPeu = 0;
         var desobeiNon = 0;
 
-        axios.get("stats/users")
+        axios.get("Stats")
             .then( (response) => {
 
                 console.log("response: "+response.data)

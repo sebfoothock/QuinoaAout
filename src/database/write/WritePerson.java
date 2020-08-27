@@ -10,6 +10,10 @@ import beans.Person;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Cette classe est destiné a écrire, de modifier ou supprimer le contenue d'un personnage la base de données
+ */
+
 public class WritePerson {
 
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(WritePerson.class);
@@ -20,6 +24,14 @@ public class WritePerson {
 
     public WritePerson() {
     }
+
+    /**
+     * Cette méthode permet de rajouter un personnage de la base de données
+     * @param person objet personnage à ajouter à la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
 
     public void addPerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
@@ -45,6 +57,14 @@ public class WritePerson {
 
         collection.insertOne(document);//insertion dans la collection
     }
+
+    /**
+     * Cette méthode permet de modifier un personnage de la base de données
+     * @param person objet personnage à modifier à la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
 
     public Boolean updatePerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
@@ -81,6 +101,15 @@ public class WritePerson {
 
     }
 
+    /**
+     * Cette méthode permet de supprimmer un personnage de la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @param nom Le nom du personnage à supprimer de la base de données
+     * @return un true si la suppréssion c'est bien fait sinon retourne un false
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
+
     public Boolean deletePerson(MongoClient mongoClient, String nom)  throws IOException, UnsupportedEncodingException {
 
         MongoDatabase db = mongoClient.getDatabase(database);
@@ -96,6 +125,13 @@ public class WritePerson {
         }
 
     }
+
+    /**
+     * Cette méthode permet de vérifier si un personnage à bien été rajouter suite à la fucntion addPerson
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @param nom Le nom du personnage qui a été ajouté de la base de données
+     * @return un true si l'ajout c'est bien fait sinon retourne un false
+     */
 
     public Boolean isAdded(MongoClient mongoClient, String nom){//vérifie si ajouté
         MongoDatabase db = mongoClient.getDatabase(database);

@@ -27,7 +27,7 @@ public class ReadPerson {
 
     /**
      * Cette méthode permet de récupérer le contenu de tout les personnages de la base de données
-     * @param client ?
+     * @param client L'instance du connecteur Mongo DB
      * @return une ArrayList des personnages
      */
 

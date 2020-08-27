@@ -1,6 +1,7 @@
 package test;
 
 import beans.Person;
+import beans.User;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -11,8 +12,11 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 
+import static com.mongodb.client.model.Filters.eq;
 import static connection.MongoConnector.getConnector;
+import static org.junit.Assert.assertEquals;
 
 public class WritePersonTest {
 
@@ -25,12 +29,12 @@ public class WritePersonTest {
 
     @Test
     public void addPersonTest() throws IOException, UnsupportedEncodingException {
-
+        LOG.info("addPersonTest started");
         MongoClient client = getConnector(db_host);
-        Person person = new Person("Gandhy", 1930,"Inde","Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde",
+        Person person = new Person("Gandhy(faux)", 1930,"Inde","Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde",
                 "victoire","anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique",
                 "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires",
-                " 1jour une actu. - Gandhi", "article");
+                "1jour une actu. - Gandhi", "article");
 
         WritePerson w_pers = new WritePerson();
 
@@ -57,13 +61,57 @@ public class WritePersonTest {
         collection.insertOne(document);//insertion dans la collection
     }
 
-    
-//    assertEquals("seb@ephec.be",person.getIdentifiant());
-//    assertEquals("155290511d5c4bfb1369217d6846c8eef1ed6a564579516eaf36cf5598ac92de", user.getPassword());
-//    assertEquals("17/08/2020 00:32",user.getDate());
-//    assertEquals("oui",user.getDesobei());
-//    assertEquals("homme",user.getSexe());
-//    assertEquals("19",user.getAge());
-
+    @Test
+    public void getPersonTest() throws ParseException {//récupérer un utilisateur
+        LOG.info("getPersonTest started");
+        MongoClient client = getConnector(db_host);
+        String nom = "Gandhy";
+        Person person = new Person();
+        MongoDatabase mongo = client.getDatabase(database);
+        MongoCollection<Document> personnages = mongo.getCollection("InfosPersonnage");
+        Document doc = personnages.find(eq("nom", nom)).first();//parcours les utilisateurs de la db et rempli la mémoire
+        if(doc == null){
+            LOG.info("return null");
+        } else {
+            if(doc.isEmpty()){
+                LOG.info("return null (isEmpty)");
+            }
+        }
+        try {
+            person.setNom(doc.getString("nom"));
+            person.setAnnee(doc.getInteger("annee"));
+            person.setLieu(doc.getString("lieu"));
+            person.setLutte(doc.getString("lutte"));
+            person.setStrategie(doc.getString("strategie"));
+            person.setAction(doc.getString("action"));
+            person.setVictoire(doc.getString("victoire"));
+            person.setAnecdote(doc.getString("anecdote"));
+            person.setCitation(doc.getString("citation"));
+            person.setQuestion(doc.getString("question"));
+            person.setReponse1(doc.getString("creation_date"));
+            person.setReponse2(doc.getString("creation_date"));
+            person.setReponse3(doc.getString("creation_date"));
+            person.setVideo(doc.getString("creation_date"));
+            person.setArticle(doc.getString("creation_date"));
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        assertEquals("Gandhy(faux)",person.getNom());
+        assertEquals("1930",person.getAnnee());
+        assertEquals("Inde",person.getLieu());
+        assertEquals("Contre l'injustice",person.getLutte());
+        assertEquals("résistance non-violente",person.getStrategie());
+        assertEquals("l'autonomie de l'Inde",person.getAction());
+        assertEquals("victoire",person.getVictoire());
+        assertEquals("anecdote",person.getAnecdote());
+        assertEquals("citation",person.getCitation());
+        assertEquals("Que vise sa 'marche du Sel' ?",person.getQuestion());
+        assertEquals("Créer un mouvement de masse contre l'occupant britannique",person.getReponse1());
+        assertEquals("Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école",person.getReponse2());
+        assertEquals("Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires",person.getReponse3());
+        assertEquals("1jour une actu. - Gandhi",person.getVideo());
+        assertEquals("article",person.getArticle());
+    }
 
 }

@@ -48,14 +48,18 @@
                     <form id="accueilNav" action="Accueil" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilNav').submit();">Accueil</a>
                 </li>
+                <c:if test="${empty sessionScope.identifiant }">
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="inscriptionNav" action="Inscription" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
                 </li>
+                </c:if>
+                <c:if test="${ !empty sessionScope.identifiant }">
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="quizNav" action="Quiz" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
                 </li>
+                </c:if>
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Histoire de lutte</a>
                 </li>
@@ -93,7 +97,6 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    var questions = [];
     function postdata() {
         var parameter ="";
         $.ajax({
@@ -125,11 +128,6 @@
                     addElem('boutonsHistoire', button);
                     var modal = "";
                     for (var i = 0; i < data.results.length; i++) {
-                        modal += '<div class="col-md-6 col-lg-4 mb-5">\n' +
-                            '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal1">\n' +
-                            '                    <label>' + data.results[i].nom + '</label>\n' +
-                            '                </button>\n' +
-                            '            </div>';
                         modal += '<!-- Portfolio Modal ' + i + '-->\n' +
                             '<div class="portfolio-modal modal fade" id="portfolioModal' + i + '" tabindex="-1" role="dialog"\n' +
                             '     aria-labelledby="portfolioModal1Label" aria-hidden="true">\n' +

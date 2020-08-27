@@ -13,9 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static connection.MongoConnector.getConnector;
-@Path("/stats")
+@Path("/Stats")
 @Produces("application/json")
 @Consumes("application/json")
+
+/**
+ * Cette classe est destiné à utiliser REST
+ */
 public class REST {
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Rechercher.class);
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
@@ -23,7 +27,11 @@ public class REST {
 
     String db_host = new ConfProperties().getHostProperties();
 
-    @Path("/users")//Rest n'aime pas les majuscules
+    /**
+     * Cette méthode permet de récupérer les utilisateurs de la base de données
+     * @return une ArrayList des utilisateurs si dn_host est null renvoie null
+     */
+
     @GET
     public List<User> getUsers() {
         if (db_host != null) {

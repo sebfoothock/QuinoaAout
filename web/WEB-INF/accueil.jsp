@@ -47,14 +47,18 @@
           <form id="accueilNav" action="Accueil" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilNav').submit();">Accueil</a>
         </li>
+        <c:if test="${ empty sessionScope.identifiant }">
         <li class="nav-item mx-0 mx-lg-1">
           <form id="inscriptionNav" action="Inscription" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
         </li>
+        </c:if>
+        <c:if test="${ !empty sessionScope.identifiant }">
         <li class="nav-item mx-0 mx-lg-1">
           <form id="quizNav" action="Quiz" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
         </li>
+        </c:if>
         <li class="nav-item mx-0 mx-lg-1">
           <form id="histoireLutteNav" action="Histoire" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
@@ -232,7 +236,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    alert('<%=request.getAttribute("identifiant")%>');
+    <%--alert('<%=request.getAttribute("identifiant")%>');--%>
 
   if(document.getElementById("switch")){
     const slider = document.getElementById('slider');

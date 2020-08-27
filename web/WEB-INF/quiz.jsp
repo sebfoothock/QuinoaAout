@@ -48,10 +48,6 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('accueilNav').submit();">Accueil</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="inscriptionNav" action="Inscription" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Inscription</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
                     <form id="quizNav" action="Quiz" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
                 </li>
@@ -145,7 +141,7 @@ if(document.getElementById("switch")){
         var parameter ="";
         $.ajax({
             type: "POST",
-            url: "Quiz",
+            url: "Liste",
             data: parameter,
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             dataType: "json",

@@ -54,10 +54,6 @@
                        href="#" onclick="document.getElementById('InscriptionNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="quizNav" action="Quiz" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
                     <form id="histoireLutteNav" action="Histoire" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
                 </li>
@@ -76,10 +72,10 @@
     <div class="container center">
         <h3 class="formTitle text-center">Inscription</h3>
         <div class="row justify-content-md-center">
-            <form id="Connexion" action="Connexion" method="GET"></form>
+            <form id="Quiz" action="Quiz" method="GET"></form>
             <form id="inscriptionForm" class="col-md-10" action="Inscription" method="POST">
                 <div class="wrapper">
-                    <button class="btnLogin btn btn-primary" onclick="document.getElementById('Connexion').submit();">
+                    <button class="btnLogin btn btn-primary" onclick="document.getElementById('Quiz').submit();">
                         <label>Si vous avez déjà un compte</label>
                     </button>
                 </div>

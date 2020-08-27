@@ -39,6 +39,7 @@ public class ReadUserTest {
                 LOG.info("return null (isEmpty)");
             }
         }
+
         try {//récupère l'élément qui est rempli
             user.setIdentifiant(doc.getString("username"));
             user.setPassword(doc.getString("password"));
@@ -57,5 +58,4 @@ public class ReadUserTest {
         assertEquals("homme",user.getSexe());
         assertEquals("19",user.getAge());
     }
-
 }

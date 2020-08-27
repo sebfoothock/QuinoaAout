@@ -16,6 +16,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Cette classe est destiné a écrire, de modifier ou supprimer le contenue d'un utilisateur la base de données
+ */
+
 public class WriteUser {
     private final String database = "security_realm";
 
@@ -25,6 +29,14 @@ public class WriteUser {
 
         public WriteUser() {
         }
+
+    /**
+     * Cette méthode permet de rajouter un utilisateurs de la base de données
+     * @param user objet user à ajouter à la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
         
         public void addUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
@@ -35,6 +47,9 @@ public class WriteUser {
             MongoDatabase db = mongoClient.getDatabase(database);
             MongoCollection<Document> collection = db.getCollection("authentification");
 
+            /*
+            hachage mot de passe en SHA-256
+             */
             String password =  user.getPassword();
             MessageDigest messageDigest = null;
             try {
@@ -64,6 +79,14 @@ public class WriteUser {
 
         }
 
+    /**
+     * Cette méthode permet de modifier un utilisateurs de la base de données
+     * @param user objet user à modifier à la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
+
         public void updateUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
             BasicDBObject query = new BasicDBObject("username", user.getIdentifiant());
@@ -82,6 +105,14 @@ public class WriteUser {
             collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
         }
 
+    /**
+     * Cette méthode permet de supprimer un utilisateurs de la base de données
+     * @param identifiant L'identifiant de l'utilisateur à supprimer de la base de données
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
+
         public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException, UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
@@ -90,6 +121,13 @@ public class WriteUser {
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
             collection.deleteMany(query);
         }
+
+    /**
+     * Cette méthode permet de vérifier si un utilisateur à bien été rajouter suite à la fucntion addUser
+     * @param mongoClient L'instance du connecteur Mongo DB
+     * @param identifiant L'identifiant de l'utilisateur qui a été ajouté de la base de données
+     * @return un true si l'ajout c'est bien fait sinon retourne un false
+     */
 
     public Boolean isAdded(MongoClient mongoClient, String identifiant){//vérifie si ajouté
         MongoDatabase db = mongoClient.getDatabase(database);

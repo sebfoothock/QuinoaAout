@@ -3,6 +3,10 @@ package beans;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+/**
+ * Cette classe défini un objet Person qui correspond à un personnage qui a été désobéissant dans sa vie
+ */
+
 public class User {
     String identifiant;
     String password;
@@ -11,6 +15,18 @@ public class User {
     String desobei;
     String date;
     ArrayList<String> roles;
+
+    /**
+     *
+     * @param identifiant
+     * @param password
+     * @param age
+     * @param sexe
+     * @param desobei
+     * @param date
+     * @param roles
+     * @throws ParseException
+     */
 
 
     public User(String identifiant, String password, String age, String sexe, String desobei, String date, ArrayList<String> roles) throws ParseException {
