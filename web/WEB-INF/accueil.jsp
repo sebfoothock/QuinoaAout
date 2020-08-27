@@ -61,7 +61,7 @@
         </c:if>
         <li class="nav-item mx-0 mx-lg-1">
           <form id="histoireLutteNav" action="Histoire" method="GET"></form>
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoire de lutte</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoires de luttes</a>
         </li>
         <c:if test="${ !empty sessionScope.role }">
         <li class="nav-item mx-0 mx-lg-1">
@@ -209,7 +209,7 @@
       </div>
       <!-- Footer About Text-->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">Dévelloper par</h4>
+        <h4 class="text-uppercase mb-4">Développé par</h4>
         <p class="lead mb-0">
           étudiant en IT à l'EPHEC
           <br>
