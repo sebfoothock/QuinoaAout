@@ -1,11 +1,10 @@
-package database.write;
+package servlets;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import beans.Person;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -29,8 +28,8 @@ public class WritePerson {
      * Cette méthode permet de rajouter un personnage de la base de données
      * @param person objet personnage à ajouter à la base de données
      * @param mongoClient L'instance du connecteur Mongo DB
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si les entrées de l'objet person n'arrivent pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de l'objet person n'est pas supporté
      */
 
     public void addPerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
@@ -62,8 +61,8 @@ public class WritePerson {
      * Cette méthode permet de modifier un personnage de la base de données
      * @param person objet personnage à modifier à la base de données
      * @param mongoClient L'instance du connecteur Mongo DB
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si les entrées de l'objet person n'arrivent pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de l'objet person n'est pas supporté
      */
 
     public Boolean updatePerson(Person person, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
@@ -91,7 +90,7 @@ public class WritePerson {
                 .append("video", person.getVideo())
                 .append("article", person.getArticle())
         );
-        long nb_modified = collection.updateOne(query, update).getModifiedCount();//collection.updateOne(query, update, new UpdateOptions().upsert(true)); query = modifie un user sur base de son identifiant , updateOne = modifier un seul document, UpdateOption = si la donnée n'existe pas il va la créer
+        long nb_modified = collection.updateOne(query, update).getModifiedCount();//query = modifie un user sur base de son identifiant , updateOne = modifier un seul document, UpdateOption = si la donnée n'existe pas il va la créer
         LOG.info("nb_modified: "+nb_modified);
         if(nb_modified > 0){
             return true;
@@ -106,8 +105,8 @@ public class WritePerson {
      * @param mongoClient L'instance du connecteur Mongo DB
      * @param nom Le nom du personnage à supprimer de la base de données
      * @return un true si la suppréssion c'est bien fait sinon retourne un false
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si l'entré nom n'arrive pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de nom n'est pas supporté
      */
 
     public Boolean deletePerson(MongoClient mongoClient, String nom)  throws IOException, UnsupportedEncodingException {

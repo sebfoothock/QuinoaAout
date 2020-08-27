@@ -1,18 +1,22 @@
 package test;
 
-import beans.User;
+import servlets.User;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.junit.Test;
-import connection.ConfProperties;
+import servlets.ConfProperties;
 
 import java.text.ParseException;
 
 import static com.mongodb.client.model.Filters.eq;
-import static connection.MongoConnector.getConnector;
+import static servlets.MongoConnector.getConnector;
 import static org.junit.Assert.assertEquals;
+
+/**
+ * Cette classe permet de tester la récupération des informations d'un utilisateur dans la base de données
+ */
 
 public class ReadUserTest {
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ReadUserTest.class);
@@ -22,6 +26,11 @@ public class ReadUserTest {
     private final String dbName = "security_realm";
     private final String Utilisateurs = "authentification";
     String db_host = new ConfProperties().getHostProperties();
+
+    /**
+     * Cette méthode test la méthode getUser
+     * @throws ParseException si il y a eu un problème lors du changement de type
+     */
 
     @Test
     public void getUserTest() throws ParseException {//récupérer un utilisateur

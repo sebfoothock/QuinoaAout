@@ -1,9 +1,6 @@
 package servlets;
 
-import beans.User;
 import com.google.gson.JsonObject;
-import connection.ConfProperties;
-import database.write.WriteUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +12,11 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import static connection.MongoConnector.getConnector;
+import static servlets.MongoConnector.getConnector;
+
+/**
+ * Cette classe est le servlet de la page inscription et qui gérer les requêtes HTTP pour celle-ci
+ */
 
 @WebServlet(name = "Inscription")
 public class Inscription extends HttpServlet {
@@ -24,12 +25,11 @@ public class Inscription extends HttpServlet {
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
 
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Cette méthode permet d'envoyer et recevoir des requête de la DB pour créer un nouvelle utilisateur
+     * @param request cet objet contient la requête HTTP du servlet
+     * @param response cet objet initialise la réponse HTTP du servlet
+     * @throws ServletException si le servlet rencontre des difficultés
+     * @throws IOException si l'entré request ou la sortie response n'arrivent pas à être lu
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -83,6 +83,14 @@ public class Inscription extends HttpServlet {
             //System.out.println("Erreur: "+ex);
         }
     }
+
+    /**
+     * Cette méthode permet d'afficher la page inscription
+     * @param request cet objet contient la requête HTTP du servlet
+     * @param response cet objet initialise la réponse HTTP du servlet
+     * @throws ServletException si le servlet rencontre des difficultés
+     * @throws IOException si l'entrée request ou la sortie response n'arrivent pas à être lu
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/inscription.jsp";

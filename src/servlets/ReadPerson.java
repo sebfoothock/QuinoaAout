@@ -1,4 +1,4 @@
-package database.read;
+package servlets;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -8,7 +8,6 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import beans.Person;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;

@@ -1,8 +1,8 @@
-package rest;
+package servlets;
 
-import beans.User;
-import connection.ConfProperties;
-import database.read.ReadUser;
+import servlets.User;
+import servlets.ConfProperties;
+import servlets.ReadUser;
 import servlets.Rechercher;
 
 import javax.ws.rs.Consumes;
@@ -12,15 +12,15 @@ import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
 
-import static connection.MongoConnector.getConnector;
+import static servlets.MongoConnector.getConnector;
 @Path("/Stats")
 @Produces("application/json")
 @Consumes("application/json")
 
 /**
- * Cette classe est destiné à utiliser REST
+ * Cette classe a pour but d'utiliser REST pour communiquer avec la DB
  */
-public class REST {
+public class Stats {
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Rechercher.class);
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
@@ -29,7 +29,7 @@ public class REST {
 
     /**
      * Cette méthode permet de récupérer les utilisateurs de la base de données
-     * @return une ArrayList des utilisateurs si dn_host est null renvoie null
+     * @return une ArrayList des utilisateurs
      */
 
     @GET

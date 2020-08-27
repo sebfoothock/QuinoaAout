@@ -1,6 +1,5 @@
-package database.read;
+package servlets;
 
-import beans.User;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -62,7 +61,7 @@ public class ReadUser {
      * @param client L'instance du connecteur Mongo DB
      * @param identifiant L'email de l'utilisateur
      * @return un objet User avec les informations de l'utilisateur
-     * @throws ParseException
+     * @throws ParseException si il y a eu un problème lors du changement de type
      */
 
     public User getUser(MongoClient client, String identifiant) throws ParseException {//récupérer un utilisateur

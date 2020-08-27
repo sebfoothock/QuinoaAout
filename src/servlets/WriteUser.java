@@ -1,12 +1,10 @@
-package database.write;
+package servlets;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
-import beans.User;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,8 +32,8 @@ public class WriteUser {
      * Cette méthode permet de rajouter un utilisateurs de la base de données
      * @param user objet user à ajouter à la base de données
      * @param mongoClient L'instance du connecteur Mongo DB
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si les entrées de l'objet user n'arrivent pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de l'objet user n'est pas supporté
      */
         
         public void addUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
@@ -83,11 +81,11 @@ public class WriteUser {
      * Cette méthode permet de modifier un utilisateurs de la base de données
      * @param user objet user à modifier à la base de données
      * @param mongoClient L'instance du connecteur Mongo DB
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si les entrées de l'objet person n'arrivent pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de l'objet person n'est pas supporté
      */
 
-        public void updateUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
+        public Boolean updateUser(User user, MongoClient mongoClient) throws IOException, UnsupportedEncodingException {
 
             BasicDBObject query = new BasicDBObject("username", user.getIdentifiant());
 
@@ -102,24 +100,38 @@ public class WriteUser {
                     .append("sexe", user.getSexe())
                     .append("desobei", user.getDesobei())
             );
-            collection.updateOne(query, update, new UpdateOptions().upsert(true));// query = modifie un user sur base de son identifiant , update = élément à modifier, UpdateOption = si la donnée n'existe pas il va la créer
+            long nb_modified = collection.updateOne(query, update).getModifiedCount();//query = modifie un user sur base de son identifiant , updateOne = modifier un seul document, UpdateOption = si la donnée n'existe pas il va la créer
+            LOG.info("nb_modified: "+nb_modified);
+            if(nb_modified > 0){
+                return true;
+            } else {
+                return false;
+            }
         }
 
     /**
      * Cette méthode permet de supprimer un utilisateurs de la base de données
      * @param identifiant L'identifiant de l'utilisateur à supprimer de la base de données
      * @param mongoClient L'instance du connecteur Mongo DB
-     * @throws IOException
-     * @throws UnsupportedEncodingException
+     * @throws IOException si l'entré identifiant n'arrive pas à être lu
+     * @throws UnsupportedEncodingException si un des caractères de identifiant n'est pas supporté
      */
 
-        public void deleteUser(MongoClient mongoClient, String identifiant)  throws IOException, UnsupportedEncodingException {
+        public Boolean deleteUser(MongoClient mongoClient, String identifiant)  throws IOException, UnsupportedEncodingException {
 
             MongoDatabase db = mongoClient.getDatabase(database);
             BasicDBObject query = new BasicDBObject("username", identifiant);
 
             MongoCollection<Document> collection = db.getCollection("Utilisateurs");
             collection.deleteMany(query);
+
+            long nb_deleted = collection.deleteMany(query).getDeletedCount();//donne le nombre de element supprimé
+            LOG.info("nb deleted: "+nb_deleted);
+            if(nb_deleted > 0){
+                return true;
+            } else {
+                return false;
+            }
         }
 
     /**

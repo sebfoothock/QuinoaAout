@@ -1,6 +1,4 @@
-package connection;
-
-import servlets.Ajouter;
+package servlets;
 
 import java.io.IOException;
 import java.io.InputStream;

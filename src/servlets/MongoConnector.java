@@ -1,4 +1,4 @@
-package connection;
+package servlets;
 
 import com.mongodb.MongoClient;
 

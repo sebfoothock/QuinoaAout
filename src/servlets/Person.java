@@ -1,4 +1,4 @@
-package beans;
+package servlets;
 
 /**
  * Cette classe défini un objet Person qui correspond à un personnage qui a été désobéissant dans sa vie
@@ -6,21 +6,21 @@ package beans;
 
 public class Person {
 
-    String nom;
-    Integer annee;
-    String lieu;
-    String lutte;
-    String strategie;
-    String action;
-    String victoire;
-    String anecdote;
-    String citation;
-    String question;
-    String reponse1;
-    String reponse2;
-    String reponse3;
-    String video;
-    String article;
+    private String nom;
+    private Integer annee;
+    private String lieu;
+    private String lutte;
+    private String strategie;
+    private String action;
+    private String victoire;
+    private String anecdote;
+    private String citation;
+    private String question;
+    private String reponse1;
+    private String reponse2;
+    private String reponse3;
+    private String video;
+    private String article;
 
     /**
      *

@@ -1,4 +1,4 @@
-package beans;
+package servlets;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -8,13 +8,13 @@ import java.util.ArrayList;
  */
 
 public class User {
-    String identifiant;
-    String password;
-    String age;
-    String sexe;
-    String desobei;
-    String date;
-    ArrayList<String> roles;
+    private String identifiant;
+    private String password;
+    private String age;
+    private String sexe;
+    private String desobei;
+    private String date;
+    private ArrayList<String> roles;
 
     /**
      *

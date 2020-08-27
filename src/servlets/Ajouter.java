@@ -1,9 +1,6 @@
 package servlets;
 
-import beans.Person;
 import com.google.gson.JsonObject;
-import connection.ConfProperties;
-import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,13 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static connection.MongoConnector.getConnector;
+import static servlets.MongoConnector.getConnector;
+
+/**
+ * Cette classe est le servlet de la page ajouter et qui gérer les requêtes HTTP pour celle-ci
+ */
 
 @WebServlet(name = "Ajouter")
 public class Ajouter extends HttpServlet {
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Ajouter.class);
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;
     org.apache.log4j.Level verbose = org.apache.log4j.Level.ALL;
+
+    /**
+     * Cette méthode permet d'envoyer et recevoir des requête de la DB pour ajouter un nouveau personnage de la DB
+     * @param request cet objet contient la requête HTTP du servlet
+     * @param response cet objet initialise la réponse HTTP du servlet
+     * @throws ServletException si le servlet rencontre des difficultés
+     * @throws IOException si l'entrée request ou la sortie response n'arrivent pas à être lu
+     */
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -86,6 +95,13 @@ public class Ajouter extends HttpServlet {
         }
     }
 
+    /**
+     * Cette méthode permet d'afficher la page ajouter
+     * @param request cet objet contient la requête HTTP du servlet
+     * @param response cet objet initialise la réponse HTTP du servlet
+     * @throws ServletException si le servlet rencontre des difficultés
+     * @throws IOException si l'entrée request ou la sortie response n'arrivent pas à être lu
+     */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
