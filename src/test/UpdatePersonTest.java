@@ -1,11 +1,11 @@
 package test;
 
-import servlets.Person;
+import beans.Person;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import servlets.ConfProperties;
+import connection.ConfProperties;
 import org.bson.Document;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import static com.mongodb.client.model.Filters.eq;
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 

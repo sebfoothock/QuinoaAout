@@ -1,6 +1,10 @@
 package servlets;
 
+import beans.Person;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.read.ReadPerson;
+import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 
 /**
  * Cette classe est le servlet de la page modifier et qui gérer les requêtes HTTP pour celle-ci

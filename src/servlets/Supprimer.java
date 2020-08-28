@@ -1,6 +1,8 @@
 package servlets;
 
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.write.WritePerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 
 /**
  * Cette classe est le servlet de la page supprimer et qui gérer les requêtes HTTP pour celle-ci

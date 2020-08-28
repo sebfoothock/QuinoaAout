@@ -1,6 +1,9 @@
 package servlets;
 
+import beans.User;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.write.WriteUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +15,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 
 /**
  * Cette classe est le servlet de la page inscription et qui gérer les requêtes HTTP pour celle-ci

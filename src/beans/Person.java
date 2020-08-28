@@ -1,4 +1,4 @@
-package servlets;
+package beans;
 
 /**
  * Cette classe défini un objet Person qui correspond à un personnage qui a été désobéissant dans sa vie

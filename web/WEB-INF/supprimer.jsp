@@ -126,7 +126,6 @@
                 if(result){
                     var element1 = document.getElementById("nom").value;
                     var parameter = "nom=" + element1;
-                    alert(parameter);
                     result = null;
                     $.ajax({
                         type: "POST",

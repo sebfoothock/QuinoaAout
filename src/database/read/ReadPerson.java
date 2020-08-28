@@ -1,4 +1,4 @@
-package servlets;
+package database.read;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import beans.Person;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -38,7 +39,7 @@ public class ReadPerson {
         try {
             while (iterator.hasNext()) {//parcours la collection et récupère ses éléments
                 Document doc = iterator.next();
-                Person personnage = new Person("Gandhy", 1930, "Inde", "Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde", "victoire", "anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique", "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires", " 1jour une actu. - Gandhi", "article");
+                Person personnage = new Person();
                 personnage.setNom(doc.getString("nom"));
                 personnage.setAnnee(doc.getInteger("periode"));
                 personnage.setLieu(doc.getString("lieu"));
@@ -58,7 +59,7 @@ public class ReadPerson {
             }
         }
         catch (Exception e){
-            System.out.println(e);
+            LOG.error(e);
         }
         finally {//pour vider la mémoire utiliser
             iterator.close();
@@ -102,7 +103,7 @@ public class ReadPerson {
             personnage.setArticle(doc.getString("article"));
         }
         catch (Exception e) {
-            System.out.println(e);
+            LOG.error(e);
         }
         return personnage;
     }

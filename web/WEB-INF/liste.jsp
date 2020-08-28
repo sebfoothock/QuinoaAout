@@ -99,7 +99,7 @@
         var parameter ="";
         $.ajax({
             type: "POST",
-            url: "Liste",
+            url: "Histoire",
             data: parameter,
             dataType: "json",
             success: function( data, textStatus, jqXHR) {

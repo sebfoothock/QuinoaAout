@@ -1,10 +1,12 @@
-package servlets;
+package database.read;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import beans.User;
+
 import static com.mongodb.client.model.Filters.eq;
 
 import java.text.ParseException;

@@ -4,14 +4,14 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import servlets.ConfProperties;
+import connection.ConfProperties;
 import org.bson.Document;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -24,7 +24,7 @@ public class DeletePersonTest {
     String db_host = new ConfProperties().getHostProperties();
 
     @Test
-    public void deletePerson()  throws IOException, UnsupportedEncodingException {
+    public void deletePersonTest()  throws IOException, UnsupportedEncodingException {
         LOG.info("DeletePersonTest started");
         String nom = "Gandhy(faux)";
         MongoClient client = getConnector(db_host);

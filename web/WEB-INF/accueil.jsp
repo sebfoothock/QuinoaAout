@@ -63,7 +63,7 @@
           <form id="histoireLutteNav" action="Histoire" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoires de luttes</a>
         </li>
-        <c:if test="${ !empty sessionScope.role }">
+        <c:if test="${ sessionScope.role == 'admin' }">
         <li class="nav-item mx-0 mx-lg-1">
           <form id="AjouterNav" action="Ajouter" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('AjouterNav').submit();">Admin</a>
@@ -73,8 +73,10 @@
     </div>
     <c:if test="${ !empty sessionScope.identifiant }">
       <label id="switch">
-        <input type="checkbox" id="togBtn">
-        <div id="slider" class="slider round"></div>
+        <form id="decoform" action="Deconnexion" method="post">
+          <input type="checkbox" id="togBtn">
+          <div id="slider" class="slider round"></div>
+        </form>
       </label>
     </c:if>
   </div>
@@ -236,7 +238,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    <%--alert('<%=request.getAttribute("identifiant")%>');--%>
+    <%--alert("${sessionScope.identifiant}");--%>
 
   if(document.getElementById("switch")){
     const slider = document.getElementById('slider');
@@ -247,14 +249,9 @@
       slider.classList.add('hide');
       togBtn.classList.add('hide');
 
-      axios.post("Deconnexion")
-              .then(function (response) {
-                console.log(response);
-                window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+
+      document.getElementById("decoform").submit();
+
     });
   }
 </script>

@@ -1,10 +1,11 @@
-package servlets;
+package database.write;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import beans.Person;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -39,7 +40,7 @@ public class WritePerson {
 
         Document document = new Document();
         document.append("nom", person.getNom())
-                .append("annee", person.getAnnee())
+                .append("periode", person.getAnnee())
                 .append("lieu", person.getLieu())
                 .append("lutte", person.getLutte())
                 .append("strategie", person.getStrategie())

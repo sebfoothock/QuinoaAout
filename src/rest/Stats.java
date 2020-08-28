@@ -1,9 +1,9 @@
-package servlets;
+package rest;
 
-import servlets.User;
-import servlets.ConfProperties;
-import servlets.ReadUser;
+import connection.ConfProperties;
+import database.read.ReadUser;
 import servlets.Rechercher;
+import beans.User;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 @Path("/Stats")
 @Produces("application/json")
 @Consumes("application/json")

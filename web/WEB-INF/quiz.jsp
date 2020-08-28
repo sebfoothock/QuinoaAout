@@ -141,7 +141,7 @@ if(document.getElementById("switch")){
         var parameter ="";
         $.ajax({
             type: "POST",
-            url: "Liste",
+            url: "Histoire",
             data: parameter,
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             dataType: "json",

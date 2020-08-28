@@ -1,8 +1,11 @@
 package servlets;
 
+import beans.Person;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import connection.ConfProperties;
+import database.read.ReadPerson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import static servlets.MongoConnector.getConnector;
+import static connection.MongoConnector.getConnector;
 
 /**
  * Cette classe est le servlet de la page rechercher et qui gérer les requêtes HTTP pour celle-ci
@@ -54,6 +57,7 @@ public class Rechercher extends HttpServlet {
             if(db_host != null) {
             Person pers = new ReadPerson().getPerson(getConnector(db_host),identifiant);//ajout : appel writePerso & supprimer : appel deletePerson
             LOG.info("Nom: "+ pers.getNom());
+            LOG.info("Annee: "+ (pers.getAnnee()));
             //System.out.println("Nom: "+pers.getNom());
             ArrayList<String> result = new ArrayList<>();
             result.add(String.valueOf(pers.getAnnee()));
