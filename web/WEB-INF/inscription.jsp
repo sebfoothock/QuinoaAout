@@ -79,7 +79,7 @@
                         <label>Si vous avez déjà un compte</label>
                     </button>
                 </div>
-                <div class="form-group">
+                <div class="form-inscription">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="identifiant" />
                     <div class="erreurChamp">
@@ -87,7 +87,7 @@
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="form-inscription">
                     <label for="password"><h6>Mot de Passe</h6></label>
                     <input type="password" placeholder="" id="password" class="champText" name="password" />
                     <div class="erreurChamp">
@@ -95,7 +95,7 @@
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="form-inscription">
                     <label for="password2"><h6>Vérification Mot de passe</h6></label>
                     <input type="password" placeholder="" id="password2" class="champText" name="password2"/>
                     <div class="erreurChamp">
@@ -342,7 +342,11 @@
                 dataType: "json",//format de donnée reçu
                 success: function (data){
                     console.log('success', data);
-                    window.location.replace("http://localhost:8080/Quinoa_war_exploded/Quiz?inscrit=1");
+                    // window.location.replace("http://localhost:8080/Quinoa_war_exploded/Quiz?inscrit=1");
+                    $.ajax({
+                        method: "GET",
+                        url: "Quiz",
+                    });
                 },
                 error: function(data){
                     bootbox.alert("Erreur lors de l'inscription");
@@ -356,7 +360,7 @@
     function setErrorFor(input, message) {
         const formControl = input.parentElement;
         const small = formControl.querySelector('small');
-        formControl.className = 'form-group error';
+        formControl.className = 'form-inscription error';
         small.innerText = message;
     }
 

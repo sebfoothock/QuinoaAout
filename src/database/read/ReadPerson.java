@@ -1,17 +1,28 @@
 package database.read;
 
+import beans.Person;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.GridFSDownloadStream;
+import com.mongodb.client.gridfs.model.GridFSDownloadOptions;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import beans.Person;
+import org.bson.types.ObjectId;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Cette classe est destiné a lire le contenue d'un ou de tout les personnages de la base de données
@@ -41,7 +52,7 @@ public class ReadPerson {
                 Document doc = iterator.next();
                 Person personnage = new Person();
                 personnage.setNom(doc.getString("nom"));
-                personnage.setAnnee(doc.getInteger("periode"));
+                personnage.setAnnee(doc.getInteger("annee"));
                 personnage.setLieu(doc.getString("lieu"));
                 personnage.setLutte(doc.getString("lutte"));
                 personnage.setStrategie(doc.getString("strategie"));
@@ -86,8 +97,9 @@ public class ReadPerson {
             return null;
         }
         try {//récupère l'élément qui est rempli
+            personnage.setId(doc.getObjectId("_id"));
             personnage.setNom(doc.getString("nom"));
-            personnage.setAnnee(doc.getInteger("periode"));
+            personnage.setAnnee(doc.getInteger("annee"));
             personnage.setLieu(doc.getString("lieu"));
             personnage.setLutte(doc.getString("lutte"));
             personnage.setStrategie(doc.getString("strategie"));
@@ -106,6 +118,70 @@ public class ReadPerson {
             LOG.error(e);
         }
         return personnage;
+    }
+
+    public String getNomById(MongoClient client, String id){
+        Person personnage = new Person("Gandhy", 1930, "Inde", "Contre l'injustice", "résistance non-violente", "l'autonomie de l'Inde", "victoire", "anecdote", "citation", "Que vise sa 'marche du Sel' ?", "Créer un mouvement de masse contre l'occupant britannique", "Mettre en évidence les distances parcourues par les enfants indiens pour rejoindre leur école", "Visibiliser le fait que la majorité des Indien·n·e·s n'ont accès qu'à certaines denrées alimentaires", " 1jour une actu. - Gandhi", "article");
+        MongoDatabase mongo = client.getDatabase(dbName);
+        MongoCollection <Document> personnages = mongo.getCollection(Personnages);
+        DBObject query = new BasicDBObject();
+        System.out.println("QUERY: "+id);
+        ObjectId objectId = new ObjectId(id);
+        query.put("_id", objectId);
+        String result = "";
+        Document doc = personnages.find((Bson) query).first();//parcours les utilisateurs de la db et rempli la mémoire
+        if(doc.isEmpty()){
+            return null;
+        }
+        try {//récupère l'élément qui est rempli
+            result = doc.getString("nom");
+        }
+        catch (Exception e) {
+            LOG.error(e);
+        }
+        return result;
+    }
+
+    public FileOutputStream getImgPerso(String fileName, MongoClient mongoClient){
+        MongoDatabase myDatabase = mongoClient.getDatabase(dbName);
+        GridFSBucket gridFSBucket = GridFSBuckets.create(myDatabase, "imgPerso");
+        try {
+            FileOutputStream streamToDownloadTo = new FileOutputStream(fileName);
+            GridFSDownloadOptions downloadOptions = new GridFSDownloadOptions().revision(0);
+            gridFSBucket.downloadToStream(fileName, streamToDownloadTo, downloadOptions);
+            streamToDownloadTo.close();
+            return streamToDownloadTo;
+        } catch (IOException e) {
+            LOG.error(e);
+        }
+        return null;
+    }
+
+    public byte[] findImg(String nom,MongoClient mongoClient) {
+//        byte[] originalBytes = nom.getBytes(StandardCharsets.ISO_8859_1);
+//        nom = new String(originalBytes, StandardCharsets.UTF_8);
+        try {
+            MongoDatabase database = mongoClient.getDatabase(dbName);
+            GridFSBucket gridBucket = GridFSBuckets.create(database,"imgPerso");
+
+            GridFSFile gridFSFile = gridBucket.find(eq("metadata.perso", nom)).first();
+            LOG.info("Nom:- " + nom);
+            LOG.info("File Name:- " + gridFSFile.getFilename());
+            LOG.info("Meta Data:- " + gridFSFile.getObjectId());
+
+            GridFSDownloadStream downloadStream = gridBucket.openDownloadStream(gridFSFile.getObjectId());//télécharge l'image depuis mongoDB
+            int fileLength = (int) downloadStream.getGridFSFile().getLength();
+            byte[] data = new byte[fileLength];
+            downloadStream.read(data);//conversion du bucket en byte
+            downloadStream.close();
+            LOG.info("fileLength:- " + fileLength);
+            LOG.info("File Name:- " + downloadStream.getGridFSFile().getFilename());
+            LOG.info("data length:- " + data.length);
+            return data;
+        } catch (Exception e) {
+            LOG.error(e);
+        }
+        return null;
     }
 }
 

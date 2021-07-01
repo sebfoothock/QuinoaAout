@@ -45,8 +45,18 @@
     </servlet>
 
     <servlet>
+        <servlet-name>AjouterImg</servlet-name>
+        <servlet-class>servlets.AjouterImg</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>Modifier</servlet-name>
         <servlet-class>servlets.Modifier</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ModifierImg</servlet-name>
+        <servlet-class>servlets.ModifierImg</servlet-class>
     </servlet>
 
     <servlet>
@@ -107,8 +117,18 @@
     </servlet-mapping>
 
     <servlet-mapping>
+        <servlet-name>AjouterImg</servlet-name>
+        <url-pattern>/AjouterImg</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
         <servlet-name>Modifier</servlet-name>
         <url-pattern>/Modifier</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ModifierImg</servlet-name>
+        <url-pattern>/ModifierImg</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -149,8 +169,8 @@
             <http-method>POST</http-method>
             <http-method>GET</http-method>
         </web-resource-collection>
-        <auth-constraint><!-- il faut une authentification-->
-            <role-name>*</role-name>
+        <auth-constraint>
+           <role-name>*</role-name>
         </auth-constraint>
     </security-constraint>
 
@@ -164,6 +184,7 @@
             <url-pattern>/Histoire</url-pattern>
             <url-pattern>/Inscription</url-pattern>
             <url-pattern>/Liste</url-pattern>
+            <url-pattern>/Quiz</url-pattern>
             <url-pattern>/</url-pattern>
             <url-pattern>/test</url-pattern>
             <url-pattern>/img/*</url-pattern>
@@ -189,10 +210,10 @@
 
 
     <login-config>
-        <auth-method>FORM</auth-method><!-- défini le type d'authentification-->
+        <auth-method>FORM</auth-method>
         <realm-name>MongoDBRealm</realm-name>
         <form-login-config>
-            <form-login-page>/WEB-INF/connexion.jsp</form-login-page><!-- indique le lieu du formulaire-->
+            <form-login-page>/WEB-INF/connexion.jsp</form-login-page>
             <form-error-page>/WEB-INF/500.jsp</form-error-page>
         </form-login-config>
     </login-config>
@@ -203,7 +224,7 @@
         </session-timeout>
     </session-config>
 
-    <!-- Security roles referenced by this web application -->
+
     <security-role>
         <role-name>admin</role-name>
     </security-role>

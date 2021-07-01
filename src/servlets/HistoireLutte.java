@@ -4,6 +4,8 @@ import beans.Person;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mongodb.client.gridfs.GridFSDownloadStream;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import connection.ConfProperties;
 import database.read.ReadPerson;
 
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import static connection.MongoConnector.getConnector;
 
@@ -52,6 +55,16 @@ public class HistoireLutte extends HttpServlet {
 
             if(db_host != null) {
                 ArrayList<Person> pers = new ReadPerson().getPersons(getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
+                for(Person p:pers){
+                    byte[] data = new ReadPerson().findImg(p.getNom(),getConnector(db_host));
+                    if(data != null){
+                        String base64Image = Base64.getEncoder().encodeToString(data);
+                        LOG.info("base64Image: "+base64Image);
+                        p.setImg(base64Image);
+                    } else {
+                        LOG.info("data is null");
+                    }
+                }
                 Gson gson = new Gson();
                 JsonObject myObj = new JsonObject();
 
@@ -62,7 +75,9 @@ public class HistoireLutte extends HttpServlet {
                 } else {
                     myObj.addProperty("success", false);
                 }
+                LOG.debug("bdcObj: "+bdcObj.toString());
                 myObj.add("results", bdcObj);
+                LOG.debug("myObj: "+myObj.toString());
                 out.println(myObj.toString());
             }
             out.close();

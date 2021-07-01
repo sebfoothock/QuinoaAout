@@ -74,6 +74,7 @@ public class Rechercher extends HttpServlet {
             result.add(pers.getCitation());
             result.add(pers.getVideo());
             result.add(pers.getQuestion());
+            result.add(pers.getId().toString());
 
             Gson gson = new Gson();
             JsonObject myObj = new JsonObject();

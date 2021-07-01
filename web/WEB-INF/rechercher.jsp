@@ -34,9 +34,9 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <form id="retourSiteNav" action="Accueil" method="GET"></form>
-        <Button class="btnLogin btn btn-primary" onclick="document.getElementById('retourSiteNav').submit();">
+        <button class="btnLogin btn btn-primary" onclick="document.getElementById('retourSiteNav').submit();">
             <label>Retour au site</label>
-        </Button>
+        </button>
         <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"

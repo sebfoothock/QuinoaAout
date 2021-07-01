@@ -57,8 +57,8 @@ public class ReadSession {
 
     /**
      * Cette méthode permet de trouver quelle est la session la plus récente de la base de données
-     * @param listsessions
-     * @return
+     * @param listsessions dfsd
+     * @return dsfsdf
      */
 
     public Session getLastSession(ArrayList<Session> listsessions) throws ParseException {

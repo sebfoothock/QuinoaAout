@@ -50,7 +50,7 @@
                 </li>
                 <c:if test="${empty sessionScope.identifiant }">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="inscriptionNav" action="Inscription" method="GET"></form>
+                    <form id="inscriptionNav" action="Quiz" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
                 </li>
                 </c:if>
@@ -79,7 +79,7 @@
         <!-- Portfolio Section Heading-->
         <br>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-            Histoire de Lutte
+            Histoires de Luttes
         </h2>
         <br>
         <h6 class="text-center text-info">Vous retrouverez ci-dessous des informations des personnages du quiz</h6>
@@ -98,11 +98,9 @@
 
 <script>
     function postdata() {
-        var parameter ="";
         $.ajax({
             type: "POST",
             url: "Histoire",
-            data: parameter,
             dataType: "json",
             success: function( data, textStatus, jqXHR) {
                 if (data.success) {
@@ -119,11 +117,9 @@
 
                     var button = "";
                     for (var i = 0; i < data.results.length; i++) {
-                        button += '<div class="divHistoire col-md-6 col-lg-4 mb-5">\n' +
-                            '                <button type="button" class="btnHistoire btn btn-primary" data-toggle="modal" data-target="#portfolioModal' + i + '">\n' +
-                            '                    <label>' + data.results[i].nom + '</label>\n' +
-                            '                </button>\n' +
-                            '            </div>';
+                        button += '<div class="btnImgHistoire" data-toggle="modal" data-target="#portfolioModal' + i + '">'+
+                            '                <img class="img-fluid" src="data:image/jpeg;base64,' + data.results[i].base64Image + '" alt="miniaturePersonnsage" />' +
+                            '       </div>';
                     }
                     addElem('boutonsHistoire', button);
                     var modal = "";
@@ -144,6 +140,9 @@
                             '                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"\n' +
                             '                                id="portfolioModal1Label">';
                         modal += data.results[i].nom + '</h2>';
+                        modal +=    '<br>';
+                        modal += '<!-- Portfolio Modal - Image-->';
+                        modal += '<img class="img-fluid rounded mb-5" src="data:image/jpeg;base64,' + data.results[i].base64Image + '" />';
                         modal += '<!-- Portfolio Modal - Text-->\n';
                         modal +=    '<br>' +
                         '                            <p class="mb-5">'+
@@ -177,7 +176,7 @@
 
                         modal += '<button class="btn btn-primary" data-dismiss="modal">\n' +
                             '                                <i class="fas fa-times fa-fw"></i>\n' +
-                            '                                Fermé la Fenêtre\n' +
+                            '                                Fermer la Fenêtre\n' +
                             '                            </button>\n' +
                             '                        </div>\n' +
                             '                    </div>\n' +
@@ -187,7 +186,7 @@
                             '    </div>\n' +
                             '</div>';
                     }
-                    addElem('modals', modal);
+                    addElem('modals', linkify(modal));
                 }
             }
             ,
@@ -196,6 +195,13 @@
                 console.log("Erreur: " + jqXHR);
                 console.log("Erreur: " + errorThrown);
             }
+        });
+    }
+
+    function linkify(text) {
+        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        return text.replace(urlRegex, function(url) {
+            return '<a href="' + url + '">' + url + '</a>';
         });
     }
 

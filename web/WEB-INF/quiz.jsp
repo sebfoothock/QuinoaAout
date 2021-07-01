@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="quizNav" action="Quiz" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <form id="histoireLutteNav" action="Histoire" method="GET"></form>
@@ -65,6 +65,16 @@
         </c:if>
     </div>
 </nav>
+
+<%--refresh button--%>
+<div id="refresh">
+<%--    <div id="containerRefresh">--%>
+        <div class="controls">
+            <button class="refresh-btn btn" onclick="refresh()">Rafraichir</button>
+            <p class="text-center textRefresh">Si le quiz ne s'affiche pas rafraichissez la page</p>
+        </div>
+<%--    </div>--%>
+</div>
 
 <%--Quiz--%>
 <div id="bodyQuiz">
@@ -96,6 +106,10 @@
             <p id="phraseScore"></p>
             <div>
             </div>
+            <form method="post" action="Mail">
+                <input type="text" id="mailInput" name="mailInput">
+                <submit></submit>
+            </form>
             <button id="restart-btn" class="start-btn btn" onclick="window.location.reload()">Recommencer</button>
 <%--            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>--%>
         </div>
@@ -108,40 +122,44 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-if(document.getElementById("switch")){
-    const slider = document.getElementById('slider');
-    const switch1 = document.getElementById("switch");
-    const togBtn = document.getElementById("togBtn");
+    // function refresh(){
+    //     location.reload();
+    // }
 
-    switch1.addEventListener("click", function(){
-        slider.classList.add('hide');
-        togBtn.classList.add('hide');
+    if(document.getElementById("switch")){
+        const slider = document.getElementById('slider');
+        const switch1 = document.getElementById("switch");
+        const togBtn = document.getElementById("togBtn");
 
-        axios.post("Deconnexion")
-            .then(function (response) {
-            console.log(response);
-            window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
-        })
-            .catch(function (error) {
-                console.log(error);
-            });
-    });
-}
+        switch1.addEventListener("click", function(){
+            slider.classList.add('hide');
+            togBtn.classList.add('hide');
+
+            axios.post("Deconnexion")
+                .then(function (response) {
+                console.log(response);
+                window.location.replace("http://localhost:8080/Quinoa_war_exploded/Accueil")
+            })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+    }
 
     // const switchConnexion = document.getElementById('switch');
     // switchConnexion.classList.add('hide');
     // console.log(coucou);
 
-    if('${inscrit}' == '1'){
-        bootbox.alert("Vous êtes inscrit");
-    }
+    <%--//if('${inscrit}' == '1'){--%>
+    <%--    //bootbox.alert("Vous êtes inscrit");--%>
+    <%--//}--%>
     var questions = [];
     let score = 0;
     function postdata() {
         var parameter ="";
         $.ajax({
             type: "POST",
-            url: "Histoire",
+            url: "Quiz",
             data: parameter,
             contentType: "application/x-www-form-urlencoded;charset=UTF-8",
             dataType: "json",
@@ -224,6 +242,7 @@ if(document.getElementById("switch")){
             button.innerText = answer.text //insérer le text
             button.classList.add('textQuiz')
             button.classList.add('btnQuiz')
+            button.classList.add('answer')
             button.classList.add('btn')//qui va permettre d'appliquer le style btnQuiz.correct, .wrong, ...
             if (answer.correct){
                 button.dataset.correct = answer.correct//ajoute un attribut dataset à notre bouton => .correct

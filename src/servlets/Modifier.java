@@ -43,6 +43,7 @@ public class Modifier extends HttpServlet {
         personnage.setNom(request.getParameter("nom"));
         LOG.debug("nom: " + personnage.getNom());
         String annee = request.getParameter("annee");
+        LOG.info("annee: " + request.getParameter("annee"));
         if(annee != null){
             if(!annee.isEmpty()){
                 personnage.setAnnee(Integer.valueOf(request.getParameter("annee")));
@@ -70,8 +71,8 @@ public class Modifier extends HttpServlet {
         try {
             String db_host = new ConfProperties().getHostProperties();
             PrintWriter out = response.getWriter();
-            response.setContentType("text/html; charset=UTF-8");
-            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=UTF-8");
+            //response.setCharacterEncoding("UTF-8");
             response.setHeader("Cache-control", "no-cache, no-store");
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "-1");
@@ -83,14 +84,14 @@ public class Modifier extends HttpServlet {
             WritePerson m_pers = new WritePerson();//ajout : appel writePerso & supprimer : appel deletePerson
             JsonObject myObj = new JsonObject();
             if(db_host != null) {
+                LOG.info("annee: "+personnage.getAnnee());
                 if (m_pers.updatePerson(personnage, getConnector(db_host))) {
                     myObj.addProperty("success", true);
                 } else {
-                    myObj.addProperty("success", false);
+                    myObj.addProperty("error", false);
                 }
             }
             out.println(myObj.toString());
-
             out.close();
         }
 

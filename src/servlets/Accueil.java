@@ -39,38 +39,38 @@ public class Accueil extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String pagePublic = "/WEB-INF/accueil.jsp";
-        Boolean isConnected = false;
-        try {
-            String db_host = new ConfProperties().getHostProperties();
-            database.read.ReadSession readSession = new database.read.ReadSession();
-            ArrayList<beans.Session> listSessions = readSession.getSession(getConnector(db_host));
-            beans.Session sess = readSession.getLastSession(listSessions);
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            String now = dateFormat.format(date);
-            Date tmpsessd1 = dateFormat.parse(now);
-            Date sessd2 = dateFormat.parse(sess.getTimestart());
-            LOG.info("tmpsessd1: " + dateFormat.format(tmpsessd1));
-            LOG.info("sessd2: " + dateFormat.format(sessd2));
-            if(tmpsessd1.compareTo(sessd2) > 0) {
-                LOG.info("Date 1 est après Date 2");
-            } else if(tmpsessd1.compareTo(sessd2) <= 0) {
-                LOG.info("Date 1 est avant Date 2");
-                isConnected = true;
-            }
-            HttpSession session=request.getSession();
-            LOG.info("session: "+session.getAttribute("identifiant"));
-            if(isConnected){
-                LOG.info("last session: "+sess.getUsername());
-                session.setAttribute("identifiant", sess.getUsername());
-                // request.setAttribute("identifiant", sess.getUsername());
-                request.setAttribute("role", sess.getRoles().get(0));
-            } else {
-                session.invalidate();
-            }
-        } catch (Exception e) {
-            LOG.error(e);
-        }
+//        Boolean isConnected = false;
+//        try {
+//            String db_host = new ConfProperties().getHostProperties();
+//            database.read.ReadSession readSession = new database.read.ReadSession();
+//            ArrayList<beans.Session> listSessions = readSession.getSession(getConnector(db_host));
+//            beans.Session sess = readSession.getLastSession(listSessions);
+//            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//            Date date = new Date();
+//            String now = dateFormat.format(date);
+//            Date tmpsessd1 = dateFormat.parse(now);
+//            Date sessd2 = dateFormat.parse(sess.getTimestart());
+//            LOG.info("tmpsessd1: " + dateFormat.format(tmpsessd1));
+//            LOG.info("sessd2: " + dateFormat.format(sessd2));
+//            if(tmpsessd1.compareTo(sessd2) > 0) {
+//                LOG.info("Date 1 est après Date 2");
+//            } else if(tmpsessd1.compareTo(sessd2) <= 0) {
+//                LOG.info("Date 1 est avant Date 2");
+//                isConnected = true;
+//            }
+//            HttpSession session=request.getSession();
+//            LOG.info("session: "+session.getAttribute("identifiant"));
+//            if(isConnected){
+//                LOG.info("last session: "+sess.getUsername());
+//                session.setAttribute("identifiant", sess.getUsername());
+//                // request.setAttribute("identifiant", sess.getUsername());
+//                request.setAttribute("role", sess.getRoles().get(0));
+//            } else {
+//                session.invalidate();
+//            }
+//        } catch (Exception e) {
+//            LOG.error(e);
+//        }
         request.getRequestDispatcher(pagePublic).forward(request, response);
     }
 }

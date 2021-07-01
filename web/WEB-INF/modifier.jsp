@@ -162,15 +162,21 @@
                     <input type="text" class="form-control" id="article" name="article" placeholder="Lien vers un article">
                 </div>
 
+                <div class="form-group">
+                    <label>Image du Personnage</label>
+                    <input type="file" class="form-control" id="imgPersonnage" name="imgPersonnage">
+                </div>
+
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="validation();">
+                    <button class="btnLogin btn btn-primary" onclick="validation();">
                         <label>Modifier</label>
-                    </Button>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+    <input type="hidden" id="afficheBootbox" name="afficheBootbox" value="-">
 </section>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootbox.all.min.js"></script>
@@ -181,6 +187,10 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+    var nomPerson;//autocomplete
+    var idPerso;//id pour l'image
+    const afficheBootbox = document.getElementById('afficheBootbox');
+
     $("#nom")[0].addEventListener("change",function(){
 
         if (!($("#nom")[0].innerHTML)) {
@@ -195,11 +205,6 @@
                 dataType: "json",//format de donnée reçu
                 success: function (data, textStatus, jqXHR) {
                     if (data.success) {
-                        // si le client reçoit une réponse 200 OK alors on peut compléter les input du formulaire
-                        //                     for(var i=0;i<data.results.length;i++){
-                        //                         alert(i+" "+data.results[i]);
-                        //                     }
-                        //bootbox.alert("Personnage recherché");
                         document.getElementById("annee").value = data.results[0];//supprimer  : value = ""
                         document.getElementById("lieu").value = data.results[1];//ajouter (créer var) : value = nom
                         document.getElementById("lutte").value = data.results[4];
@@ -214,6 +219,7 @@
                         document.getElementById("reponse3").value = data.results[9];
                         document.getElementById("video").value = data.results[12];
                         document.getElementById("article").value = data.results[3];
+                        idPerso = data.results[14];
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -227,14 +233,12 @@
 
     });
     $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
-
     $( function() {
         var listPerson = [
-            <c:forEach items="${listPerson}" var="person">
-            '<c:out value="${person.nom}" />',//person.nom = person.getNom
+            <c:forEach items="${listPerson}" var="person">//parcours la liste des personnes qui vient du servlet Modifier et person permet de parcourir chaque objet un par un
+            '<c:out value="${person.nom}" />',//écrit dans le tableau ListPerson
             </c:forEach>
         ];
-        console.log(listPerson);
 
         $( "#nom" ).autocomplete({
             source: listPerson
@@ -323,11 +327,12 @@
             var element13 = document.getElementById("reponse3").value;
             var element14 = document.getElementById("video").value;
             var element15 = document.getElementById("article").value;
+            var imgPerso = document.getElementById("imgPersonnage");
 
             parameter = "nom=" + element1 + "&annee=" + element2 + "&lieu=" + element3 + "&lutte=" + element4 + "&strategie=" + element5 + "&action=" + element6 + "&victoire=" + element7 + "&anecdote=" + element8
                 + "&citation=" + element9 + "&question=" + element10 + "&reponse1=" + element11 + "&reponse2=" + element12 + "&reponse3=" + element13 + "&video=" + element14 + "&article=" + element15; //forge les paramètres pour l'URL
 
-            alert(parameter);
+            //alert(parameter);
             console.log(parameter)
 
             $.ajax({
@@ -337,15 +342,66 @@
                 contentType: "application/x-www-form-urlencoded;charset=utf-8",//encodage donnée
                 dataType: "json",
                 success: function (data){
-                    bootbox.alert("Personnage modifié");
                     console.log('success', data);
+                    bootbox.alert("Personnage modifié");
+                    // var content = document.body.textContent || document.body.innerText;
+                    // var hasText = content.indexOf("{\"success\":true}")==-1;
+                    // if(hasText){
+                    //     location.reload();
+                    // }
+                    // sessionStorage.SessionName = "success";
                 },
                 error: function(data){
-                    bootbox.alert("Il y a eu une erreur lors de la modification du personnage");
                     console.log('error', data);
+                    bootbox.alert("Il y a eu une erreur lors de la modification du personnage");
+                    // var content = document.body.textContent || document.body.innerText;
+                    // var hasText = content.indexOf("{\"error\":false}")==-1;
+                    // if(hasText){
+                    //     location.reload();
+                    // }
+                    // sessionStorage.SessionName = "error";
                 }
             });
+
+            const endpoint = "ModifierImg";
+            const formData = new FormData();
+
+            console.log(imgPerso.files);
+            formData.append(idPerso,"id");
+            formData.append(element1,"nom");
+            formData.append("imgPerso", imgPerso.files[0]);
+            console.log("envoie de formData...");
+            fetch(endpoint, {
+                method: "post",
+                body: formData
+            }).catch(
+                console.error
+            )
+            console.log("formData envoyé !");
     }
+
+    var inputfile = document.getElementById("imgPersonnage");
+    function checkSizeFile() {
+        var curFile = inputfile.files;
+        if(curFile[0].size > 2039000){
+            bootbox.alert("La taille du fichier ne doit pas dépasser 2MB");
+            inputfile.value = "";
+        }
+        if((curFile[0].type !== 'image/jpeg') && (curFile[0].type !== 'image/png' )){
+            bootbox.alert("Le format du fichier doit être .jpeg ou .png");
+            inputfile.value = "";
+        }
+    }
+    inputfile.addEventListener('change',checkSizeFile);
+
+        // if(sessionStorage.getItem("SessionName") == 'success'){
+        //     bootbox.alert("Personnage modifié");
+        //     sessionStorage.SessionName = "";
+        // }
+        // if(sessionStorage.getItem("SessionName") == 'error'){
+        //     bootbox.alert("Il y a eu une erreur lors de la modification du personnage");
+        //     sessionStorage.SessionName = "";
+        // }
 </script>
 
 <!-- Bootstrap core JS-->

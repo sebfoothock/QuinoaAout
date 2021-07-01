@@ -49,7 +49,7 @@
         </li>
         <c:if test="${ empty sessionScope.identifiant }">
         <li class="nav-item mx-0 mx-lg-1">
-          <form id="inscriptionNav" action="Inscription" method="GET"></form>
+          <form id="inscriptionNav" action="Quiz" method="GET"></form>
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
         </li>
         </c:if>
@@ -216,7 +216,7 @@
           étudiant en IT à l'EPHEC
           <br>
           <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/sébastien-raemdonck-87a864182/"><i class="fab fa-fw fa-linkedin-in"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/aymeric-ponj%C3%A9e-91153b180/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/aymeric-ponj%C3%A9-91153b18/"><i class="fab fa-fw fa-linkedin-in"></i></a>
           <br>
         </p>
       </div>
@@ -224,7 +224,9 @@
   </div>
 </footer>
 <!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
+<div class="copyright py-4 text-center text-white footer-inline">
+  <form id="ajouter" action="Ajouter" method="GET"></form>
+  <a id="ajouter" href="#" onclick="document.getElementById('ajouter').submit();">ajouter</a>
   Template by <a href="https://startbootstrap.com/themes/freelancer/">Start Bootstrap</a>
 </div>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->

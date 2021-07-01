@@ -54,15 +54,6 @@
                        href="#" onclick="document.getElementById('inscriptionNav').submit();">Jouer !</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <form id="connexionNav" action="Connexion" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="#" onclick="document.getElementById('connexionNav').submit();">Connexion</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
-                    <form id="quizNav" action="Quiz" method="GET"></form>
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('quizNav').submit();">Quiz</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
                     <form id="histoireLutteNav" action="Histoire" method="GET"></form>
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" onclick="document.getElementById('histoireLutteNav').submit();">Histoires de luttes</a>
                 </li>
@@ -83,14 +74,14 @@
         <div class="row justify-content-md-center">
             <%-- j_security_check renvoie vers le fichier server.xml de tomee--%>
            <form id="connexionForm" class="col-md-10" action="j_security_check" method="post">
-                <div class="form-group">
+                <div class="form-inscription">
                     <label for="identifiant"><h6>Adresse Mail</h6></label>
                     <input type="email" placeholder="" id="identifiant" class="champText" name="j_username" />
                     <div class="erreurChamp">
                         <small>Error message</small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-inscription">
                     <label for="password"><h6>Mot de Passe</h6></label>
                     <input type="password" placeholder="" id="password" class="champText" name="j_password" />
                     <div class="erreurChamp">
@@ -99,9 +90,9 @@
                 </div>
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="checkInputs();">
+                    <button class="btnLogin btn btn-primary" onclick="checkInputs();">
                         <label>Se Connecter</label>
-                    </Button>
+                    </button>
                 </div>
             </form>
         </div>

@@ -1,11 +1,16 @@
 package beans;
 
+import org.bson.types.ObjectId;
+
+import java.io.FileOutputStream;
+
 /**
  * Cette classe défini un objet Person qui correspond à un personnage qui a été désobéissant dans sa vie
  */
 
 public class Person {
 
+    private ObjectId id;
     private String nom;
     private Integer annee;
     private String lieu;
@@ -21,6 +26,7 @@ public class Person {
     private String reponse3;
     private String video;
     private String article;
+    private String base64Image;
 
     /**
      *
@@ -61,6 +67,14 @@ public class Person {
 
     public Person(){
 
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -181,5 +195,11 @@ public class Person {
 
     public void setArticle(String article) {
         this.article = article;
+    }
+
+    public String getImg() {return base64Image;}
+
+    public void setImg(String base64Image) {
+        this.base64Image = base64Image;
     }
 }

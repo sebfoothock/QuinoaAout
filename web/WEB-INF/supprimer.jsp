@@ -92,9 +92,9 @@
 
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="postdata(event);">
+                    <button class="btnLogin btn btn-primary" onclick="postdata(event);">
                         <label>Supprimer</label>
-                    </Button>
+                    </button>
                 </div>
             </form>
         </div>

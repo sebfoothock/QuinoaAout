@@ -11325,11 +11325,13 @@ form .row:first-child .floating-label-form-group {
 }
 
 /*inscription validation*/
-.form-group {
+.form-group, .form-inscription {
   margin-bottom: 10px;
   padding-top: 10px;
   position: relative;
 }
+
+
 
 .champText {
   border: 2px solid #f0f0f0;
@@ -11392,7 +11394,7 @@ td, th {
   width: 100vw;
   height: 100vh;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-image: url("../img/foule.png");
   background-attachment: fixed;
   background-position: center;
@@ -11489,7 +11491,7 @@ div#answer-buttons{
   text-align: center;
 }
 
-button.btn {
+.answer {
   margin: 15px
 }
 
@@ -11503,12 +11505,51 @@ button.btn {
   font-weight: bold;
 }
 
+#refresh{
+  padding: 0;
+  display: flex;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/foule.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#containerRefresh  {
+  min-width: 400px;
+  max-width: 50%;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+}
+
+.refresh-btn{
+  margin : 40px 0;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  background-color: var(--third);
+  position: absolute;
+}
+
+.textRefresh{
+  margin-top: 200px;
+  position: absolute;
+  color: var(--third);
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 /*page d'erreur*/
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+/** {*/
+/*  -webkit-box-sizing: border-box;*/
+/*  box-sizing: border-box;*/
+/*}*/
 
 body {
   padding: 0;
@@ -11680,12 +11721,27 @@ input:checked + .slider:after
 }
 
 .divHistoire{
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.btnHistoire{
-  width: 200px;
-  min-height: 100px;
+.btnImgHistoire{
+  width: 300px;
+  margin: 20px;
+  border-radius: 15px;
+}
+
+.btnImgHistoire :hover{
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+/*Footer*/
+#ajouter {
+  color: var(--secondary);
 }
 
 @media all and (max-width: 900px) {
@@ -11738,6 +11794,16 @@ input:checked + .slider:after
     font-weight: bold;
   }
 
+  .refresh-btn {
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 1.3em;
+  }
+
+  .textRefresh{
+    font-size: 1.2em;
+    margin-top: 170px;
+  }
   @media all and (max-width: 370px) {
     .textQuiz{
       font-size: 0.7em;
@@ -11757,6 +11823,16 @@ input:checked + .slider:after
 
     body{
       line-height: none;
+    }
+
+    .refresh-btn {
+      padding: 5px 20px;
+      font-size: 1.1em;
+    }
+
+    .textRefresh{
+      font-size: 0.9em;
+      margin-top: 150px;
     }
   }
 }

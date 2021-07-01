@@ -4,11 +4,19 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.model.GridFSFile;
+import com.mongodb.client.gridfs.model.GridFSUploadOptions;
 import org.bson.Document;
 import beans.Person;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Cette classe est destiné a écrire, de modifier ou supprimer le contenue d'un personnage la base de données
@@ -40,7 +48,7 @@ public class WritePerson {
 
         Document document = new Document();
         document.append("nom", person.getNom())
-                .append("periode", person.getAnnee())
+                .append("annee", person.getAnnee())
                 .append("lieu", person.getLieu())
                 .append("lutte", person.getLutte())
                 .append("strategie", person.getStrategie())
@@ -142,6 +150,38 @@ public class WritePerson {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void storeImg(String fileName, InputStream file, MongoClient mongoClient, String nom){
+        MongoDatabase myDatabase = mongoClient.getDatabase(database);
+        GridFSBucket gridFSBucket = GridFSBuckets.create(myDatabase, "imgPerso");//création du bucket = 2 collections (.chuncks et .files)
+        try {
+            // Create some custom options
+            GridFSUploadOptions options = new GridFSUploadOptions()//chunck
+
+                    .chunkSizeBytes(2040000).metadata(new Document("perso", nom));//découpage des images en 2mo dans mongoDB et ajout des metadonnées dans mongoDB
+            LOG.info("storeImg : " + nom);
+
+            ObjectId fileId = gridFSBucket.uploadFromStream(fileName, file, options);//files
+        } catch (Exception e){
+            LOG.error(e);
+        }
+    }
+
+    public void deleteImg(MongoClient mongoClient, String nom){
+        LOG.info("deleteImg");
+        MongoDatabase myDatabase = mongoClient.getDatabase(database);
+        GridFSBucket gridFSBucket = GridFSBuckets.create(myDatabase, "imgPerso");
+        GridFSFile gridFSFile = gridFSBucket.find(eq("metadata.perso", nom)).first();
+        if(gridFSFile != null){
+            LOG.info("Nom:- " + nom);
+            LOG.info("File Name:- " + gridFSFile.getFilename());
+            LOG.info("Meta Data:- " + gridFSFile.getObjectId());
+            gridFSBucket.delete(gridFSFile.getObjectId());
+        }
+        else{
+            LOG.info(nom + " n'avait pas d'image");
         }
     }
 }

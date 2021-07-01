@@ -162,11 +162,16 @@
                     <input type="text" class="form-control" id="article" name="article" placeholder="Lien vers un article">
                 </div>
 
+                <div class="form-group">
+                    <label>Image du Personnage</label>
+                    <input type="file" class="form-control" id="imgPersonnage" name="imgPersonnage">
+                </div>
+
                 <br></br>
                 <div class="wrapper">
-                    <Button class="btnLogin btn btn-primary" onclick="validation()">
+                    <button class="btnLogin btn btn-primary" onclick="validation()">
                         <label>Ajouter</label>
-                    </Button>
+                    </button>
                 </div>
             </form>
         </div>
@@ -179,6 +184,15 @@
 
 <script>
     $("form :input").attr("autocomplete", "off");//ne pas proposer l'autocomplete de la cache
+
+    const myForm = document.getElementById("ajouterForm");
+    const imgPerso = document.getElementById("imgPersonnage");
+
+    // myForm.addEventListener("submit", e => {
+    //     e.preventDefault();//empèche la page de se rafraichir
+    //
+    //
+    // })
 
     function validation(){
         const nomValue = document.getElementById('nom').value;
@@ -242,7 +256,22 @@
 
         if(nomValidation === true && anneeValidation === true && questionValidation === true && reponse1Validation === true && reponse2Validation === true && reponse3Validation === true){
             postdata();
-            console.log("Envoyé !");
+            console.log("postdata envoyé !");
+
+            const endpoint = "AjouterImg";
+            const formData = new FormData();
+
+            console.log(imgPerso.files);
+            formData.append(nomValue,"nom");//nom du personnage (.append permet d'ajouter un élément dans l'objet formData)
+            formData.append("imgPerso", imgPerso.files[0]);//nom de l'image et les données de l'image
+            console.log("envoie de formData...");
+            fetch(endpoint, {
+                method: "post",
+                body: formData
+            }).catch(
+                console.error
+            )
+            console.log("formData envoyé !");
         }
     }
     function postdata(){
@@ -284,6 +313,20 @@
             }
         });
     }
+
+    var inputfile = document.getElementById("imgPersonnage");
+    function checkSizeFile() {
+        var curFile = inputfile.files;
+        if(curFile[0].size > 2039000){
+            bootbox.alert("La taille du fichier ne doit pas dépasser 2MB");
+            inputfile.value = "";
+        }
+        if((curFile[0].type !== 'image/jpeg') && (curFile[0].type !== 'image/png' )){
+            bootbox.alert("Le format du fichier doit être .jpeg ou .png");
+            inputfile.value = "";
+        }
+    }
+    inputfile.addEventListener('change',checkSizeFile);
 </script>
 
 <!-- Bootstrap core JS-->

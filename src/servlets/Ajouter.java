@@ -80,20 +80,21 @@ public class Ajouter extends HttpServlet {
             WritePerson m_pers = new database.write.WritePerson();//ajout : appel writePerso & supprimer : appel deletePerson
             JsonObject myObj = new JsonObject();
             if(db_host != null) {
-                if (m_pers.updatePerson(personnage, getConnector(db_host))) {
+                m_pers.addPerson(personnage, getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
+                if (m_pers.isAdded(getConnector(db_host), personnage.getNom())) {
                     myObj.addProperty("success", true);
                 } else {
-                    myObj.addProperty("success", false);
+                    myObj.addProperty("error", false);
                 }
             }
             out.println(myObj.toString());
-
             out.close();
+
         }
 
         catch(IOException ex){
             LOG.error(ex);
-            //System.out.println("Erreur: "+ex);
+            System.out.println("Erreur: "+ex);
         }
     }
 
