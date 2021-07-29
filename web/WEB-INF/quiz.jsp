@@ -69,10 +69,10 @@
 <%--refresh button--%>
 <div id="refresh">
 <%--    <div id="containerRefresh">--%>
-        <div class="controls">
-            <button class="refresh-btn btn" onclick="refresh()">Rafraichir</button>
-            <p class="text-center textRefresh">Si le quiz ne s'affiche pas rafraichissez la page</p>
-        </div>
+<%--        <div class="controls">--%>
+<%--            <button class="refresh-btn btn" onclick="refresh()">Rafraichir</button>--%>
+<%--            <p class="text-center textRefresh">Si le quiz ne s'affiche pas rafraichissez la page</p>--%>
+<%--        </div>--%>
 <%--    </div>--%>
 </div>
 
