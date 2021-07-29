@@ -77,15 +77,15 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container center">
         <br>
-        <h1 class="formTitle text-center">Statistique <label id="annee"></label></h1>
+        <h1 class="formTitle text-center">Statistique</h1>
         <div class="row justify-content-md-center">
             <br>
 <%--            <input type="number">--%>
             <table id="stat">
                 <thead>
                 <tr>
-                    <td id=ref>Champs</td>
-                    <td id=auteur>Données des inscriptions</td>
+                    <td id=ref class="h6">Type de statistique</td>
+                    <td id=auteur class="h6">Résultat</td>
                 </tr>
                 </thead>
                 <tbody id=tabStat>
@@ -99,21 +99,11 @@
 
 <script>
     function data() {
-        var currentYear = new Date().getFullYear()
-        var users = []
-
-        var nbInscrit = 0;
-        var age16 = 0;
-        var age19 = 0;
-        var age22 = 0;
-        var age26 = 0;
-        var age30 = 0;
-        var homme = 0;
-        var femme = 0;
-        var autre = 0;
-        var desobeiOui = 0;
-        var desobeiPeu = 0;
-        var desobeiNon = 0;
+        let currentYear = new Date().getFullYear()
+        let previousYear = currentYear-1;
+        let anneePrecedente = 0;
+        var anneeActuelle = 0;
+        let autreValeur = 0;
 
         axios.get("Stats")
             .then( (response) => {
@@ -121,57 +111,29 @@
                 console.log("response: "+response.data)
                 //this.users({response: response})
 
-                var filterUsers = response.data; //= users.filter(users.creation_date => currentYear);
+                let filterGamesInfo = response.data + '';
+                let filterGamesInfoSplit = filterGamesInfo.split(",");
+                let filterGamesInfoSplitLength = filterGamesInfoSplit.length;
 
-                for(let i = 0; i < filterUsers.length; i++){
-                    nbInscrit++;
-                    console.log("age: "+filterUsers[i].age);
-                    switch (filterUsers[i].age) {
-                        case '16':
-                            age16++;
-                            break;
-                        case '19':
-                            age19++;
-                            break;
-                        case '21':
-                            age22++;
-                            break;
-                        case '26':
-                            age26++;
-                            break;
-                        case '30':
-                            age30++;
-                            break;
-                        default:
-                            age30++;
-                    }
-                    switch (filterUsers[i].sexe) {
-                        case 'homme':
-                            homme++;
-                            break;
-                        case 'femme':
-                            femme++;
-                            break;
-                        case 'autre':
-                            autre++;
-                            break;
-                        default:
-                            autre++;
-                    }
-                    switch (filterUsers[i].desobei) {
-                        case 'oui':
-                            desobeiOui++;
-                            break;
-                        case 'non':
-                            desobeiNon++;
-                            break;
-                        case 'un peu':
-                            desobeiPeu++;
-                            break;
-                        default:
-                            desobeiNon++;
-                    }
+                for(let i = 0; i < filterGamesInfoSplitLength; i++){
+                    nbPartie++;
+                    console.log("date: "+filterGamesInfoSplit[i]);
+                    let date = filterGamesInfoSplit[i]
+                    let splitDate = date.split('/')
+                    let annee = parseInt(splitDate[2])
+                    console.log("annee: "+annee);
+                    console.log(typeof annee)
 
+                    switch (annee) {
+                        case currentYear-1:
+                            anneePrecedente++;
+                            break;
+                        case currentYear:
+                            anneeActuelle++;
+                            break;
+                        default:
+                            autreValeur++;
+                    }
                 }
                 function refElem(id) {
                     return document.getElementById(id);
@@ -184,18 +146,11 @@
                     } // s'il existe, ajoute
                 }
 
-                addElem("nbInscrit", nbInscrit);
-                addElem("age16", age16);
-                addElem("age19", age19);
-                addElem("age22", age22);
-                addElem("age26", age26);
-                addElem("age30", age30);
-                addElem("homme", homme);
-                addElem("femme", femme);
-                addElem("autre", autre);
-                addElem("desobeiOui", desobeiOui);
-                addElem("desobeiNon", desobeiNon);
-                addElem("desobeiPeu", desobeiPeu);
+                addElem("anneePrecedente", anneePrecedente);
+                addElem("anneeActuelle", anneeActuelle);
+                addElem("autreValeur", autreValeur);
+                addElem("nbPartie", filterGamesInfoSplitLength);
+
 
                 // affectation dans les éléments du DOM
 
@@ -218,9 +173,6 @@
         }
 
 
-        addElem('annee', currentYear)
-
-
         var tab = "";
             // tab += '<tr>';
             // tab += '<td>' + 'nombre de connexion en ' + currentYear + '</td>';
@@ -228,63 +180,23 @@
             // tab += '</tr>';
 
             tab += '<tr>';
-            tab += '<td>' + 'nombre d\'inscrit en ' + currentYear + '</td>';
-            tab += '<td id="nbInscrit"></td>';
+            tab += '<td>' + 'nombre de partie au total ' + '</td>';
+            tab += '<td id="nbPartie"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
-            tab += '<td>' + 'agé entre 16 et 18 ans' + '</td>';
-            tab += '<td id="age16"></td>';
+            tab += '<td>' + 'nombre de partie lancée en ' + previousYear + '</td>';
+            tab += '<td id="anneePrecedente"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
-            tab += '<td>' + 'agé entre 19 et 21 ans' + '</td>';
-            tab += '<td id="age19"></td>';
+            tab += '<td>' + 'nombre de partie lancée en ' + currentYear + '</td>';
+            tab += '<td id="anneeActuelle"></td>';
             tab += '</tr>';
 
             tab += '<tr>';
-            tab += '<td>' + 'agé entre 22 et 25 ans' + '</td>';
-            tab += '<td id="age22"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'agé entre 25 et 29 ans' + '</td>';
-            tab += '<td id="age26"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'agé de plus 30 ans' + '</td>';
-            tab += '<td id="age30"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'homme' + '</td>';
-            tab += '<td id="homme"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'femme' + '</td>';
-            tab += '<td id="femme"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'autre' + '</td>';
-            tab += '<td id="autre"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'se considère désobéissant·e' + '</td>';
-            tab += '<td id="desobeiOui"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'se considère un peu désobéissant·e' + '</td>';
-            tab += '<td id="desobeiPeu"></td>';
-            tab += '</tr>';
-
-            tab += '<tr>';
-            tab += '<td>' + 'se considère non désobéissant·e' + '</td>';
-            tab += '<td id="desobeiNon"></td>';
+            tab += '<td>' + 'autres valeurs' + '</td>';
+            tab += '<td id="autreValeur"></td>';
             tab += '</tr>';
 
         addElem('tabStat', tab);

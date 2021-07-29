@@ -6,8 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import connection.ConfProperties;
 import database.read.ReadPerson;
-import database.write.QuizCounter;
-import database.write.WritePerson;
+import database.QuizCounter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Base64;
 
 import static connection.MongoConnector.getConnector;
 
@@ -57,14 +55,16 @@ public class Quiz extends HttpServlet {
                 ArrayList<Person> pers = new ReadPerson().getPersons(getConnector(db_host));//ajout : appel writePerso & supprimer : appel deletePerson
                 Gson gson = new Gson();
                 JsonObject myObj = new JsonObject();
-                boolean modifiedCounter = new QuizCounter().IncrementCounter(getConnector(db_host));
-                LOG.info("coucou");
-                if(modifiedCounter == true){
-                    LOG.info("compteur incrémenter");
-                }
-                else{
-                    LOG.info("compteur pas incrémenter");
-                }
+
+//                boolean modifiedCounter = new QuizCounter().IncrementCounter(getConnector(db_host));
+                new QuizCounter().addGameInfo(getConnector(db_host));
+//                if(modifiedCounter == true){
+//                    LOG.info("compteur incrémenter");
+//                }
+//                else{
+//                    LOG.info("compteur pas incrémenter");
+//                }
+
 
                 JsonElement bdcObj = gson.toJsonTree(pers);
                 if (pers != null ) {

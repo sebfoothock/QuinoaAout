@@ -13,13 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static connection.MongoConnector.getConnector;
-@Path("/Stats")
+//@Path("/Stats")
 @Produces("application/json")
 @Consumes("application/json")
 
 /**
- * Cette classe a pour but d'utiliser REST pour communiquer avec la DB
+ * Cette classe a pour but de récupérer des données au format REST du nombre de quiz réalisé
  */
+
 public class Stats {
     final static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Rechercher.class);
     org.apache.log4j.Level info = org.apache.log4j.Level.INFO;

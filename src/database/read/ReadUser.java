@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * Cette classe est destiné a lire le contenue d'un ou de tout les utilisateurs de la base de données
  */
 
-
 public class ReadUser {
     private final String dbName = "security_realm";
     private final String Utilisateurs = "authentification";
