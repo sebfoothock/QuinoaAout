@@ -11,5 +11,5 @@
 #dependance
 /.idea/
 QuinoaAout.iml
-src/mail/EmailSender.java
+/src/mail/EmailSender.java
 
