@@ -19,7 +19,7 @@ public class EmailSender {
         String smtpHost = "smtp.gmail.com";
         int smtpPort = 587;
         String username = "dezobey.newsletter@gmail.com";
-        String password = "";
+        String password = "t";
         try
         {
             Properties props = System.getProperties();
