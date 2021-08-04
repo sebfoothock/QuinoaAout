@@ -90,7 +90,7 @@
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du Personne">
                 </div>
 
-                <br></br>
+                <br>
                 <div class="wrapper">
                     <button class="btnLogin btn btn-primary" onclick="postdata(event);">
                         <label>Supprimer</label>
@@ -122,7 +122,7 @@
                 }
             },
             callback: function (result) {
-                console.log('This was logged in the callback: ' + result);
+                console.log('callback result : ' + result);
                 if(result){
                     var element1 = document.getElementById("nom").value;
                     var parameter = "nom=" + element1;

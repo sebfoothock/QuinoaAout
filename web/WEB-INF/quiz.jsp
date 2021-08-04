@@ -99,19 +99,15 @@
                                                                     setNextQuestion()}">Suivant</button>
         </div>
 
-        <div id="result-container" class="hide text-center">
+        <div id="result-container" class="text-center hide">
                 <p class="titreQuiz">Tu as fini le Quiz Dezobeyi !</p>
             <br>
             <label>Tu as eu <label id="score"></label> sur 10 !</label>
             <p id="phraseScore"></p>
-            <div>
-            </div>
-            <form method="post" action="Mail">
-                <input type="text" id="mailInput" name="mailInput">
-                <submit></submit>
-            </form>
             <button id="restart-btn" class="start-btn btn" onclick="window.location.reload()">Recommencer</button>
-<%--            <button id="result-btn" class="result-btn btn" onclick="startGame()">Resultat</button>--%>
+            <div>
+                <button id="newsletter-btn" class="btn" onclick="newsletter()">S'inscrire à la newsletter Quinoa</button>
+            </div>
         </div>
     </div>
 </div>
@@ -122,9 +118,6 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    // function refresh(){
-    //     location.reload();
-    // }
 
     if(document.getElementById("switch")){
         const slider = document.getElementById('slider');
@@ -146,13 +139,6 @@
         });
     }
 
-    // const switchConnexion = document.getElementById('switch');
-    // switchConnexion.classList.add('hide');
-    // console.log(coucou);
-
-    <%--//if('${inscrit}' == '1'){--%>
-    <%--    //bootbox.alert("Vous êtes inscrit");--%>
-    <%--//}--%>
     var questions = [];
     let score = 0;
     function postdata() {
@@ -235,8 +221,7 @@
         if(question.nom){
             question.nom = " ";
         }
-        //  questionElement.innerText = question.question;
-        //  themeQuiz.innerText = question.question;
+
         question.answers.forEach(answer => {
             const button = document.createElement('button')
             button.innerText = answer.text //insérer le text
@@ -305,6 +290,65 @@
             element.classList.add("wrong")
         }
     }
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function newsletter() {
+        bootbox.dialog({
+            title: 'Newsletter',
+            message: '<p>Entrez votre adresse mail pour être tenu au courant des actualités de l\'ASBL Quinoa</p> ' +
+                '<input type="text" name="mail" id="mail">' +
+                ' <p id="email"></p>',
+            size: 'medium',
+            onEscape: true,
+            backdrop: true,
+            prompt:true,
+            buttons: {
+                send: {
+                    label: 'Envoyer',
+                    className: 'btn-success',
+                    callback: function () {
+                        let resultMail = $('#mail').val();
+                        if (resultMail === null) {
+                        }
+                        else {
+                             if (validateEmail(resultMail)) {
+                                console.log(resultMail)
+                                var parameter = "mailInput=" + resultMail;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "Mail",
+                                    data: parameter,
+                                    dataType: "json",
+                                    success: function (data) {
+                                        bootbox.alert("Inscription à la newsletter réussi !");
+                                        console.log("Réussi: " + data);
+                                    },
+                                    error: function (data) {
+                                        bootbox.alert("Erreur d'inscription à la newsletter");
+                                        console.log("Erreur: " + data);
+                                    }
+                                });
+                            }
+                            else {
+                                bootbox.alert("Votre adresse mail n'est pas valide");
+                            }
+                            }
+                        }
+                    }
+                },
+                cancel: {
+                    label: 'Annuler',
+                    className: 'none',
+                    callback: function () {
+
+                    }
+                }
+            })
+        }
 
     // function clearStatusClass(element) {
     //     element.classList.remove('correct')

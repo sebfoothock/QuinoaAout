@@ -89,6 +89,11 @@
         <servlet-class>servlets.Statistique</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Mail</servlet-name>
+        <servlet-class>servlets.Mail</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Accueil</servlet-name>
         <url-pattern></url-pattern><!-- si vide controller par défaut et remplir si le nom du servlet est différent du controller -->
@@ -161,6 +166,11 @@
         <url-pattern>/Statistique</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Mail</servlet-name>
+        <url-pattern>/Mail</url-pattern>
+    </servlet-mapping>
+
     <security-constraint>
         <display-name>Quinoa</display-name>
         <web-resource-collection>
@@ -185,6 +195,7 @@
             <url-pattern>/Inscription</url-pattern>
             <url-pattern>/Liste</url-pattern>
             <url-pattern>/Quiz</url-pattern>
+            <url-pattern>/Mail</url-pattern>
             <url-pattern>/</url-pattern>
             <url-pattern>/test</url-pattern>
             <url-pattern>/img/*</url-pattern>

@@ -14,17 +14,18 @@ public class EmailSender {
 
     public static boolean run(String toAddress, String subject, String content) {
 
-        String fromAddress = "@gmail.com";
+        String fromAddress = "dezobey.newsletter@gmail.com";
         String contentType = "text/plain";
         String smtpHost = "smtp.gmail.com";
         int smtpPort = 587;
-        String username = "@gmail.com";
+        String username = "dezobey.newsletter@gmail.com";
         String password = "";
         try
         {
             Properties props = System.getProperties();
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
             Session session = Session.getDefaultInstance(props);
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromAddress));
